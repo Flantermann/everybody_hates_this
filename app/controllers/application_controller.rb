@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   # Pundit: white-list approach.
   after_action :verify_authorized, except: :index, unless: :skip_pundit?
   after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
-  
+
   private
 
   def configure_permitted_parameters
@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   private
 
   def skip_pundit?
-    devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/ || params[:controller] = "bookings" || params[:controller] == "dashboards"
+    devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
+    # devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/ || params[:controller] = "bookings" || params[:controller] == "dashboards"
   end
-
 end
