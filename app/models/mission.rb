@@ -1,4 +1,4 @@
-class Issue < ApplicationRecord
+class Mission < ApplicationRecord
   belongs_to :user
   belongs_to :contract
   # has_many :milestones

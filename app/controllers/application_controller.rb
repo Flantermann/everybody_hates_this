@@ -20,4 +20,5 @@ class ApplicationController < ActionController::Base
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
     # devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/ || params[:controller] = "bookings" || params[:controller] == "dashboards"
   end
+
 end

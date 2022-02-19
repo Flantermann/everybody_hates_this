@@ -1,0 +1,3 @@
+<% if policy(Mission).create? %>
+  <%= link_to "New mission", new_mission_path %>
+<% end %>
