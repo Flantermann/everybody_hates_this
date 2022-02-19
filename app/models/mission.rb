@@ -1,6 +1,6 @@
 class Mission < ApplicationRecord
   belongs_to :user
-  belongs_to :contract
+  belongs_to :contract, optional: true
   has_many :milestones
 
   enum category: { body_mind: 0, health: 1, administration: 2, relationship: 3, work: 4, household: 5 }

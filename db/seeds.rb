@@ -17,7 +17,7 @@
 # db/seeds.rb
 require "faker"
 puts "cleaning database"
-Issue.destroy_all
+Mission.destroy_all
 User.destroy_all
 puts "creating user"
 
