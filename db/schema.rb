@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_19_152959) do
+ActiveRecord::Schema.define(version: 2022_02_19_153922) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,12 +65,12 @@ ActiveRecord::Schema.define(version: 2022_02_19_152959) do
     t.integer "timeframe"
     t.integer "prefered_buddy_age_start"
     t.integer "prefered_buddy_age_end"
-    t.string "prefered_buddy_location"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "contract_id"
     t.boolean "contract_signed?", default: false, null: false
+    t.integer "prefered_buddy_location"
     t.index ["contract_id"], name: "index_missions_on_contract_id"
     t.index ["user_id"], name: "index_missions_on_user_id"
   end
