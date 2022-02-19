@@ -6,4 +6,5 @@ Rails.application.routes.draw do
     resources :milestones, only: :create
   end
   resources :milestones, only: [ :update, :destroy ]
+  resources :contract, only: [ :show ]
 end
