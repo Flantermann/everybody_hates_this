@@ -1,8 +1,0 @@
-<div>
-  <% if policy(@issue).edit? %>
-    <%= link_to "update", edit_issue_path(@issue) %>
-  <% end %>
-  <% if policy(@issue).destroy? %>
-    <%= link_to "delete", issue_path(@issue), method: :delete, data: { confirm: "Are you sure?" } %>
-  <% end %>
-</div>
