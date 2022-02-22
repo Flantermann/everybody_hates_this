@@ -3,9 +3,9 @@ class Mission < ApplicationRecord
   belongs_to :contract, optional: true
   has_many :milestones
 
-  enum category: { misc: 0, body_mind: 1, administration: 2, relationship: 3, work: 4, household: 5 }
-  enum timeframe: { seven_d: 0, two_w: 1, four_w: 2, six_w: 3, nW: 4 }
-  enum prefered_buddy_location: { near: 0, anywhere: 1 }
+  enum category: { miscellaneous: 0, body_and_mind: 1, administrative_tasks: 2, relationships: 3, work_life: 4, household: 5 }
+  enum timeframe: { Three_to_seven_days: 0, one_to_two_weeks: 1, two_to_four_weeks: 2, four_to_six_weeks: 3, more_than_six_weeks: 4 }
+  enum prefered_buddy_location: { in_my_area: 0, can_be_anywhere: 1 }
 
   validates :description, presence: true, length: { minimum: 50 }
   validates :title, :category, :timeframe, :prefered_buddy_location, presence: true

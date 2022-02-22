@@ -1,0 +1,31 @@
+  <div class="row">
+    <div class="col-md-6">
+      <%= simple_form_for(@mission) do |f| %>
+        <%= f.input :category,
+                    :label => "Please choose the category that best describes your mission. If it doesn't fit any, there's always the miscellaneous section" %>
+        <%= f.input :timeframe,
+                    :label => "How long will it probably take you to finish your mission?" %>
+        <%= f.input :title,
+                    :label => "Now find a nice descriptive title for your mission",
+                    placeholder: 'e.g. Finally cleaning my smelly fridge' %>
+        <%= f.input :description,
+                    placeholder: 'Describe your mission',
+                    :input_html => {:rows => 10} %>
+        <%= f.input :prefered_buddy_age_start,
+                    :label => "How old should your buddy be at least?",
+                    placeholder: '12',
+                    :collection => 12..70 %>
+        <%= f.input :prefered_buddy_age_end,
+                    :label => "And what is the maximum age they should have?",
+                    placeholder: '102',
+                    :collection => 18..102 %>
+        <%= f.input :prefered_buddy_location,
+                    :label => "Your buddy should live..."  %>
+        <% if f.object.new_record? %>
+          <%= f.submit "Create Mission" %>
+        <% else %>
+          <%= f.submit "Update your Mission" %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
