@@ -1,3 +1,33 @@
-<% if policy(Mission).create? %>
-  <%= link_to "New mission", new_mission_path %>
-<% end %>
+<div class="container">
+
+  <h1>Find your buddy</h1>
+
+  <div>
+    <div>
+      <% @missions.each do |mission| %>
+        <div>
+          <div>
+            <div>
+              <p> Category: <%= mission.category.humanize.capitalize %>  </h2>
+            </div>
+            <div>
+              <p> Timeframe: <%= mission.timeframe.humanize.capitalize %> </p>
+            </div>
+            <div>
+              <h2> <%= mission.title %> </h2>
+            </div>
+            <div>
+              <p> <%= mission.description %> </p>
+            </div>
+            <div>
+              <h4> <%= mission.user.nickname %></h4>
+              <p> <%= mission.user.age %> </p>
+              <p> <%= mission.user.address%> </p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+</div>
