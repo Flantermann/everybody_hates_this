@@ -8,10 +8,10 @@
         <div>
           <div>
             <div>
-              <p> Category: <%= mission.category %> </h2>
+              <p> Category: <%= @mission.category.humanize.capitalize %>  </h2>
             </div>
             <div>
-              <p> Timeframe: <%= mission.timeframe %> </p>
+              <p> Timeframe: <%= @mission.timeframe.humanize.capitalize %> </p>
             </div>
             <div>
               <h2> <%= mission.title %> </h2>

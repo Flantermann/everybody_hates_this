@@ -5,11 +5,10 @@
   <% if policy(@mission).destroy? %>
     <%= link_to "delete", mission_path(@mission), method: :delete, data: { confirm: "Are you sure?" } %>
   <% end %>
-  <%= @mission.category.humanize.capitalize %>
-  <%= @mission.timeframe.humanize.capitalize %>
+  <p> Category: <%= @mission.category.humanize.capitalize %> </p>
+  <p> Timeframe: <%= @mission.timeframe.humanize.capitalize %> </p>
   <h1> <%= @mission.title %> </h1>
   <p> <%= @mission.description %> </p>
-  <p> <%= @mission.prefered_buddy_age_start %> </p>
-  <p> <%= @mission.prefered_buddy_age_end %> </p>
-  <%= @mission.prefered_buddy_location.humanize.capitalize %>
+  <p> My buddy should be between <%= @mission.prefered_buddy_age_start %> and <%= @mission.prefered_buddy_age_end %> years old. </p>
+  <p> My buddy should live: <%= @mission.prefered_buddy_location.humanize.capitalize %>
 </div>
