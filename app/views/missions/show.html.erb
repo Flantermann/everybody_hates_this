@@ -1,4 +1,15 @@
 <div class="container">
+  <% if policy(@mission).edit? %>
+    <%= link_to "update", edit_mission_path(@mission) %>
+  <% end %>
+  <% if policy(@mission).destroy? %>
+    <%= link_to "delete", mission_path(@mission), method: :delete, data: { confirm: "Are you sure?" } %>
+  <% end %>
+   <p> <%= @mission.category %> </p>
+   <p> <%= @mission.timeframe%> </p>
   <h1> <%= @mission.title %> </h1>
-  <p> <%= @mission.description %></p>
+  <p> <%= @mission.description %> </p>
+  <p> <%= @mission.prefered_buddy_age_start %> </p>
+  <p> <%= @mission.prefered_buddy_age_end %> </p>
+  <p> <%= @mission.prefered_buddy_location %> </p>
 </div>
