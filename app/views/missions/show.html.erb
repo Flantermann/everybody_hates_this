@@ -1,8 +1,4 @@
-<div>
-  <% if policy(@mission).edit? %>
-    <%= link_to "update", edit_mission_path(@mission) %>
-  <% end %>
-  <% if policy(@mission).destroy? %>
-    <%= link_to "delete", mission_path(@mission), method: :delete, data: { confirm: "Are you sure?" } %>
-  <% end %>
+<div class="container">
+  <h1> <%= @mission.title %> </h1>
+  <p> <%= @mission.description %></p>
 </div>
