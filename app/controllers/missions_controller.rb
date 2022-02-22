@@ -39,6 +39,7 @@ class MissionsController < ApplicationController
     redirect_to root_path, notice: "Your mission was successfully deleted"
     # there should be some logic that your buddy gets a notice when you destroy your mission.
     # destroying a mission should also destroy the contract
+    # and the buddy should get a notice
   end
 
   private
