@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_19_153922) do
+ActiveRecord::Schema.define(version: 2022_02_22_202435) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 2022_02_19_153922) do
     t.bigint "contract_id"
     t.boolean "contract_signed?", default: false, null: false
     t.integer "prefered_buddy_location"
+    t.boolean "finished?", default: false, null: false
     t.index ["contract_id"], name: "index_missions_on_contract_id"
     t.index ["user_id"], name: "index_missions_on_user_id"
   end
