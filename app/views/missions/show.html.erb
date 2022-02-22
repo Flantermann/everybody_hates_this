@@ -5,11 +5,11 @@
   <% if policy(@mission).destroy? %>
     <%= link_to "delete", mission_path(@mission), method: :delete, data: { confirm: "Are you sure?" } %>
   <% end %>
-   <p> <%= @mission.category %> </p>
-   <p> <%= @mission.timeframe%> </p>
+  <%= @mission.category.humanize.capitalize %>
+  <%= @mission.timeframe.humanize.capitalize %>
   <h1> <%= @mission.title %> </h1>
   <p> <%= @mission.description %> </p>
   <p> <%= @mission.prefered_buddy_age_start %> </p>
   <p> <%= @mission.prefered_buddy_age_end %> </p>
-  <p> <%= @mission.prefered_buddy_location %> </p>
+  <%= @mission.prefered_buddy_location.humanize.capitalize %>
 </div>
