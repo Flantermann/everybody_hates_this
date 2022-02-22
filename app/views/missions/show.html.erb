@@ -5,11 +5,40 @@
   <% if policy(@mission).destroy? %>
     <%= link_to "delete", mission_path(@mission), method: :delete, data: { confirm: "Are you sure?" } %>
   <% end %>
-   <p> <%= @mission.category %> </p>
-   <p> <%= @mission.timeframe%> </p>
+   <% case @mission.category %>
+   <% when "miscellaneous" %> 
+   <p> Miscellaeneous <p>
+   <% when "body_and_mind" %> 
+   <p> Body and mind <p>
+   <% when "administrative_tasks" %> 
+   <p> Administrative tasks <p>
+   <% when "relationships" %> 
+   <p> Relationships <p>
+   <% when "work_life" %> 
+   <p> Work life <p>
+   <% when "household" %> 
+   <p> Household <p>
+   <% end %>  
+   <% case @mission.timeframe %>
+   <% when "Three_to_seven_days" %> 
+   <p> Three to seven days <p>
+   <% when "one_to_two_weeks" %> 
+   <p> One to two weeks <p>
+   <% when "two_to_four_weeks" %> 
+   <p> Two to four weeks <p>
+   <% when "four_to_six_weeks" %> 
+   <p> Four to six weeks <p>
+   <% when "more_than_six_weeks" %> 
+   <p> More than six weeks <p>
+   <% end %>
   <h1> <%= @mission.title %> </h1>
   <p> <%= @mission.description %> </p>
   <p> <%= @mission.prefered_buddy_age_start %> </p>
   <p> <%= @mission.prefered_buddy_age_end %> </p>
-  <p> <%= @mission.prefered_buddy_location %> </p>
+  <% case @mission.prefered_buddy_location %>
+   <% when "in_my_area" %> 
+   <p> In my area <p>
+   <% when "can_be_anywhere" %> 
+   <p> Can be anywhere <p>
+  <% end %>
 </div>
