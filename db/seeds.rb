@@ -87,6 +87,25 @@ require 'csv'
 #   # puts "#{t.street}, #{t.city} saved"
 # end
 
+
+puts "creating USERS, working on it..."
+
+CSV.foreach(Rails.root.join('lib/seeds/Users.csv'), headers: true) do |row|
+  User.create!( {
+    id: row['id'],
+    first_name: row['first_name'],
+    last_name: row['last_name'],
+    nickname: row['nickname'],
+    about_me: row['about_me'],
+    age: row['age'],
+    address: row['address'],
+    email: row['email'],
+    password: row['password']
+  } )
+end
+
+puts "#{User.count} rows were created"
+
 # Missions
 
 puts "Creating MISSIONS, working on it..."
@@ -96,31 +115,13 @@ CSV.foreach(Rails.root.join('lib/seeds/Missions.csv'), headers: true) do |row|
     id: row['id'],
     title: row['title'],
     description: row['description'],
-    category: row['category'],
-    timeframe: row['timeframe'],
-    prefered_buddy_location: row['prefered_buddy_location'],
-    prefered_buddy_age_start: row['prefered_buddy_age_start'],
-    prefered_buddy_age_end: row['prefered_buddy_age_end'],
-    user_id: row['user_id']
+    category: row['category'].to_i,
+    timeframe: row['timeframe'].to_i,
+    prefered_buddy_location: row['prefered_buddy_location'].to_i,
+    prefered_buddy_age_start: row['prefered_buddy_age_start'].to_i,
+    prefered_buddy_age_end: row['prefered_buddy_age_end'].to_i,
+    user: User.find(row['user_id'].to_i)
   } )
 end
 
 puts "#{Mission.count} rows were created"
-
-# puts "creating USERS, working on it..."
-
-# CSV.foreach(Rails.root.join('lib/seeds/Users.csv'), headers: true) do |row|
-#   User.create( {
-#     id: row['id'],
-#     first_name: row['first_name'],
-#     last_name: row['last_name'],
-#     nickname: row['nickname'],
-#     about_me: row['about_me'],
-#     age: row['age'],
-#     address: row['address'],
-#     email: row['email'],
-#     password: row['password']
-#   } )
-# end
-
-# puts "#{User.count} rows were created"
