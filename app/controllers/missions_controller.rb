@@ -1,4 +1,8 @@
 class MissionsController < ApplicationController
+  def index
+    @missions = policy_scope(Mission)
+  end
+
   def new
     @mission = Mission.new
     authorize @mission
@@ -18,6 +22,15 @@ class MissionsController < ApplicationController
   def show
     @mission = Mission.find(params[:id])
     authorize @mission
+  end
+
+  def edit
+  end
+
+  def update
+  end
+
+  def destroy
   end
 
   private
