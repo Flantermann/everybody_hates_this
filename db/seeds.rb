@@ -59,34 +59,6 @@
 
 require 'csv'
 
-# 1
-# csv_text = File.read(Rails.root.join('lib', 'seeds', 'User_Missions - Missions.csv'))
-# csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
-# 2
-# # puts csv_text
-# 3
-# csv.each do |row|
-#   puts row.to_hash
-# end
-
-# 4
-# csv_text = CSV.read(Rails.root.join('lib', 'seeds', 'Missions.csv'))
-# csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
-# csv.foreach do |row|
-#   t = Mission.new
-#   t.id = row['id']
-#   t.title = row['title']
-#   t.description = row['description']
-#   t.category = row['category']
-#   t.timeframe = row['timeframe']
-#   t.prefered_buddy_location = row['prefered_buddy_location']
-#   t.prefered_buddy_age_start = row['prefered_buddy_age_start']
-#   t.prefered_buddy_age_end = row['prefered_buddy_age_end']
-#   t.user_id = row['user_id']
-#   t.save
-#   # puts "#{t.street}, #{t.city} saved"
-# end
-
 
 puts "creating USERS, working on it..."
 
@@ -111,7 +83,7 @@ puts "#{User.count} rows were created"
 puts "Creating MISSIONS, working on it..."
 
 CSV.foreach(Rails.root.join('lib/seeds/Missions.csv'), headers: true) do |row|
-  Mission.create( {
+  Mission.create!( {
     id: row['id'],
     title: row['title'],
     description: row['description'],
@@ -120,7 +92,8 @@ CSV.foreach(Rails.root.join('lib/seeds/Missions.csv'), headers: true) do |row|
     prefered_buddy_location: row['prefered_buddy_location'].to_i,
     prefered_buddy_age_start: row['prefered_buddy_age_start'].to_i,
     prefered_buddy_age_end: row['prefered_buddy_age_end'].to_i,
-    user: User.find(row['user_id'].to_i)
+    user: User.find(row['user_id'].to_i),
+    finished?: row['finished'] == "false"
   } )
 end
 
