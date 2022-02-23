@@ -13,7 +13,8 @@ local:
 
 cloudinary:
   service: Cloudinary
-  folder: <%= Rails.env %>
+  # folder: <%= Rails.env %>
+  folder: development/everybody_hates_this
 
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:
