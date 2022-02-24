@@ -1,2 +1,23 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container">
+  <div class="banner">
+    <h1 class="title">EVERYBODY HATES THIS</h1>
+    <h2 class="subline">Get your shit together. Together.</h2>
+    <p>  <%= link_to "Now", new_mission_path, class:"button-home" %> </p>
+  </div>
+
+
+  <div class="home-teaser-box">
+    <div class="home-teaser-card">
+      <%= image_tag "skull.png", class: "home-teaser-skull" %>
+      <p class="home-teaser-text">Let the buddy system do it's magic: Everything is better when done together.</p>
+    </div>
+    <div class="home-teaser-card">
+      <%= image_tag "skull.png", class: "home-teaser-skull" %>
+      <p class="home-teaser-text">Scientifically proven concept: This will actually help you.</p>
+    </div>
+    <div class="home-teaser-card">
+      <%= image_tag "skull.png", class: "home-teaser-skull" %>
+      <p class="home-teaser-text">Trust us: Nothing is more rewarding than getting your shit done.</p>
+    </div>
+  </div>
+</div>

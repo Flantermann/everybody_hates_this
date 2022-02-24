@@ -1,1 +1,49 @@
 // Specific CSS for your home-page
+.banner {
+  height: 45vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-family:'VT323', monospace;
+  color: $pink;
+  font-size: 100px;
+  letter-spacing: 0.5rem;
+  margin-top: 100px;
+}
+
+.subline {
+  color: $white-1;
+  font-weight: normal;
+  font-size: 50px;
+  margin-bottom: 50px;
+}
+
+.home-teaser-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px;
+  margin-top: 30px;
+}
+
+.home-teaser-card {
+  padding: 10px 60px 10px 60px;
+  text-align: center;
+  background-color: $bg-shade-1;
+  border-radius: 8px;
+}
+
+.home-teaser-skull {
+  height: 80px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.home-teaser-text {
+  font-weight: lighter;
+  font-size: 20px;
+}

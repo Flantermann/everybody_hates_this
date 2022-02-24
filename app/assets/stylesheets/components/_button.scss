@@ -1,0 +1,14 @@
+.button-home {
+  font-size: 32px;
+  color: $pink;
+  border: 4px solid $pink;
+  border-radius: 8px;
+  background-color: transparent;
+  padding: 10px 60px 10px 60px;
+  transition: color 0.5s ease;
+  &:hover {
+    color: $white-1;
+    text-decoration: none;
+    border: 2px solid $white-1;
+  }
+}
