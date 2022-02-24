@@ -4,6 +4,11 @@ class MissionsController < ApplicationController
     @missions = policy_scope(Mission)
   end
 
+  def accomplished_missions
+    @my_missions = current_user.missions
+    @missions = policy_scope(@my_missions.where(finished?: true))
+  end
+
   def new
     @mission = Mission.new
     authorize @mission
