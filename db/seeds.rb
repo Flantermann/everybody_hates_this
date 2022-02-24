@@ -59,12 +59,14 @@
 
 require 'csv'
 
+User.destroy_all
+Mission.destroy_all
 
 puts "creating USERS, working on it..."
 
 CSV.foreach(Rails.root.join('lib/seeds/Users.csv'), headers: true) do |row|
   User.create!( {
-    id: row['id'],
+    # id: row['id'],
     first_name: row['first_name'],
     last_name: row['last_name'],
     nickname: row['nickname'],
@@ -81,10 +83,12 @@ puts "#{User.count} rows were created"
 # Missions
 
 puts "Creating MISSIONS, working on it..."
+id = User.all[0].id
+puts id
 
 CSV.foreach(Rails.root.join('lib/seeds/Missions.csv'), headers: true) do |row|
   Mission.create!( {
-    id: row['id'],
+    # id: row['id'],
     title: row['title'],
     description: row['description'],
     category: row['category'].to_i,
@@ -92,9 +96,11 @@ CSV.foreach(Rails.root.join('lib/seeds/Missions.csv'), headers: true) do |row|
     prefered_buddy_location: row['prefered_buddy_location'].to_i,
     prefered_buddy_age_start: row['prefered_buddy_age_start'].to_i,
     prefered_buddy_age_end: row['prefered_buddy_age_end'].to_i,
-    user: User.find(row['user_id'].to_i),
+    user_id: id,
     finished?: row['finished'] == "false"
   } )
+  id += 1
+  puts id
 end
 
 puts "#{Mission.count} rows were created"
