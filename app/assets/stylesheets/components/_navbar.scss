@@ -13,8 +13,34 @@
 
 .link-white {
   color: $white-1 !important;
+  transition: color 0.3s ease;
   &:hover {
-    color: $pink !important;
+    color: $pink-variant !important;
     text-decoration: none;
   }
+}
+
+// this is a bootstrap class, for the burger menu icon
+// I changed the rgba to our pink here, so the burger menu is now pink
+.navbar-light .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 2, 102, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.dropdown-menu {
+  background-color: $bg-shade-3;
+  border-radius: 8px;
+}
+
+.dropdown-item {
+  color: white;
+  transition: color 0.3s ease;
+  &:hover {
+    color: $pink-variant;
+    background-color: transparent;
+  }
+}
+
+.dropdown-menu-right {
+  width: 50%;
+  margin-top: 10px;
 }

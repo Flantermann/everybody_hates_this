@@ -5,10 +5,10 @@
   border-radius: 8px;
   background-color: transparent;
   padding: 10px 60px 10px 60px;
-  transition: color 0.5s ease;
+  transition: color 0.3s ease;
   &:hover {
-    color: $white-1;
+    color: $pink-variant;
     text-decoration: none;
-    border: 2px solid $white-1;
+    border: 6px solid $pink-variant;
   }
 }

@@ -47,6 +47,10 @@
   height: 80px;
   margin-bottom: 20px;
   margin-top: 20px;
+  transition: height 0.3s ease;
+  &:hover {
+    height: 90px;
+  }
 }
 
 .home-teaser-text {
