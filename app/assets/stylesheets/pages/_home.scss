@@ -1,4 +1,4 @@
-// Specific CSS for your home-page
+// Container for title, subline and button
 .banner {
   height: 45vh;
   width: 100%;
@@ -8,21 +8,26 @@
   align-items: center;
 }
 
+// Everybody hates this
 .title {
   font-family:'VT323', monospace;
   color: $pink;
   font-size: 100px;
   letter-spacing: 0.5rem;
   margin-top: 100px;
+  text-align: center;
 }
 
+// Get your shit...
 .subline {
   color: $white-1;
   font-weight: normal;
   font-size: 50px;
   margin-bottom: 50px;
+  text-align: center;
 }
 
+// box that containes all three teaser cards
 .home-teaser-box {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -30,6 +35,7 @@
   margin-top: 30px;
 }
 
+// teaser card
 .home-teaser-card {
   padding: 10px 60px 10px 60px;
   text-align: center;
@@ -46,4 +52,52 @@
 .home-teaser-text {
   font-weight: lighter;
   font-size: 20px;
+}
+
+// Homepage responsive with 2 media queries
+
+@media(max-width: 768px) {
+  .banner {
+    height: 60vh;
+  }
+
+  .title {
+    font-size: 50px;
+    margin-top: 0px;
+    margin-bottom: 20px;
+  }
+
+  .subline {
+    font-size: 30px;
+    margin-bottom: 50px;
+  }
+  .home-teaser-box {
+    grid-template-columns: 1fr;
+    grid-gap: 15px;
+    margin-top: 0px;
+  }
+}
+
+
+@media(min-width: 769px) and (max-width: 992px) {
+  .banner {
+    height: 50vh;
+  }
+
+  .title {
+    font-size: 80px;
+    margin-top: 0px;
+    margin-bottom: 20px;
+  }
+
+  .subline {
+    font-size: 40px;
+    margin-bottom: 50px;
+  }
+
+  .home-teaser-box {
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    margin-top: 0px;
+  }
 }
