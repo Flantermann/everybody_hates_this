@@ -13,8 +13,9 @@
 
 .link-white {
   color: $white-1 !important;
+  transition: color 0.3s ease;
   &:hover {
-    color: $pink !important;
+    color: $pink-variant !important;
     text-decoration: none;
   }
 }
@@ -32,4 +33,14 @@
 
 .dropdown-item {
   color: white;
+  transition: color 0.3s ease;
+  &:hover {
+    color: $pink-variant;
+    background-color: transparent;
+  }
+}
+
+.dropdown-menu-right {
+  width: 50%;
+  margin-top: 10px;
 }
