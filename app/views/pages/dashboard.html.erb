@@ -1,0 +1,8 @@
+<h1>This is your dashboard</h1>
+<%= @current_mission %>
+  <%= link_to "Current mission", mission_path(@current_mission) %>
+  <% if @accomplished_missions.length == 0 %>
+  <p> Nothing here </p>
+  <% end %>
+<%= @accomplished_missions.first %>
+  <%= link_to "Accomplished missions", missions_path(acc_missions: @accomplished_missions) %>
