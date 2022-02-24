@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   end
   resources :milestones, only: [ :update, :destroy ]
   resources :contract, only: [ :show ]
+
+  get '/dashboard', to: 'pages#dashboard'
 end
