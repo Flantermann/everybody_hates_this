@@ -1,0 +1,16 @@
+.index-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 30px;
+}
+
+.mission-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  background-color: transparent;
+  grid-gap: 30px;
+  margin-top: 30px;
+  border: 1px solid $lightblue;
+  border-radius: 8px;
+  padding: 15px 5px 5px 20px;
+}
