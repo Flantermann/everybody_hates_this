@@ -1,0 +1,25 @@
+<% if mission.category == "body_mind" %>
+  <div>
+    <p> <i class="fas fa-spa"></i> Body & Mind </p>
+  </div>
+<% elsif mission.category == "miscellaneous" %>
+  <div>
+    <p> <i class="fas fa-random"></i> Miscellaneous </p>
+  </div>
+<% elsif mission.category == "administrative_tasks" %>
+  <div>
+    <p> <i class="far fa-folder-open"></i> Administrative Tasks </p>
+  </div>
+<% elsif mission.category == "relationships" %>
+  <div>
+    <p> <i class="far fa-heart"></i> Relationships </p>
+  </div>
+<% elsif mission.category == "work_life" %>
+  <div>
+    <p> <i class="fas fa-briefcase"></i> Work Life </p>
+  </div>
+<% elsif mission.category == "household" %>
+  <div>
+    <p> <i class="fas fa-house-damage"></i> Household </p>
+  </div>
+<% end %>
