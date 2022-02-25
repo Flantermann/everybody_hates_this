@@ -1,12 +1,20 @@
 <div class="container mt-5">
-  <div>
-    <h1>Start a new mission</h1>
-  </div>
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-6">
+      <h1 class="heading-40-pink-variant">Start a new mission</h1>
 
-  <% if current_user.missions.length > 0 %>
-    <p>Sorry, but you can only work on one mission at a time.</p>
+  <!-- This needs to be commented in once everything works as wanted
+    <% if current_user.missions.last.finished? == false %>
+    <p class="light-20">Sorry, but you can only work on one mission at a time.</p>
   <% else %>
-    <p>You want to get your shit together? That is great! Based on numerous studies on the human condition, we have built our philosophy of one mission at a time.  Getting started will take a few minutes, so don't rush it. You can always save the mission and come back later.</p>
+    <p class="light-20">You want to get your shit together? That is great! Based on numerous studies on the human condition, we have built our philosophy of one mission at a time.  Getting started will take a few minutes, so don't rush it. You can always save the mission and come back later.</p>
     <%= render "form" %>
   <% end %>
+  -->
+      <p class="light-20">You want to get your shit together? That is great!</p>
+      <p class="light-20">Based on numerous studies on the human condition, we have built our philosophy of <span class="pink">one mission at a time</span>. <br>Getting started will take a few minutes, so don't rush it. You can always save the mission and come back later.</p>
+      <div class="space-mt-40"></div>
+      <%= render "form" %>
+    </div>
+  </div>
 </div>

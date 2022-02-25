@@ -32,3 +32,21 @@
     border: 2px solid $pink;
   }
 }
+
+
+.btn-pink-variant {
+  font-size: 20px;
+  background-color: transparent;
+  color: $pink-variant;
+  border-radius: 8px;
+  border: 1px solid $pink-variant;
+  padding: 5px 30px 5px 30px;
+  text-align: center;
+  margin-bottom: 20px;
+  transition: color 0.3s ease;
+   &:hover {
+    color: $pink;
+    text-decoration: none;
+    border: 2px solid $pink;
+  }
+}
