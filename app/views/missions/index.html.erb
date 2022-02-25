@@ -40,7 +40,7 @@
             </div>
 
             <div>
-              <h2 class="heading-24-spaced"> <%= mission.title %> </h2>
+              <h2 class="heading-24-spaced"> <%= link_to mission.title, mission_path(mission), class:"link" %> </h2>
             </div>
             <div>
               <p class="light"> <%= mission.description %> </p>
