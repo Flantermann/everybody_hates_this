@@ -7,28 +7,53 @@
       <% @missions.each do |mission| %>
         <div class="mission-grid">
           <div class="mission-box">
+            <div class="time-category">
+              <% if mission.category == "body_and_mind" %>
+                <div>
+                  <p class="category"> <i class="fas fa-spa"></i> Body & Mind </p>
+                </div>
+              <% elsif mission.category == "miscellaneous" %>
+                <div>
+                  <p class="category"> <i class="fas fa-random"></i> Miscellaneous </p>
+                </div>
+              <% elsif mission.category == "administrative_tasks" %>
+                <div>
+                  <p class="category"> <i class="far fa-folder-open"></i> Administrative Tasks </p>
+                </div>
+              <% elsif mission.category == "relationships" %>
+                <div>
+                  <p class="category"> <i class="far fa-heart"></i> Relationships </p>
+                </div>
+              <% elsif mission.category == "work_life" %>
+                <div>
+                  <p class="category"> <i class="fas fa-briefcase"></i> Work Life </p>
+                </div>
+              <% elsif mission.category == "household" %>
+                <div>
+                  <p class="category"> <i class="fas fa-house-damage"></i> Household </p>
+                </div>
+              <% end %>
+
+              <div>
+                <p class="timeframe"> <i class="far fa-clock"></i> <%= mission.timeframe.humanize.capitalize %> </p>
+              </div>
+            </div>
+
             <div>
-              <p> Category: <%= mission.category.humanize.capitalize %>  </h2>
+              <h2 class="heading-24-spaced"> <%= mission.title %> </h2>
             </div>
             <div>
-              <p> Timeframe: <%= mission.timeframe.humanize.capitalize %> </p>
-            </div>
-            <div>
-              <h2> <%= mission.title %> </h2>
-            </div>
-            <div>
-              <p> <%= mission.description %> </p>
+              <p class="light"> <%= mission.description %> </p>
             </div>
           </div>
           <div class="user-box">
             <% if mission.user.photo.attached? %>
                 <%= cl_image_tag mission.user.photo.key, class:"avatar-large" %>
               <% else %>
-                <%= image_tag "user.png", class:"avatar-large" %>
+                <%= image_tag "user_3.png", class:"avatar-large" %>
               <% end %>
-              <h4> <%= mission.user.nickname %></h4>
-              <p> <%= mission.user.age %> </p>
-              <p> <%= mission.user.address%> </p>
+              <h4> <%= mission.user.first_name %> (<%= mission.user.age %>)</h4>
+              <p class="center"> <%= mission.user.address%> </p>
           </div>
         </div>
       <% end %>

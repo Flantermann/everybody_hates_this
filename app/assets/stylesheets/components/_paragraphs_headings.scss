@@ -3,6 +3,10 @@
   font-weight: lighter;
 }
 
+.light {
+  font-weight: lighter;
+}
+
 .heading-40-pink-variant {
   font-size: 40px;
   color: $pink-variant;
@@ -33,6 +37,46 @@
   color: $pink;
 }
 
+.heading-30-pink-variant {
+  font-size: 30px;
+  color: $pink-variant;
+}
+
+.heading-30-yellow-variant {
+  font-size: 30px;
+  color: $yellow-variant;
+}
+
+.heading-30-lightblue-variant {
+  font-size: 30px;
+  color: $lightblue-variant;
+}
+
+.heading-30-lightblue {
+  font-size: 30px;
+  color: $lightblue;
+}
+
+.heading-30-yellow {
+  font-size: 30px;
+  color: $yellow;
+}
+
+.heading-30-pink {
+  font-size: 30px;
+  color: $pink;
+}
+
+.heading-24-spaced {
+  font-size: 24px;
+  letter-spacing: 1px;
+  word-spacing: 4px;
+}
+
 .pink {
   color: $pink-variant;
+}
+
+.center {
+  text-align: center;
 }

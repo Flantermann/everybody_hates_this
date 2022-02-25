@@ -7,10 +7,46 @@
 .mission-grid {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  background-color: transparent;
+  background-color: #181726;
   grid-gap: 30px;
   margin-top: 30px;
-  border: 1px solid $lightblue;
+  // border: 1px solid $lightblue;
   border-radius: 8px;
   padding: 15px 5px 5px 20px;
+}
+
+.time-category {
+  display: flex;
+  margin-top: 10px;
+}
+
+.timeframe {
+  border: 1px solid $yellow-variant;
+  border-radius: 8px;
+  padding: 2px 8px 2px 8px;
+  color: $yellow-variant;
+  margin-left: 20px;
+}
+
+.category {
+  border: 1px solid $pink-variant;
+  border-radius: 8px;
+  padding: 2px 8px 2px 8px;
+  color: $pink-variant;
+}
+
+.mission-box {
+  border-right: 1px solid $bg-shade-3;
+  padding-right: 20px;
+}
+
+.user-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-right: 16px;
+  &.h4 {
+    margin-top: 30px;
+  }
 }
