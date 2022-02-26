@@ -63,11 +63,12 @@
 @media(max-width: 768px) {
   .banner {
     height: 100vh;
+    justify-content: flex-start;
   }
 
   .title {
     font-size: 50px;
-    margin-top: 0px;
+    margin-top: 200px;
     margin-bottom: 20px;
   }
 

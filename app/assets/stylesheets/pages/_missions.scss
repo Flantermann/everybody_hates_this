@@ -62,7 +62,7 @@
 
   .timeframe {
     font-size: 12px;
-    margin-left: 20px;
+    margin-left: 0px;
   }
 
   .category {
@@ -83,6 +83,13 @@
 
   .user-address {
     font-size: 12px;
+  }
+
+  .time-category {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 10px;
   }
 }
 
