@@ -13,6 +13,20 @@
   // border: 1px solid $lightblue;
   border-radius: 8px;
   padding: 10px 5px 10px 20px;
+  position: relative;
+}
+
+.mission-grid-dashboard {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  background-color: #181726;
+  grid-gap: 30px;
+  margin-top: 30px;
+  // border: 1px solid $lightblue;
+  border-radius: 8px;
+  padding: 10px 5px 10px 20px;
+  min-height: 290px;
+  position: relative;
 }
 
 .time-category {
