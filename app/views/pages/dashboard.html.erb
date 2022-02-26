@@ -2,7 +2,7 @@
   <h1 class="heading-40-lightblue space-mt-40">Your Dashboard</h1>
   <div class="row">
     <div class="col-6">
-      <div class="mission-grid">
+      <div class="mission-grid-dashboard">
         <div class="dashboard-grid">
           <div class="d-flex justify-content-start align-items-start">
             <% if @user.photo.attached? %>
@@ -33,7 +33,7 @@
   </div>
   <div class="row">
     <div class="col-sm">
-      <div class="mission-grid">
+      <div class="mission-grid-dashboard">
         <div class="dashboard-grid">
           <h2 class="heading-24-spaced"> About me </h2>
             <p class="light" >
@@ -53,7 +53,7 @@
 
     </div>
     <div class="col-6">
-      <div class="mission-grid">
+      <div class="mission-grid-dashboard">
         <div class="dashboard-grid">
             <h2 class="heading-24-spaced"> Your current mission </h2>
             <% if @current_mission %>
@@ -72,7 +72,7 @@
   </div>
   <div class="row">
     <div class="col">
-      <div class="mission-grid">
+      <div class="mission-grid-dashboard">
         <div class="dashboard-grid">
         <h2 class="heading-24-spaced"> Need professional help? </h2>
           <p class="light" >
@@ -89,7 +89,7 @@
       </div>
     </div>
     <div class="col-6">
-      <div class="mission-grid">
+      <div class="mission-grid-dashboard">
         <div class="dashboard-grid">
             <h2 class="heading-24-spaced"> Accomplished mission </h2>
             <% if @accomplished_missions.first %>
