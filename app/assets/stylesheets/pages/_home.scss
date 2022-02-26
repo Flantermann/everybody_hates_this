@@ -1,6 +1,6 @@
 // Container for title, subline and button
 .banner {
-  height: 50vh;
+  height: 60vh;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -86,7 +86,7 @@
 
 @media(min-width: 769px) and (max-width: 992px) {
   .banner {
-    height: 50vh;
+    height: 60vh;
   }
 
   .title {
