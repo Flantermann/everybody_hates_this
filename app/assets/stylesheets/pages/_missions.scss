@@ -50,3 +50,47 @@
     margin-top: 20px;
   }
 }
+
+// Mission index responsive with 2 media queries
+
+@media(max-width: 768px) {
+  .index-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+  }
+
+  .timeframe {
+    font-size: 12px;
+    margin-left: 20px;
+  }
+
+  .category {
+    font-size: 12px;
+  }
+
+  .heading-24-spaced {
+    font-size: 20px;
+  }
+
+  .light {
+    font-size: 14px;
+  }
+
+  .user-mission-card-title {
+    font-size: 20px;
+  }
+
+  .user-address {
+    font-size: 12px;
+  }
+}
+
+
+@media(min-width: 769px) and (max-width: 992px) {
+  .index-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+  }
+}
