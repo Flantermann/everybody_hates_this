@@ -1,8 +1,82 @@
-<h1>This is your dashboard</h1>
-<%= @current_mission %>
-  <%= link_to "Current mission", mission_path(@current_mission) %>
-  <% if @accomplished_missions.length == 0 %>
-  <p> Nothing here </p>
-  <% end %>
-<%= @accomplished_missions.first %>
-  <%= link_to "Accomplished missions", missions_path(acc_missions: @accomplished_missions) %>
+<div class="container">
+  <h1 class="heading-40-lightblue space-mt-40">Your Dashboard</h1>
+  <div class="row">
+    <div class="col-md-auto">
+      <div class="mission-grid">
+        <div class="dashboard-grid">
+            <% if @user.photo.attached? %>
+              <%= cl_image_tag @user.photo.key, class:"avatar-large" %>
+            <% else %>
+              <%= image_tag "user_3.png", class:"avatar-large" %>
+            <% end %>
+          <div class="user-box">
+            <h4 class="user-mission-card-title center"> <%= @user.first_name %> (<%= @user.age %>)</h4>
+            <p class="center user-address"> <%= @user.address%> </p>
+          </div>
+          <div class="btn-pink-variant button space-mt-30">
+          <%= link_to "Update", edit_user_registration_path, class: "dropdown-item" %>
+          </div>
+        </div>
+      </div>
+    <div class="col-6">
+      <div class="dashboard-grid">
+
+      </div>
+    </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm">
+      <div class="mission-grid">
+        <div class="dashboard-grid">
+          <h2 class="heading-24-spaced"> About me </h2>
+            <p class="light" >
+            Short text about myself. I am nice, 
+            but very lazy. But now I want to
+            change for the better. For real this time.
+            </p>
+          <div class="btn-pink-variant button space-mt-30">
+            <%= link_to "Update", edit_user_registration_path, class: "dropdown-item" %>
+          </div>
+      </div>
+    </div>
+
+    </div>
+    <div class="col-6">
+      <div class="mission-grid">
+        <div class="dashboard-grid">
+            <h2 class="heading-24-spaced"> Your current mission </h2>
+            <p class="light"> <%= link_to @current_mission.title, mission_path(@current_mission), class:"link" %> </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="mission-grid">
+        <div class="dashboard-grid">
+        <h2 class="heading-24-spaced"> Need professional help? </h2>
+          <p class="light" >
+          Sometimes, even with the greatest buddy in the world and the best intentions we get stuck....
+          that’s totally normal and nothing to be ashamed of.
+          Our professional coaches will help you reach the next milestone or finish your mission. 
+          You can book an online coaching for yourself, or you and your buddy together.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="mission-grid">
+        <div class="dashboard-grid">
+            <h2 class="heading-24-spaced"> Accomplished mission </h2>
+            <% if @accomplished_missions.first %>
+            <%= link_to "Accomplished missions", missions_path(acc_missions: @accomplished_missions) %>
+            <% else @accomplished_missions.length == 0 %>
+            <p> Nothing here </p>
+            <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
