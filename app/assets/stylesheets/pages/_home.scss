@@ -68,7 +68,7 @@
 
   .title {
     font-size: 50px;
-    margin-top: 200px;
+    margin-top: 100px;
     margin-bottom: 20px;
   }
 
@@ -80,6 +80,12 @@
     grid-template-columns: 1fr;
     grid-gap: 15px;
     margin-top: 0px;
+  }
+
+  .button-home {
+    font-size: 24px;
+    padding: 10px 50px 10px 50px;
+    margin-bottom: 20px;
   }
 }
 
