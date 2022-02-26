@@ -20,6 +20,9 @@
             <%= link_to "Start Mission", new_mission_path, class: "nav-link link-white" %>
           </li>
         <%# <% end %>
+          <li class="nav-item">
+            <%= link_to "Dashboard", dashboard_path, class: "nav-link link-white" %>
+          </li>
 
         <li class="nav-item dropdown">
           <% if current_user.photo.attached? %>
