@@ -1,4 +1,7 @@
 class MessagesController < ApplicationController
+skip_before_action :verify_authenticity_token
+skip_after_action :verify_authorized
+
 
   def create
     @chatroom = Chatroom.find(params[:chatroom_id])
@@ -8,10 +11,8 @@ class MessagesController < ApplicationController
     if @message.save
       ChatroomChannel.broadcast_to(
         @chatroom,
-        render_to_string(partial: "message", locals: { message: @message })
-      )
-
-      redirect_to chatroom_path(@chatroom, anchor: "message-#{@message.id}")
+        render_to_string(partial: "message", locals: { message: @message }))
+        redirect_to chatroom_path(@chatroom, anchor: "message-#{@message.id}")
     else
       render "chatrooms/show"
     end
@@ -22,5 +23,4 @@ class MessagesController < ApplicationController
   def message_params
     params.require(:message).permit(:content)
   end
-
 end
