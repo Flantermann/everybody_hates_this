@@ -11,4 +11,24 @@
   <p> <%= @mission.description %> </p>
   <p> My buddy should be between <%= @mission.prefered_buddy_age_start %> and <%= @mission.prefered_buddy_age_end %> years old. </p>
   <p> My buddy should live: <%= @mission.prefered_buddy_location.humanize.capitalize %>
+  <p> <%= @mission.user.first_name%> <%=@mission.user.last_name%>, <%= @mission.user.age%> </p>
+
+  <% if @mission != current_user.missions.last && current_user.missions.last.contract_signed? == false && current_user.missions.last.contract_id == nil %>
+    <div>
+      <%= link_to "Send request to sign contract", contracts_path(mission: @mission), method: :post, class:"btn-sign-up" %>
+    </div>
+  <% end %>
+
+<% if @mission.contract && @mission.user == current_user %>
+   <div>
+    <%= link_to "Accept contract", accept_contract_path(id: @mission.contract, mission: @mission), method: :patch %>
+  </div>
+  <div>
+    <%= link_to "Decline contract", decline_contract_path(id: @mission.contract, mission: @mission), method: :patch %>
+  </div>
+<% end %>
+
+<% if @mission.contract.signed? && @mission.user == current_user %>
+  <%= link_to "Show Contract", contract_path(@mission.contract) %>
+<% end %>
 </div>
