@@ -1,4 +1,28 @@
 <div class="container">
   <div class="space-mt-40"></div>
-  <h1 class="heading-40-yellow-variant">This is your contract</h1>
+  <h1 class="heading-40-pink-variant">This could be the start of something wonderful...</h1>
+  <p class="light-20">
+    Studies have shown that making something “official” is the best way to actually get through with it.<br>
+    So this is what we are doing now.<br>
+    Please understand this contract as a promise to yourself and each other.</p>
+  <div class="contract-box">
+    <div class="contract-header-box">
+      <%= image_tag "skull.png", class:"contract-skull" %>
+      <p class="contract-brand-name">EVERYBODY HATES THIS</p>
+
+    </div>
+    <h1 class="center contract-heading">Contract between <%= @current_user.first_name %> and <%= @buddy_mission.user.first_name %></h1>
+    <div class="contract-grid">
+      <div class="user-contract">
+        <div><%= @current_user.first_name %> <%= @current_user.last_name %></div>
+        <h3> <%= @my_mission.title %></h3>
+        <p class="light-20"> <%= @my_mission.description %> </p>
+      </div>
+      <div class="user-contract">
+        <%= @buddy_mission.user.first_name %> <%= @buddy_mission.user.last_name %>
+        <h3> <%= @buddy_mission.title %> </h3>
+        <p class="light-20"> <%= @buddy_mission.description %> </p>
+      </div>
+    </div>
+  </div>
 </div>

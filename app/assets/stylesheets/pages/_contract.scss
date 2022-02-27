@@ -1,0 +1,40 @@
+.contract-box {
+  background-color: $bg-shade-1;
+  min-height: 500px;
+  margin: 40px;
+}
+
+.contract-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  // grid-gap: 40px;
+  background-color: $bg-shade-1;
+}
+
+.user-contract {
+  background-color: $bg-shade-2;
+  margin: 40px;
+  padding: 20px;
+}
+
+.contract-heading {
+  padding-top: 0px;
+}
+
+.contract-skull {
+  height: 80px;
+  padding-top: 30px;
+}
+
+.contract-brand-name {
+  color: $pink;
+  font-family: 'VT323', monospace;
+  font-size: 30px;
+}
+
+.contract-header-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

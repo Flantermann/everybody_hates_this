@@ -45,6 +45,8 @@ class ContractsController < ApplicationController
 
   def show
     set_contract
+    @my_mission = @contract.missions.find_by(user_id: current_user.id)
+    @buddy_mission = @contract.missions.where.not(user_id: current_user.id).first
   end
 
   def destroy
