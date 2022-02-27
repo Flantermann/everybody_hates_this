@@ -36,13 +36,7 @@
       <div class="mission-grid-dashboard">
         <div class="dashboard-grid">
           <h2 class="heading-24-spaced"> About me </h2>
-            <p class="light" >
-            Short text about myself. I am nice, 
-            but very lazy. But now I want to
-            change for the better. For real this time.
-            And to be successful, I definitely need a buddy!
-            Can't wait for your messages.
-            </p>
+            <p class="light"> <%= @user.about_me  %> </p>
           <div class="button-position">
             <div class="btn-pink-variant button space-mt-30">
               <%= link_to "Update", edit_user_registration_path, class: "dropdown-item" %>
@@ -77,7 +71,7 @@
         <h2 class="heading-24-spaced"> Need professional help? </h2>
           <p class="light" >
           Sometimes, even with the greatest buddy in the world and the best intentions we get stuck....
-          that’s totally normal and nothing to be ashamed of. Our professional coaches will help you reach 
+          that’s totally normal and nothing to be ashamed of. Our professional coaches will help you reach
           the next milestone or finish your mission. You can book an online coaching for yourself, or you and your buddy together.
           </p>
           <div class="button-position">
@@ -101,5 +95,5 @@
       </div>
     </div>
   </div>
+  <div class="space-mt-30"></div>
 </div>
-
