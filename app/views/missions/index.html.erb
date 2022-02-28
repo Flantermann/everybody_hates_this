@@ -49,11 +49,11 @@
           <div class="user-box">
             <% if mission.user.photo.attached? %>
                 <%= cl_image_tag mission.user.photo.key, class:"avatar-large" %>
-              <% else %>
-                <%= image_tag "user_3.png", class:"avatar-large" %>
-              <% end %>
-              <h4 class="user-mission-card-title center"> <%= mission.user.first_name %> (<%= mission.user.age %>)</h4>
-              <p class="center user-address"> <%= mission.user.address%> </p>
+            <% else %>
+              <%= image_tag "user_3.png", class:"avatar-large" %>
+            <% end %>
+            <h4 class="user-mission-card-title center"> <%= mission.user.first_name %> (<%= mission.user.age %>)</h4>
+            <p class="center user-address"> <%= mission.user.address%> </p>
           </div>
         </div>
       <% end %>

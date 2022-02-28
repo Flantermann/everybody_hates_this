@@ -6,7 +6,12 @@ Rails.application.routes.draw do
     resources :milestones, only: :create
   end
   resources :milestones, only: [ :update, :destroy ]
-  resources :contract, only: [ :show ]
+  resources :contracts, only: [ :new, :create, :show ] do
+    member do
+      patch 'accept', to: "contracts#accept"
+      patch 'decline', to: "contracts#decline"
+    end
+  end
 
   get '/dashboard', to: 'pages#dashboard'
 end

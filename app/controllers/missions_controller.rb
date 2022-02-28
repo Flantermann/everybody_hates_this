@@ -32,6 +32,8 @@ class MissionsController < ApplicationController
   end
 
   def update
+    # when a contract is created, the contract_id of the mission
+    # where the contract was created should be updated to the id of said contract
     if @mission.update(mission_params)
       redirect_to @mission, notice: "Your mission was successfully updated"
     else
@@ -50,7 +52,7 @@ class MissionsController < ApplicationController
   private
 
   def mission_params
-    params.require(:mission).permit(:category, :timeframe, :title, :description, :prefered_buddy_age_start, :prefered_buddy_age_end, :prefered_buddy_location )
+    params.require(:mission).permit(:category, :timeframe, :title, :description, :prefered_buddy_age_start, :prefered_buddy_age_end, :prefered_buddy_location, :contract_signed? )
   end
 
   def set_mission
