@@ -60,8 +60,8 @@
 }
 
 .contract-mission-box {
-  border-bottom: 1px solid $bg-shade-3;
-  border-top: 1px solid $bg-shade-3;
+  border-bottom: 2px solid $bg-shade-3;
+  border-top: 2px solid $bg-shade-3;
 }
 
 
@@ -82,4 +82,8 @@
   border-radius: 8px;
   padding: 2px 8px 2px 8px;
   color: $yellow-variant;
+}
+
+.contract-signed {
+  margin-top: 20px;
 }

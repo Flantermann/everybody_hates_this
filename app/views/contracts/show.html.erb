@@ -32,7 +32,9 @@
           I also promise to help my buddy <%= @buddy_mission.user.first_name %> <%= @buddy_mission.user.last_name %>
           to keep on track with their mission.</p>
         </div>
-      </div>
+        <div class="contract-signed">
+          <span class="pink"><i class="fas fa-check"></i></span> <%= @current_user.first_name %> has signed this contract</div>
+        </div>
       <div class="buddy-contract">
          <div class="image-box">
           <% if @buddy_mission.user.photo.attached? %>
@@ -53,6 +55,9 @@
           - milestone by milestone.
           I also promise to help my buddy <%= @current_user.first_name %> <%= @current_user.last_name %>
           to keep on track with their mission.</p>
+        </div>
+        <div class="contract-signed">
+          <span class="pink"><i class="fas fa-check"></i></span> <%= @buddy_mission.user.first_name %> has signed this contract</div>
         </div>
       </div>
     </div>
