@@ -1,5 +1,5 @@
 .contract-box {
-  background-color: $bg-shade-2;
+  background-color: transparent;
   min-height: 500px;
   margin: 40px 80px 20px 80px;
   border-radius: 8px;
@@ -10,7 +10,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 40px;
-  background-color: $bg-shade-2;
+  background-color: transparent;
 }
 
 .user-contract {
@@ -60,8 +60,8 @@
 }
 
 .contract-mission-box {
-  border-bottom: 1px solid $bg-shade-3;
-  border-top: 1px solid $bg-shade-3;
+  border-bottom: 2px solid $bg-shade-3;
+  border-top: 2px solid $bg-shade-3;
 }
 
 
@@ -82,4 +82,8 @@
   border-radius: 8px;
   padding: 2px 8px 2px 8px;
   color: $yellow-variant;
+}
+
+.contract-signed {
+  margin-top: 20px;
 }
