@@ -1,5 +1,5 @@
 .contract-box {
-  background-color: $bg-shade-2;
+  background-color: transparent;
   min-height: 500px;
   margin: 40px 80px 20px 80px;
   border-radius: 8px;
@@ -10,7 +10,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 40px;
-  background-color: $bg-shade-2;
+  background-color: transparent;
 }
 
 .user-contract {
