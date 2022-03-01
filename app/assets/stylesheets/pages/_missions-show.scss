@@ -28,18 +28,39 @@
   & p {
     font-weight: lighter;
   }
-  & a {
-    font-size: 20px;
-    color: $pink-variant;
-    &:hover {
-      color: $pink;
-      text-decoration: none;
-    }
-  }
   & span {
     color: $pink-variant;
   }
   border-radius: 8px;
+}
+
+.contract-link {
+  color: $pink-variant;
+  &:hover {
+    color: $pink;
+    text-decoration: none;
+  }
+}
+
+.contract-link-large {
+  font-size: 20px;
+  font-weight: lighter;
+  color: $pink-variant;
+  &:hover {
+    color: $pink;
+    text-decoration: none;
+  }
+}
+
+.contract-link-large-yellow {
+  font-size: 20px;
+  font-weight: lighter;
+  color: $yellow-variant;
+  margin-left: 20px;
+  &:hover {
+    color: $yellow;
+    text-decoration: none;
+  }
 }
 
 .mission-user-info {
@@ -63,6 +84,7 @@
   & a {
     font-size: 20px;
     color: $pink-variant;
+    padding: 0px;
     &:hover {
       color: $pink;
       text-decoration: none;
@@ -72,4 +94,9 @@
     color: $pink-variant;
   }
   border-radius: 8px;
+}
+
+.link-contract-box {
+  margin-top: 100px;
+  color: red;
 }
