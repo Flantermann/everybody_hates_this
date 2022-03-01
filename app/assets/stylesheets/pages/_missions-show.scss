@@ -7,11 +7,36 @@
 .mission-card {
   background-color: $bg-shade-1;
   padding: 20px;
+  & p {
+    font-weight: lighter;
+  }
 }
 
 .mission-user-box {
   background-color: $bg-shade-1;
   padding: 20px;
+   & p {
+    font-weight: lighter;
+  }
+}
+
+.contract-info-box {
+  background-color: $bg-shade-1;
+  padding: 20px;
+  & p {
+    font-weight: lighter;
+  }
+  & a {
+    font-size: 20px;
+    color: $pink-variant;
+    &:hover {
+      color: $pink;
+      text-decoration: none;
+    }
+  }
+  & span {
+    color: $pink-variant;
+  }
 }
 
 .mission-user-info {

@@ -1,0 +1,89 @@
+  <div class="space-mt-80"></div>
+  <% if policy(@mission).edit? %>
+    <%= link_to "update", edit_mission_path(@mission) %>
+  <% end %>
+  <% if policy(@mission).destroy? %>
+    <%= link_to "delete", mission_path(@mission), method: :delete, data: { confirm: "Are you sure?" } %>
+  <% end %>
+  <div class="mission-grid-container">
+      <!--  User Card -->
+    <div class="mission-user-box">
+      <div class="mission-user-info">
+        <% if @mission.user.photo.attached? %>
+          <%= cl_image_tag @mission.user.photo.key, class:"avatar-huge" %>
+        <% else %>
+          <%= image_tag "user_3.png", class:"avatar-huge" %>
+        <% end %>
+        <h4> <%= @mission.user.first_name%>, <%= @mission.user.age%> </h4>
+        <p> <%= @mission.user.address %> </p>
+      </div>
+      <p class="mission-user-about"><%= @mission.user.about_me%></p>
+    </div>
+    <!--  Mission Card -->
+    <div class="mission-card">
+      <div class="time-category">
+        <% if @mission.category == "body_and_mind" %>
+          <div>
+            <p class="category"> <i class="fas fa-spa"></i> Body & Mind </p>
+          </div>
+        <% elsif @mission.category == "miscellaneous" %>
+          <div>
+            <p class="category"> <i class="fas fa-random"></i> Miscellaneous </p>
+          </div>
+        <% elsif @mission.category == "administrative_tasks" %>
+          <div>
+            <p class="category"> <i class="far fa-folder-open"></i> Administrative Tasks </p>
+          </div>
+        <% elsif @mission.category == "relationships" %>
+          <div>
+            <p class="category"> <i class="far fa-heart"></i> Relationships </p>
+          </div>
+        <% elsif @mission.category == "work_life" %>
+          <div>
+            <p class="category"> <i class="fas fa-briefcase"></i> Work Life </p>
+          </div>
+        <% elsif @mission.category == "household" %>
+          <div>
+            <p class="category"> <i class="fas fa-house-damage"></i> Household </p>
+          </div>
+        <% end %>
+
+        <div>
+          <p class="timeframe"> <i class="far fa-clock"></i> <%= @mission.timeframe.humanize.capitalize %> </p>
+        </div>
+      </div>
+      <h1> <%= @mission.title %> </h1>
+      <p> <%= @mission.description %> </p>
+      <h4> Buddy preferences </h4>
+      <p>  My buddy should be between
+          <%= @mission.prefered_buddy_age_start %> and <%= @mission.prefered_buddy_age_end %> years old
+      <% if @mission.prefered_buddy_location.humanize.capitalize == "in_my_area"%>
+         and should live in my area.</p>
+      <% else %>
+        and can live anywhere in the world.</p>
+      <% end %>
+    </div>
+
+  </div>
+  <div class="space-mt-80"></div>
+    <% if @mission != current_user.missions.last && current_user.missions.last.contract_signed? == false && current_user.missions.last.contract_id == nil %>
+      <div>
+        <%= link_to "Send request to sign contract", contracts_path(mission: @mission), method: :post, class:"btn-sign-up" %>
+      </div>
+    <% end %>
+
+
+<% if @mission.contract && @mission.user == current_user %>
+   <div>
+    <%= link_to "Accept contract", accept_contract_path(id: @mission.contract, mission: @mission), method: :patch %>
+  </div>
+  <div>
+    <%= link_to "Decline contract", decline_contract_path(id: @mission.contract, mission: @mission), method: :patch %>
+  </div>
+<% end %>
+
+<% if @mission.contract %>
+  <% if @mission.contract.signed? && @mission.user == current_user %>
+    <%= link_to "Show Contract", contract_path(@mission.contract) %>
+  <% end %>
+<% end %>
