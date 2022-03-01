@@ -69,9 +69,9 @@
         <!--  Message -->
         <!--  Hier muss der richtige Path rein -->
           <div>
-            <p class="light-20">Feel like this could be your match? Start a conversation!
-            <br><%= link_to "Send Message", mission_path(@mission), method: :post %></p>
-
+            <p class="light-20">Feel like this could be your match? Start a conversation!</p>
+            <%# <%= link_to "Send Message", mission_path(@mission), method: :post %>
+            <%= link_to "Start Chatting", chatroom_path(@mission.user), class:"btn-sign-up" %>
           </div>
         <div class="space-mt-40"></div>
         <!--  Contract Request -->
@@ -90,8 +90,9 @@
         <!--  Message -->
         <!--  Hier muss der richtige Path rein -->
           <div>
-            <p class="light-20">Wanna chat with your buddy? <br>
-            <%= link_to "Send Message", mission_path(@mission), method: :post %> </p>
+            <p class="light-20">Wanna chat with your buddy?<br>
+            <%= link_to "Start Chatting", chatroom_path %></p>
+            <%# <%= link_to "Send Message", mission_path(@mission), method: :post %> %>
           </div>
         <div class="space-mt-40"></div>
       </div>
