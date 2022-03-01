@@ -1,0 +1,65 @@
+<div class="space-mt-40"></div>
+  <h1 class="heading-40-pink-variant">Your Mission</h1>
+  <div class="space-mt-20"></div>
+  <!-- UPDATE AND DELETE: need to find better place for this
+
+  <% if policy(@mission).edit? %>
+    <%= link_to "update", edit_mission_path(@mission) %>
+  <% end %>
+  <% if policy(@mission).destroy? %>
+    <%= link_to "delete", mission_path(@mission), method: :delete, data: { confirm: "Are you sure?" } %>
+  <% end %>
+
+  -->
+  <div class="mission-grid-container">
+    <!--  Mission Card -->
+    <div class="mission-card">
+      <h2> <%= @mission.title %> </h2>
+      <p> <%= @mission.description %> </p>
+      <h5> Buddy preferences </h5>
+      <p>  My buddy should be between
+          <%= @mission.prefered_buddy_age_start %> and <%= @mission.prefered_buddy_age_end %> years old
+      <% if @mission.prefered_buddy_location.humanize.capitalize == "in_my_area"%>
+         and should live in my area.</p>
+      <% else %>
+        and can live anywhere in the world.</p>
+      <% end %>
+    </div>
+      <!--  Milestones -->
+      <div class="contract-info-box">
+        <h4>Milestones <span class="pink"><i class="far fa-gem"></i></span></h4>
+          <% if @mission.milestones.any? %>
+          <p>You have set milestones for this mission!</p>
+          <% else %>
+            <p>You haven't defined any milestones for your mission yet.</p>
+          <% end %>
+      </div>
+    <div>
+
+    </div>
+
+    <div class="contract-info-box">
+      <h4>Mission Status</h4>
+      <% if @mission.contract %>
+        <% if @mission.contract.signed? %>
+          <div>
+            <p>You have done it! You have finally taken
+              an important step to getting your things in order. This is truly amazing and
+              we are very proud of you.</p>
+              <p> You have signed a contract for this mission with your buddy
+              <%= @mission.contract.missions.where.not(user_id: current_user.id).first.user.first_name %>.
+            </p>
+            <%= link_to "Show Contract", contract_path(@mission.contract) %>
+          </div>
+        <% else %>
+          <div>
+            <%= link_to "Accept contract", accept_contract_path(id: @mission.contract, mission: @mission), method: :patch %>
+            <%= link_to "Decline contract", decline_contract_path(id: @mission.contract, mission: @mission), method: :patch %>
+          </div>
+        <% end %>
+      <% else %>
+        <p>You have not found a buddy for your mission yet.</p>
+        <%= link_to "Find buddy", missions_path, class: "pink" %>
+    <% end %>
+    </div>
+  </div>

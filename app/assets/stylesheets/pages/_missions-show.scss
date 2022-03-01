@@ -1,17 +1,45 @@
 .mission-grid-container {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 2fr 1fr;
   grid-gap: 30px;
 }
 
 .mission-card {
   background-color: $bg-shade-1;
   padding: 20px;
+  & p {
+    font-weight: lighter;
+  }
+  border-radius: 8px;
 }
 
 .mission-user-box {
   background-color: $bg-shade-1;
   padding: 20px;
+   & p {
+    font-weight: lighter;
+  }
+  border-radius: 8px;
+}
+
+.contract-info-box {
+  background-color: $bg-shade-1;
+  padding: 20px;
+  & p {
+    font-weight: lighter;
+  }
+  & a {
+    font-size: 20px;
+    color: $pink-variant;
+    &:hover {
+      color: $pink;
+      text-decoration: none;
+    }
+  }
+  & span {
+    color: $pink-variant;
+  }
+  border-radius: 8px;
 }
 
 .mission-user-info {
