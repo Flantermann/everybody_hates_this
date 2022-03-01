@@ -75,10 +75,9 @@
     <!--  Hier muss der richtige Path rein -->
       <% if current_user.missions.last.contract_signed? == false && current_user.missions.last.contract_id == nil %>
         <div>
-          <%= link_to "Send Message", PATH(mission: @mission), method: :post, class:"btn-sign-up" %>
+          <%= link_to "Send Message", mission_path(@mission), method: :post, class:"btn-sign-up" %>
         </div>
       <% end %>
-
     </div>
     <!--  End of Box for Messaging and Contract -->
 
