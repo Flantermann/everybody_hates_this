@@ -5,6 +5,7 @@
   <div class="index-grid">
     <div>
       <% @missions.each do |mission| %>
+        <% unless mission.contract || mission.user == current_user %>
         <div class="mission-grid">
           <div class="mission-box">
             <div class="time-category">
@@ -56,8 +57,9 @@
             <p class="center user-address"> <%= mission.user.address%> </p>
           </div>
         </div>
+       <% end %>
       <% end %>
     </div>
   </div>
-
+  <div class="space-mt-80"></div>
 </div>
