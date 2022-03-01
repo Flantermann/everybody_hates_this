@@ -28,7 +28,7 @@ gem 'redis', '~> 4.0'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
-gem 'redis'
+# gem 'redis'
 gem 'devise'
 gem 'pundit'
 gem 'enum_help'
