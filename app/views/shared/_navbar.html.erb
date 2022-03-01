@@ -11,9 +11,6 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-        <li class="nav-item">
-          <%= link_to "Home", root_path, class: "nav-link link-white" %>
-        </li>
          <li class="nav-item">
           <%= link_to "Find buddy", missions_path, class: "nav-link link-white" %>
         </li>
@@ -23,9 +20,6 @@
             <%= link_to "Start Mission", new_mission_path, class: "nav-link link-white" %>
           </li>
         <%# <% end %>
-          <li class="nav-item">
-            <%= link_to "Dashboard", dashboard_path, class: "nav-link link-white" %>
-          </li>
 
         <li class="nav-item dropdown">
           <% if current_user.photo.attached? %>
@@ -34,6 +28,7 @@
             <%= image_tag "user.png", class: "avatar-pink dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <% end %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <%= link_to "My Dashboard", dashboard_path, class: "dropdown-item" %>
             <%= link_to "Edit profile", edit_user_registration_path, class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>

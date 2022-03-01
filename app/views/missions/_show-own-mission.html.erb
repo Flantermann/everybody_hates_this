@@ -47,7 +47,7 @@
               an important step to getting your things in order. This is truly amazing and
               we are very proud of you.</p>
               <p> You have signed a contract for this mission with your buddy
-              <%= @mission.contract.missions.where.not(user_id: current_user.id).first.user.first_name %>.
+              <%=@mission.contract.missions.where.not(user_id: current_user.id).first.user.first_name%>.
             </p>
             <%= link_to "Show Contract", contract_path(@mission.contract) %>
           </div>
