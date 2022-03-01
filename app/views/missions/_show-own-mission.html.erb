@@ -49,12 +49,19 @@
               <p> You have signed a contract for this mission with your buddy
               <%=@mission.contract.missions.where.not(user_id: current_user.id).first.user.first_name%>.
             </p>
-            <%= link_to "Show Contract", contract_path(@mission.contract) %>
+            <%= link_to "Show Contract", contract_path(@mission.contract), class:"contract-link-large" %>
           </div>
+        <% elsif @mission == @mission.contract.missions.first %>
+          <p>Well done! You have sent a contract request to <%= @mission.contract.missions.last.user.first_name %>
+          for their mission <%= link_to @mission.contract.missions.last.title, mission_path(id: @mission.contract.missions.last.id), class:"contract-link" %>.
+          Now you just have to wait patiently for them to reply. No worries, it will happen soon! </p>
         <% else %>
           <div>
-            <%= link_to "Accept contract", accept_contract_path(id: @mission.contract, mission: @mission), method: :patch %>
-            <%= link_to "Decline contract", decline_contract_path(id: @mission.contract, mission: @mission), method: :patch %>
+            <p>Nice! You have a contract request from <%= @mission.contract.missions.first.user.first_name %>
+          for their mission <%= link_to @mission.contract.missions.first.title, mission_path(id: @mission.contract.missions.first.id), class:"contract-link" %>.
+          What do you wanna do now? </p>
+            <%= link_to "Accept", accept_contract_path(id: @mission.contract, mission: @mission), method: :patch, class:"contract-link-large" %>
+            <%= link_to "Decline", decline_contract_path(id: @mission.contract, mission: @mission), method: :patch, class:"contract-link-large-yellow" %>
           </div>
         <% end %>
       <% else %>
