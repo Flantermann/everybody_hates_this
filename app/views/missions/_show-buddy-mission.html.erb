@@ -1,4 +1,7 @@
-  <div class="space-mt-80"></div>
+<div class="space-mt-40"></div>
+<h1 class="heading-40-pink-variant"> The mission of <%= @mission.user.first_name %></h1>
+<div class="space-mt-20"></div>
+
   <div class="mission-grid-container">
     <!--  Mission Card -->
     <div class="mission-card">
@@ -32,9 +35,9 @@
           <p class="timeframe"> <i class="far fa-clock"></i> <%= @mission.timeframe.humanize.capitalize %> </p>
         </div>
       </div>
-      <h1> <%= @mission.title %> </h1>
+      <h2> <%= @mission.title %> </h2>
       <p> <%= @mission.description %> </p>
-      <h4> Buddy preferences </h4>
+      <h5> Buddy preferences </h5>
       <p>  My buddy should be between
           <%= @mission.prefered_buddy_age_start %> and <%= @mission.prefered_buddy_age_end %> years old
       <% if @mission.prefered_buddy_location.humanize.capitalize == "in_my_area"%>
@@ -61,23 +64,28 @@
     <!--  End of User Card -->
 
     <!--  Box for Messaging and Contract -->
-    <div class="contract-info-box">
+    <div class="contact-buddy-box">
+
+      <!--  Message -->
+      <!--  Hier muss der richtige Path rein -->
+      <% if current_user.missions.last.contract_signed? == false && current_user.missions.last.contract_id == nil %>
+        <div>
+          <p>Feel like this could be your match? Start a conversation!</p>
+          <%= link_to "Send Message", mission_path(@mission), method: :post %>
+        </div>
+      <% end %>
+      <div class="space-mt-40"></div>
       <!--  Contract Request -->
       <% if @mission != current_user.missions.last && current_user.missions.last.contract_signed? == false && current_user.missions.last.contract_id == nil %>
         <div>
-          <%= link_to "Send request to sign contract", contracts_path(mission: @mission), method: :post, class:"btn-sign-up" %>
+          <p>You found your perfect buddy? Send a request to sign the contract together!</p>
+          <%= link_to "Send contract request", contracts_path(mission: @mission), method: :post %>
         </div>
       <% end %>
 
-      <div class="space-mt-40"></div>
 
-    <!--  Message -->
-    <!--  Hier muss der richtige Path rein -->
-      <% if current_user.missions.last.contract_signed? == false && current_user.missions.last.contract_id == nil %>
-        <div>
-          <%= link_to "Send Message", mission_path(@mission), method: :post, class:"btn-sign-up" %>
-        </div>
-      <% end %>
+
+
     </div>
     <!--  End of Box for Messaging and Contract -->
 

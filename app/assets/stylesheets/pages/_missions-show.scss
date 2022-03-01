@@ -53,3 +53,23 @@
   // padding: 10px 40px 10px 40px;
   text-align: center;
 }
+
+.contact-buddy-box {
+  background-color: $bg-shade-1;
+  padding: 20px;
+  & p {
+    font-weight: lighter;
+  }
+  & a {
+    font-size: 20px;
+    color: $pink-variant;
+    &:hover {
+      color: $pink;
+      text-decoration: none;
+    }
+  }
+  & span {
+    color: $pink-variant;
+  }
+  border-radius: 8px;
+}
