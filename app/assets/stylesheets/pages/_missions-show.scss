@@ -63,6 +63,7 @@
   & a {
     font-size: 20px;
     color: $pink-variant;
+    padding: 0px;
     &:hover {
       color: $pink;
       text-decoration: none;
@@ -72,4 +73,9 @@
     color: $pink-variant;
   }
   border-radius: 8px;
+}
+
+.link-contract-box {
+  margin-top: 100px;
+  color: red;
 }
