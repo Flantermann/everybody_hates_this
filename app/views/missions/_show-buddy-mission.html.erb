@@ -1,0 +1,101 @@
+<div class="space-mt-40"></div>
+<h1 class="heading-40-pink-variant"> The mission of <%= @mission.user.first_name %></h1>
+<div class="space-mt-20"></div>
+
+  <div class="mission-grid-container">
+    <!--  Mission Card -->
+    <div class="mission-card">
+      <div class="time-category">
+        <% if @mission.category == "body_and_mind" %>
+          <div>
+            <p class="category"> <i class="fas fa-spa"></i> Body & Mind </p>
+          </div>
+        <% elsif @mission.category == "miscellaneous" %>
+          <div>
+            <p class="category"> <i class="fas fa-random"></i> Miscellaneous </p>
+          </div>
+        <% elsif @mission.category == "administrative_tasks" %>
+          <div>
+            <p class="category"> <i class="far fa-folder-open"></i> Administrative Tasks </p>
+          </div>
+        <% elsif @mission.category == "relationships" %>
+          <div>
+            <p class="category"> <i class="far fa-heart"></i> Relationships </p>
+          </div>
+        <% elsif @mission.category == "work_life" %>
+          <div>
+            <p class="category"> <i class="fas fa-briefcase"></i> Work Life </p>
+          </div>
+        <% elsif @mission.category == "household" %>
+          <div>
+            <p class="category"> <i class="fas fa-house-damage"></i> Household </p>
+          </div>
+        <% end %>
+        <div>
+          <p class="timeframe"> <i class="far fa-clock"></i> <%= @mission.timeframe.humanize.capitalize %> </p>
+        </div>
+      </div>
+      <h2> <%= @mission.title %> </h2>
+      <p> <%= @mission.description %> </p>
+      <h5> Buddy preferences </h5>
+      <p>  My buddy should be between
+          <%= @mission.prefered_buddy_age_start %> and <%= @mission.prefered_buddy_age_end %> years old
+      <% if @mission.prefered_buddy_location.humanize.capitalize == "in_my_area"%>
+         and should live in my area.</p>
+      <% else %>
+        and can live anywhere in the world.</p>
+      <% end %>
+    </div>
+    <!--  End of Mission Card -->
+
+    <!--  User Card -->
+    <div class="mission-user-box">
+      <div class="mission-user-info">
+        <% if @mission.user.photo.attached? %>
+          <%= cl_image_tag @mission.user.photo.key, class:"avatar-huge" %>
+        <% else %>
+          <%= image_tag "user_3.png", class:"avatar-huge" %>
+        <% end %>
+        <h4> <%= @mission.user.first_name%>, <%= @mission.user.age%> </h4>
+        <p class="center"> <%= @mission.user.address %> </p>
+      </div>
+      <p class="mission-user-about"><%= @mission.user.about_me%></p>
+    </div>
+    <!--  End of User Card -->
+
+    <!--  Box for Messaging and Contract -->
+    <% if current_user.missions.last.contract_signed? == false %>
+      <div class="contact-buddy-box">
+        <!--  Message -->
+        <!--  Hier muss der richtige Path rein -->
+          <div>
+            <p class="light-20">Feel like this could be your match? Start a conversation!</p>
+            <%= link_to "Send Message", mission_path(@mission), method: :post %>
+          </div>
+        <div class="space-mt-40"></div>
+        <!--  Contract Request -->
+        <% if current_user.missions.last.contract_id == nil %>
+          <div>
+            <p>You found your perfect buddy? Send a request to sign the contract together!</p>
+            <%= link_to "Send contract request", contracts_path(mission: @mission), method: :post %>
+          </div>
+        <% end %>
+      </div>
+     <% end %>
+    <!--  End of Box for Messaging and Contract -->
+    <% if @mission.contract %>
+      <% if current_user.missions.last.contract_id == @mission.contract_id && current_user.missions.last.contract_signed? %>
+        <div class="contact-buddy-box">
+        <!--  Message -->
+        <!--  Hier muss der richtige Path rein -->
+          <div>
+            <p class="light-20">Wanna chat with your buddy?</p>
+            <%= link_to "Send Message", mission_path(@mission), method: :post %>
+          </div>
+        <div class="space-mt-40"></div>
+      </div>
+     <% end %>
+    <% end %>
+
+
+  </div>

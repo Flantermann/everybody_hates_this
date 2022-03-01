@@ -1,10 +1,18 @@
 <div class="container">
   <div class="space-mt-40"></div>
   <h1 class="heading-40-lightblue">Find your buddy</h1>
+  <div class="buddy-intro">
+    <p class="light-20">This is it. The final step.
+                      All these people want to get their shit together - together!
+                      You can start looking for your match, exchange message with
+                      potential buddys and then, when you are sure, you can take
+                      the leap of faith and sign a contract together!</p>
+  </div>
 
   <div class="index-grid">
     <div>
       <% @missions.each do |mission| %>
+        <% unless mission.contract || mission.user == current_user %>
         <div class="mission-grid">
           <div class="mission-box">
             <div class="time-category">
@@ -56,8 +64,9 @@
             <p class="center user-address"> <%= mission.user.address%> </p>
           </div>
         </div>
+       <% end %>
       <% end %>
     </div>
   </div>
-
+  <div class="space-mt-80"></div>
 </div>
