@@ -11,8 +11,10 @@ class PagesController < ApplicationController
     @my_missions = @user.missions
     @current_mission = @my_missions.last
     @accomplished_missions = @my_missions.where(finished?: true)
-    if @current_mission.contract.signed?
+    if @current_mission.contract
       @current_contract = @current_mission.contract
+    end
+    if @current_mission.contract.signed?
       @buddy_mission = Mission.where(contract_id: @current_contract.id).where.not(user: @user).first
     end
   end

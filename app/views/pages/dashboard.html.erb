@@ -29,8 +29,13 @@
             <%= link_to "View Mission", mission_path(@current_mission), class:"dashboard-mission-link" %> <br>
             <%= link_to "View Buddy Mission", mission_path(@buddy_mission), class:"dashboard-buddy-mission-link" %> <br>
             <%= link_to "Show Contract", contract_path(@current_mission.contract), class:"dashboard-contract-link" %>
+          <% elsif @current_contract %>
+            <% if @current_mission = @current_contract.missions.first %>
+              <p>You have made a contract request!</p>
+            <% elsif @current_mission = @current_contract.missions.last %>
+              <p>You have received a contract request!</p>
+            <% end %>
           <% end %>
-
       <% else %>
         <p> You have not started a mission yet. Let's get to it! </p>
         <%= link_to "Start mission", new_mission_path %>
