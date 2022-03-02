@@ -21,7 +21,7 @@ class ContractsController < ApplicationController
       @buddy_mission.contract_id = @contract.id
       @mission.save
       @buddy_mission.save
-      redirect_to mission_path(@buddy_mission), notice: "Contract request was sent"
+      redirect_to dashboard_path, notice: "Contract request was sent"
     else
       redirect_to mission_path(@buddy_mission), notice: "Oops! Something went wrong!"
     end
@@ -32,7 +32,7 @@ class ContractsController < ApplicationController
     @contract.missions.map { |mission| mission.update(contract_signed?: true) }
     @contract.signed!
     @mission = Mission.find_by(id: params[:mission].to_i)
-    redirect_to mission_path(@mission), notice: "You have both signed the contract!"
+    redirect_to contract_path, notice: "You have both signed the contract!"
   end
 
   def decline

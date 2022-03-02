@@ -69,17 +69,16 @@
   }
 }
 
-.dashboard-buddy-mission-link {
+.dashboard-contract-link {
   color: $yellow-variant;
   font-size: 20px;
-  text-align: center;
   &:hover {
     color: $yellow;
     text-decoration: none;
   }
 }
 
-.dashboard-contract-link {
+.dashboard-buddy-mission-link {
   color: $lightblue-variant;
   font-size: 20px;
   text-align: center;

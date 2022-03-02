@@ -30,11 +30,27 @@
             <%= link_to "View Buddy Mission", mission_path(@buddy_mission), class:"dashboard-buddy-mission-link" %> <br>
             <%= link_to "Show Contract", contract_path(@current_mission.contract), class:"dashboard-contract-link" %>
           <% elsif @current_contract %>
-            <% if @current_mission = @current_contract.missions.first %>
-              <p>You have made a contract request!</p>
-            <% elsif @current_mission = @current_contract.missions.last %>
-              <p>You have received a contract request!</p>
+            <% if @current_mission == @current_contract.missions.first %>
+              <p class="light-20">Well done! You have sent a contract request
+              to <%= @potential_buddy_mission.user.first_name %> for their mission
+              "<%= @potential_buddy_mission.title %>".
+              Now you just have to wait patiently for them to reply. No worries, it will happen soon!
+              </p>
+              <%= link_to "View my mission", mission_path(@current_mission), class:"dashboard-mission-link" %> <br>
+              <%= link_to "View their Mission", mission_path(@potential_buddy_mission), class:"dashboard-buddy-mission-link" %> <br>
+            <% elsif @current_mission == @current_contract.missions.last %>
+              <p class="light-20">Yeah Yeah Yeah! You have received a contract request for your mission from
+                <%= @potential_buddy_mission.user.first_name %> for their mission
+                "<%= @potential_buddy_mission.title %>"
+                </p>
+                <p class="light-20"><%= link_to "Accept", accept_contract_path(id: @current_mission.contract, mission: @current_mission), method: :patch, class:"dashboard-contract-link" %> or <%= link_to "Decline", decline_contract_path(id: @current_mission.contract, mission: @current_mission), method: :patch, class:"dashboard-contract-link" %> contract request</p>
+              <%= link_to "View my mission", mission_path(@current_mission), class:"dashboard-mission-link" %> <br>
+              <%= link_to "View their Mission", mission_path(@potential_buddy_mission), class:"dashboard-buddy-mission-link" %> <br>
             <% end %>
+          <% elsif @current_mission.contract_id == nil %>
+            <p class="light-20">You have not found a buddy for this misison yet. Start Looking! </p>
+            <%= link_to "Find buddy", missions_path, class:"dashboard-buddy-mission-link" %> <br>
+            <%= link_to "View Mission", mission_path(@current_mission), class:"dashboard-mission-link" %> <br>
           <% end %>
       <% else %>
         <p> You have not started a mission yet. Let's get to it! </p>
