@@ -17,6 +17,7 @@
 .link-white {
   color: $white-1 !important;
   transition: color 0.3s ease;
+  margin-right: 15px;
   &:hover {
     color: $pink-variant !important;
     text-decoration: none;

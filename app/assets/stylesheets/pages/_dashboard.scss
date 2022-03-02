@@ -1,29 +1,90 @@
-.column-one {
-//    display: flex;
-    //justify-content: space-evenly;
-    //flex-direction: column;
-    //border: 1px solid red;
-  }
+.dashboard-grid-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-gap: 30px;
+}
 
-  .column-two {
-    //display: flex;
-    //justify-content: space-evenly;
-    //flex-direction: column;
-    //border: 1px solid red;
+.dashboard-mission-card {
+  background-color: $bg-shade-1;
+  padding: 20px;
+  & p {
+    font-weight: lighter;
   }
+  border-radius: 8px;
+}
 
-  .dashboard-grid {
-    background-color: #181726;
-    margin-top: 30px;
-    border-radius: 8px;
-    padding: 10px 5px 10px 20px;
-    border-right: 1px solid $bg-shade-3;
-    padding-right: 20px;
+.dashboard-user-card {
+  background-color: $bg-shade-1;
+  padding: 20px;
+  & p {
+    font-weight: lighter;
   }
+  border-radius: 8px;
+}
 
-  .dashboard-index-grid {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-gap: 30px;
+.dashboard-info-card {
+  background-color: $bg-shade-1;
+  padding: 20px;
+  & p {
+    font-weight: lighter;
   }
+  border-radius: 8px;
+}
+
+.dashboard-past-missions-card {
+  background-color: $bg-shade-1;
+  padding: 20px;
+  & p {
+    font-weight: lighter;
+  }
+  border-radius: 8px;
+}
+
+.dashboard-update-link {
+  color: $pink-variant;
+  font-size: 20px;
+  text-align: center;
+  &:hover {
+    color: $pink;
+    text-decoration: none;
+  }
+}
+
+.dashboard-mission-title-link {
+  color: $white-1;
+  &:hover {
+    color: $pink;
+    text-decoration: none;
+  }
+}
+
+
+.dashboard-mission-link {
+  color: $pink-variant;
+  font-size: 20px;
+  text-align: center;
+  &:hover {
+    color: $pink;
+    text-decoration: none;
+  }
+}
+
+.dashboard-buddy-mission-link {
+  color: $yellow-variant;
+  font-size: 20px;
+  text-align: center;
+  &:hover {
+    color: $yellow;
+    text-decoration: none;
+  }
+}
+
+.dashboard-contract-link {
+  color: $lightblue-variant;
+  font-size: 20px;
+  text-align: center;
+  &:hover {
+    color: $lightblue;
+    text-decoration: none;
+  }
+}
