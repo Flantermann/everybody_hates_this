@@ -25,7 +25,7 @@
   <!-- Mission Card -->
     <div class="dashboard-mission-card">
       <% if @current_mission %>
-        <h3> Your current mission: <br><%=  @current_mission.title %> </h3>
+        <h3> Your current mission: <%=  @current_mission.title %> </h3>
           <% if @buddy_mission %>
             <p class="light-20">Your buddy for this mission is <%= @buddy_mission.user.first_name %>! Have you checked in on them today?<br>
             Just send them an email to <%= mail_to @buddy_mission.user.email, @buddy_mission.user.email, class:"pink"%>.</p>
