@@ -1,6 +1,4 @@
 .my-message {
-  display: inline-block;
-  margin-left: 300px;
   background-color: $bg-shade-2;
   padding: 10px 20px 5px 20px;
   margin-bottom: 20px;
@@ -8,10 +6,17 @@
 }
 
 .buddy-message {
-  display: inline-block;
-  margin-left: 10px;
   background-color: $bg-shade-4;
   padding: 10px 20px 5px 20px;
   margin-bottom: 20px;
   border-radius: 20px 10px 15px 5px; /* top left, top right, bottom right, bottom left */
+}
+
+.left {
+  display: flex;
+}
+
+.right {
+  display: flex;
+  flex-direction: row-reverse;
 }
