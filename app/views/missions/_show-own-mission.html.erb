@@ -41,6 +41,13 @@
 
     </div>
 
+  <% if @mission.contract_id == nil %>
+    <div class="contract-info-box-bordered">
+      <h4>Mission Status</h4>
+      <p>You have not found a buddy for your mission yet.</p>
+      <%= link_to "Find buddy", missions_path, class:"contract-link-large" %>
+    </div>
+  <% else %>
     <div class="contract-info-box">
       <h4>Mission Status</h4>
       <% if @mission.contract_id %>
@@ -76,4 +83,11 @@
         <%= link_to "Find buddy", missions_path, class:"contract-link-large" %>
     <% end %>
     </div>
+  <% end %>
+
+
+
+
+
+
   </div>

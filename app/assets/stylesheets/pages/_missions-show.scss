@@ -34,6 +34,19 @@
   border-radius: 8px;
 }
 
+.contract-info-box-bordered {
+  background-color: $bg-shade-1;
+  padding: 20px;
+  border: 2px solid $pink-variant;
+  & p {
+    font-weight: lighter;
+  }
+  & span {
+    color: $pink-variant;
+  }
+  border-radius: 8px;
+}
+
 .contract-link {
   color: $pink-variant;
   &:hover {
