@@ -84,3 +84,11 @@
 .center {
   text-align: center;
 }
+
+.back-link {
+  color: $lightblue-variant;
+  &:hover {
+    color: $lightblue;
+    text-decoration: none;
+  }
+}
