@@ -26,6 +26,11 @@ class MissionsController < ApplicationController
   end
 
   def show
+    if @mission.contract_id
+      @contract = Contract.find_by(id: @mission.contract_id)
+      @contract_asker = User.find_by(id: @contract.asker_id)
+      @contract_receiver = User.find_by(id: @contract.receiver_id)
+    end
   end
 
   def edit

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_24_195409) do
+ActiveRecord::Schema.define(version: 2022_03_03_091633) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,10 @@ ActiveRecord::Schema.define(version: 2022_02_24_195409) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "status", default: 0
+    t.bigint "asker_id"
+    t.bigint "receiver_id"
+    t.index ["asker_id"], name: "index_contracts_on_asker_id"
+    t.index ["receiver_id"], name: "index_contracts_on_receiver_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -112,6 +116,8 @@ ActiveRecord::Schema.define(version: 2022_02_24_195409) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "contracts", "users", column: "asker_id"
+  add_foreign_key "contracts", "users", column: "receiver_id"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
   add_foreign_key "milestones", "missions"

@@ -75,6 +75,10 @@
 
 .pink {
   color: $pink-variant;
+  &:hover {
+    color: $pink;
+    text-decoration: none;
+  }
 }
 
 .center {

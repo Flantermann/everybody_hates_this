@@ -4,22 +4,25 @@ class ContractsController < ApplicationController
   end
 
   def create
-    # this is the mission of the current_user:
-    @mission = current_user.missions.last
+    @asker = current_user
+    @asker_mission = current_user.missions.last
+    @buddy_mission = Mission.find_by(id: params[:mission].to_i)
+    @receiver = @buddy_mission.user
+
     # this creates a new contract:
     @contract = Contract.new
-    # this gives the mission of current_user the contract_id of the newly created contract:
-    @buddy_mission = Mission.find_by(id: params[:mission].to_i)
+    @contract.asker_id = @asker.id
+    @contract.receiver_id = @receiver.id
+
+    # @buddy_mission = Mission.find_by(id: params[:mission].to_i)
     # update contract_signed? in mission:
     # @mission.contract_signed? = true
-    # add buddy_mission via params that come from the view when button is clicked
-    # @mission_2 = ???
-    # wouldn't that be the update action for contract? for create only one contract id is neccessary
     if @contract.save
-      puts @contract.id
-      @mission.contract_id = @contract.id
+      # puts @contract.id
+
+      @asker_mission.contract_id = @contract.id
       @buddy_mission.contract_id = @contract.id
-      @mission.save
+      @asker_mission.save
       @buddy_mission.save
       redirect_to dashboard_path, notice: "Contract request was sent"
     else
@@ -29,7 +32,9 @@ class ContractsController < ApplicationController
 
   def accept
     set_contract
-    @contract.missions.map { |mission| mission.update(contract_signed?: true) }
+    @contract.asker.missions.last.update(contract_signed?: true)
+    @contract.receiver.missions.last.update(contract_signed?: true)
+    # @contract.missions.map { |mission| mission.update(contract_signed?: true) }
     @contract.signed!
     @mission = Mission.find_by(id: params[:mission].to_i)
     redirect_to contract_path, notice: "You have both signed the contract!"
@@ -37,16 +42,18 @@ class ContractsController < ApplicationController
 
   def decline
     set_contract
-    @contract.missions.map { |mission| mission.update(contract_signed?: false) }
-    @contract.missions.map { |mission| mission.update(contract_id: nil) }
+    @contract.asker.missions.last.update(contract_signed?: false)
+    @contract.asker.missions.last.update(contract_id: nil)
+    @contract.receiver.missions.last.update(contract_signed?: false)
+    @contract.receiver.missions.last.update(contract_id: nil)
     @mission = Mission.find_by(id: params[:mission].to_i)
     redirect_to mission_path(@mission), notice: "You have declined signing the contract!"
   end
 
   def show
     set_contract
-    @my_mission = @contract.missions.find_by(user_id: current_user.id)
-    @buddy_mission = @contract.missions.where.not(user_id: current_user.id).first
+    @asker_mission = @contract.asker.missions.where(contract_id: @contract.id).first
+    @receiver_mission = @contract.receiver.missions.where(contract_id: @contract.id).first
   end
 
   def destroy

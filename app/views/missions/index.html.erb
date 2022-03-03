@@ -12,7 +12,7 @@
   <div class="index-grid">
     <div>
       <% @missions.each do |mission| %>
-        <% unless mission.contract || mission.user == current_user %>
+        <% unless mission.contract_id || mission.user == current_user %>
         <div class="mission-grid">
           <div class="mission-box">
             <div class="time-category">
