@@ -28,8 +28,8 @@
         <h3> Your current mission: <%=  @current_mission.title %> </h3>
           <% if @buddy_mission %>
             <p class="light-20">
-            You have done it - you found your buddy and you are getting your shit done! This is truly amazing and we are very proud of you.
-            Your buddy for this mission is <%= @buddy_mission.user.first_name %>. Have you checked in on them today?<br>
+            You have done it - you found your buddy and you are getting your shit done! This is truly amazing and we are very proud of you.</p>
+            <p class="light-20"> Your buddy for this mission is <%= @buddy_mission.user.first_name %>. Have you checked in on them today?<br>
             Just send them an email to <%= mail_to @buddy_mission.user.email, @buddy_mission.user.email, class:"pink"%>.</p>
             <%= link_to "View Mission", mission_path(@current_mission), class:"dashboard-mission-link" %> <br>
             <%= link_to "View Buddy Mission", mission_path(@buddy_mission), class:"dashboard-buddy-mission-link" %> <br>
