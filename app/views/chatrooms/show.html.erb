@@ -1,17 +1,40 @@
 <!-- app/views/chatrooms/show.html.erb -->
-<h1>#<%= @chatroom.name %></h1>
-<div id="messages" data-chatroom-id="<%= @chatroom.id %>">
-  <% @chatroom.messages.each do |message| %>
-    <div class="message-container" id="message-<%= message.id %>">
-      <i class="author">
-        <span><%= message.user.nickname %></span>
-        <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
-      </i>
-      <p><%= message.content %></p>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-6">
+      <div class="space-mt-40"></div>
+      <h1><%= @chatroom.name %></h1>
+      <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
+        <% @chatroom.messages.each do |message| %>
+          <% if message.user == current_user %>
+            <div class="right">
+              <div class="my-message" id="message-<%= message.id %>">
+                <i class="author">
+                  <span><%= message.user.nickname %></span>
+                  <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+                </i>
+                <p><%= message.content %></p>
+              </div>
+            </div>
+          <% else %>
+            <div class="left">
+              <div class="buddy-message" id="message-<%= message.id %>">
+                <i class="author">
+                  <span><%= message.user.nickname %></span>
+                  <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+                </i>
+                <p><%= message.content %></p>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="space-mt-30"></div>
+      <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
+        <%= f.input :content, label: false, placeholder: "Message", input_html: { class: 'input-line' } %>
+      <% end %>
     </div>
-  <% end %>
-</div>
 
-<%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
-  <%= f.input :content, label: false, placeholder: "Message ##{@chatroom.name}" %>
-<% end %>
+  </div>
+  <div class="space-mt-40"></div>
+</div>

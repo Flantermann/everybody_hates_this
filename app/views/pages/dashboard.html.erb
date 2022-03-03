@@ -24,8 +24,8 @@
     </div>
   <!-- Mission Card -->
     <div class="dashboard-mission-card">
-      <h3> Your current mission: <br><%=  @current_mission.title %> </h3>
       <% if @current_mission %>
+        <h3> Your current mission: <%=  @current_mission.title %> </h3>
           <% if @buddy_mission %>
             <p class="light-20">Your buddy for this mission is <%= @buddy_mission.user.first_name %>! Have you checked in on them today?<br>
             Just send them an email to <%= mail_to @buddy_mission.user.email, @buddy_mission.user.email, class:"pink"%>.</p>
@@ -56,8 +56,9 @@
             <%= link_to "View Mission", mission_path(@current_mission), class:"dashboard-mission-link" %> <br>
           <% end %>
       <% else %>
-        <p> You have not started a mission yet. Let's get to it! </p>
-        <%= link_to "Start mission", new_mission_path %>
+        <h3> Your current mission </h3>
+        <p class="light-20"> You have not started a mission yet. Let's get to it! </p>
+        <%= link_to "Start mission", new_mission_path, class:"dashboard-mission-link" %>
       <% end %>
     </div>
   <!-- Info Card -->

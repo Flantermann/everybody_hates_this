@@ -1,20 +1,25 @@
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-12 col-md-6">
+      <%= link_to 'Back', 'javascript:history.back()', class:"back-link" %>
+      <div class="space-mt-20"></div>
       <h1 class="heading-40-pink-variant">Start a new mission</h1>
-
-  <!-- This needs to be commented in once everything works as wanted
-    <% if current_user.missions.last.finished? == false %>
-    <p class="light-20">Sorry, but you can only work on one mission at a time.</p>
-  <% else %>
-    <p class="light-20">You want to get your shit together? That is great! Based on numerous studies on the human condition, we have built our philosophy of one mission at a time.  Getting started will take a few minutes, so don't rush it. You can always save the mission and come back later.</p>
-    <%= render "form" %>
-  <% end %>
-  -->
-      <p class="light-20">You want to get your shit together? That is great!</p>
-      <p class="light-20">Based on numerous studies on the human condition, we have built our philosophy of <span class="pink">one mission at a time</span>. <br>Getting started will take a few minutes, so don't rush it. You can always save the mission and come back later.</p>
-      <div class="space-mt-40"></div>
-      <%= render "form" %>
+      <% if current_user.missions.length > 0 %>
+        <% if current_user.missions.last.finished? == false %>
+          <p class="light-20">Sorry, but you can only work on one mission at a time.</p>
+          <%= link_to "View current mission", mission_path(id: current_user.missions.last.id), class:"contract-link-large" %> <br>
+          <%= link_to "View Dashboard", dashboard_path, class:"dashboard-buddy-mission-link" %>
+         <% else %>
+          <p class="light-20">You want to get your shit together, again? That is great!</p>
+          <div class="space-mt-40"></div>
+          <%= render "form" %>
+        <% end %>
+      <% else %>
+          <p class="light-20">You want to get your shit together? That is great!</p>
+          <p class="light-20">Based on numerous studies on the human condition, we have built our philosophy of <span class="pink">one mission at a time</span>. <br>Getting started will take a few minutes, so don't rush it. You can always save the mission and come back later.</p>
+          <div class="space-mt-40"></div>
+          <%= render "form" %>
+      <% end %>
     </div>
   </div>
 </div>

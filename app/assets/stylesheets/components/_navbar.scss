@@ -24,6 +24,16 @@
   }
 }
 
+.link-pink {
+  color: $pink-variant !important;
+  transition: color 0.3s ease;
+  margin-right: 15px;
+  &:hover {
+    color: $pink !important;
+    text-decoration: none;
+  }
+}
+
 // this is a bootstrap class, for the burger menu icon
 // I changed the rgba to our pink here, so the burger menu is now pink
 .navbar-light .navbar-toggler-icon {
