@@ -3,7 +3,7 @@
   border-radius: 50%;
   // -webkit-filter: grayscale(100%);
   // filter: grayscale(1) brightness(1.6);
-  filter: brightness(1.6);
+  filter: brightness(1.2);
 }
 
 .avatar-pink {
@@ -19,6 +19,7 @@
 .avatar-huge {
   width: 140px;
   border-radius: 50%;
+  margin-bottom: 20px;
 }
 
 .avatar-bordered {

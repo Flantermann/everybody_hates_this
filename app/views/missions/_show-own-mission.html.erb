@@ -34,6 +34,7 @@
           <p>You have set milestones for this mission!</p>
           <% else %>
             <p>You haven't defined any milestones for your mission yet.</p>
+            <%= link_to " + Add Milestone", "root_path", class:"contract-link-large" %>
           <% end %>
       </div>
     <div>
@@ -72,7 +73,7 @@
         <% end %>
       <% else %>
         <p>You have not found a buddy for your mission yet.</p>
-        <%= link_to "Find buddy", missions_path, class: "pink" %>
+        <%= link_to "Find buddy", missions_path, class:"contract-link-large" %>
     <% end %>
     </div>
   </div>

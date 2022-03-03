@@ -3,7 +3,7 @@
   <div class="row justify-content-center">
     <div class="col-12 col-md-6">
       <div class="space-mt-40"></div>
-      <h1>#<%= @chatroom.name %></h1>
+      <h1><%= @chatroom.name %></h1>
       <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
         <% @chatroom.messages.each do |message| %>
           <% if message.user == current_user %>
@@ -29,10 +29,12 @@
           <% end %>
         <% end %>
       </div>
-
+      <div class="space-mt-30"></div>
       <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
-        <%= f.input :content, label: false, placeholder: "Message ##{@chatroom.name}" %>
+        <%= f.input :content, label: false, placeholder: "Message", input_html: { class: 'input-line' } %>
       <% end %>
     </div>
+
   </div>
+  <div class="space-mt-40"></div>
 </div>
