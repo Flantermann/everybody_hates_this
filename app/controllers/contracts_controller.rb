@@ -4,22 +4,25 @@ class ContractsController < ApplicationController
   end
 
   def create
-    # this is the mission of the current_user:
-    @mission = current_user.missions.last
+    @asker = current_user
+    @asker_mission = current_user.missions.last
+    @buddy_mission = Mission.find_by(id: params[:mission].to_i)
+    @receiver = @buddy_mission.user
+
     # this creates a new contract:
     @contract = Contract.new
-    # this gives the mission of current_user the contract_id of the newly created contract:
-    @buddy_mission = Mission.find_by(id: params[:mission].to_i)
+    @contract.asker_id = @asker.id
+    @contract.receiver_id = @receiver.id
+
+    # @buddy_mission = Mission.find_by(id: params[:mission].to_i)
     # update contract_signed? in mission:
     # @mission.contract_signed? = true
-    # add buddy_mission via params that come from the view when button is clicked
-    # @mission_2 = ???
-    # wouldn't that be the update action for contract? for create only one contract id is neccessary
     if @contract.save
-      puts @contract.id
-      @mission.contract_id = @contract.id
+      # puts @contract.id
+
+      @asker_mission.contract_id = @contract.id
       @buddy_mission.contract_id = @contract.id
-      @mission.save
+      @asker_mission.save
       @buddy_mission.save
       redirect_to dashboard_path, notice: "Contract request was sent"
     else

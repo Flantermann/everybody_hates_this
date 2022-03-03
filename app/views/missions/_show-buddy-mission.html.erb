@@ -84,7 +84,7 @@
       </div>
      <% end %>
     <!--  End of Box for Messaging and Contract -->
-    <% if @mission.contract %>
+    <% if @mission.contract_id %>
       <% if current_user.missions.last.contract_id == @mission.contract_id && current_user.missions.last.contract_signed? %>
         <div class="contact-buddy-box">
         <!--  Message -->

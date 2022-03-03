@@ -1,6 +1,7 @@
 class Mission < ApplicationRecord
   belongs_to :user
-  belongs_to :contract, optional: true
+  # das auskommentiert, weil jetzt contract to user belongs
+  # belongs_to :contract, optional: true
   has_many :milestones
 
   enum category: { miscellaneous: 0, body_and_mind: 1, administrative_tasks: 2, relationships: 3, work_life: 4, household: 5 }
