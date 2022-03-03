@@ -42,8 +42,10 @@ class ContractsController < ApplicationController
 
   def decline
     set_contract
-    @contract.missions.map { |mission| mission.update(contract_signed?: false) }
-    @contract.missions.map { |mission| mission.update(contract_id: nil) }
+    @contract.asker.missions.last.update(contract_signed?: false)
+    @contract.asker.missions.last.update(contract_id: nil)
+    @contract.receiver.missions.last.update(contract_signed?: false)
+    @contract.receiver.missions.last.update(contract_id: nil)
     @mission = Mission.find_by(id: params[:mission].to_i)
     redirect_to mission_path(@mission), notice: "You have declined signing the contract!"
   end
