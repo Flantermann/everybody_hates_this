@@ -41,7 +41,7 @@
     <div class="contract-info-box">
       <h4>Mission Status</h4>
       <% if @mission.contract_id %>
-        <% if @mission.contract.signed? %>
+        <% if @contract.signed? %>
           <div>
             <p>You have done it! You have finally taken
               an important step to getting your things in order. This is truly amazing and
@@ -51,14 +51,14 @@
             </p>
             <%= link_to "Show Contract", contract_path(@mission.contract), class:"contract-link-large" %>
           </div>
-        <% elsif @mission == @mission.contract.missions.first %>
-          <p>Well done! You have sent a contract request to <%= @mission.contract.missions.last.user.first_name %>
-          for their mission <%= link_to @mission.contract.missions.last.title, mission_path(id: @mission.contract.missions.last.id), class:"contract-link" %>.
+        <% elsif current_user == @contract.asker %>
+          <p>Well done! You have sent a contract request to <%= @contract_receiver.first_name %>
+          for their mission <%= link_to @contract_receiver.missions.last.title, mission_path(id: @contract_receiver.missions.last.id), class:"contract-link" %>.
           Now you just have to wait patiently for them to reply. No worries, it will happen soon! </p>
         <% else %>
           <div>
-            <p>Nice! You have a contract request from <%= @mission.contract.missions.first.user.first_name %>
-          for their mission <%= link_to @mission.contract.missions.first.title, mission_path(id: @mission.contract.missions.first.id), class:"contract-link" %>.
+            <p>Nice! You have a contract request from <%= @contract_asker.first_name %>
+          for their mission <%= link_to @contract_asker.missions.last.title, mission_path(id: @contract_asker.missions.last.id), class:"contract-link" %>.
           What do you wanna do now? </p>
             <%= link_to "Accept", accept_contract_path(id: @mission.contract, mission: @mission), method: :patch, class:"contract-link-large" %>
             <%= link_to "Decline", decline_contract_path(id: @mission.contract, mission: @mission), method: :patch, class:"contract-link-large-yellow" %>

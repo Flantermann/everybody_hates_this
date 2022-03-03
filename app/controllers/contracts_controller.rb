@@ -32,7 +32,9 @@ class ContractsController < ApplicationController
 
   def accept
     set_contract
-    @contract.missions.map { |mission| mission.update(contract_signed?: true) }
+    @contract.asker.missions.last.update(contract_signed?: true)
+    @contract.receiver.missions.last.update(contract_signed?: true)
+    # @contract.missions.map { |mission| mission.update(contract_signed?: true) }
     @contract.signed!
     @mission = Mission.find_by(id: params[:mission].to_i)
     redirect_to contract_path, notice: "You have both signed the contract!"
@@ -48,8 +50,8 @@ class ContractsController < ApplicationController
 
   def show
     set_contract
-    @my_mission = @contract.missions.find_by(user_id: current_user.id)
-    @buddy_mission = @contract.missions.where.not(user_id: current_user.id).first
+    @asker_mission = @contract.asker.missions.where(contract_id: @contract.id).first
+    @receiver_mission = @contract.receiver.missions.where(contract_id: @contract.id).first
   end
 
   def destroy

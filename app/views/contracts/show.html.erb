@@ -9,55 +9,55 @@
       <%= image_tag "skull.png", class:"contract-skull" %>
       <p class="contract-brand-name">EVERYBODY HATES THIS</p>
     </div>
-    <h1 class="center contract-heading">Contract between <%= @current_user.first_name %> and <%= @buddy_mission.user.first_name %></h1>
+    <h1 class="center contract-heading">Contract between <%= @asker_mission.user.first_name %> and <%= @receiver_mission.user.first_name %></h1>
     <div class="contract-grid">
       <div class="user-contract">
         <div class="image-box">
-          <% if @my_mission.user.photo.attached? %>
-            <%= cl_image_tag @my_mission.user.photo.key, class:"avatar-large" %>
+          <% if @asker_mission.user.photo.attached? %>
+            <%= cl_image_tag @asker_mission.user.photo.key, class:"avatar-large" %>
           <% else %>
             <%= image_tag "user_3.png", class:"avatar-large" %>
           <% end %>
         </div>
         <div class="contract-mission-box">
           <div class="contract-timeframe-box">
-            <p class="contract-timeframe"> <i class="far fa-clock"></i> <%= @my_mission.timeframe.humanize.capitalize %> </p>
+            <p class="contract-timeframe"> <i class="far fa-clock"></i> <%= @asker_mission.timeframe.humanize.capitalize %> </p>
           </div>
-          <h3 class="contract-heading-mission"> <%= @my_mission.title %></h3>
-          <p> <%= @my_mission.description %> </p>
+          <h3 class="contract-heading-mission"> <%= @asker_mission.title %></h3>
+          <p> <%= @asker_mission.description %> </p>
         </div>
         <div class="contract-promise">
-          <p class="light-20">I, <span class="em-text"><%= @current_user.first_name %> <%= @current_user.last_name %></span>, hereby promise to accomplish my mission
+          <p class="light-20">I, <span class="em-text"><%= @asker_mission.user.first_name %> <%= @asker_mission.user.last_name %></span>, hereby promise to accomplish my mission
           - milestone by milestone.
-          I also promise to help my buddy <%= @buddy_mission.user.first_name %> <%= @buddy_mission.user.last_name %>
+          I also promise to help my buddy <%= @receiver_mission.user.first_name %> <%= @receiver_mission.user.last_name %>
           to keep on track with their mission.</p>
         </div>
         <div class="contract-signed">
-          <span class="pink"><i class="fas fa-check"></i></span> <%= @current_user.first_name %> has signed this contract</div>
+          <span class="pink"><i class="fas fa-check"></i></span> <%= @asker_mission.user.first_name %> has signed this contract</div>
         </div>
       <div class="buddy-contract">
          <div class="image-box">
-          <% if @buddy_mission.user.photo.attached? %>
-            <%= cl_image_tag @buddy_mission.user.photo.key, class:"avatar-large" %>
+          <% if @receiver_mission.user.photo.attached? %>
+            <%= cl_image_tag @receiver_mission.user.photo.key, class:"avatar-large" %>
           <% else %>
             <%= image_tag "user_3.png", class:"avatar-large" %>
           <% end %>
         </div>
         <div class="contract-mission-box">
           <div class="contract-timeframe-box">
-            <p class="contract-timeframe"> <i class="far fa-clock"></i> <%= @buddy_mission.timeframe.humanize.capitalize %> </p>
+            <p class="contract-timeframe"> <i class="far fa-clock"></i> <%= @receiver_mission.timeframe.humanize.capitalize %> </p>
           </div>
-          <h3 class="contract-heading-mission"> <%= @buddy_mission.title %> </h3>
-          <p> <%= @buddy_mission.description %> </p>
+          <h3 class="contract-heading-mission"> <%= @receiver_mission.title %> </h3>
+          <p> <%= @receiver_mission.description %> </p>
         </div>
         <div class="contract-promise">
-          <p class="light-20">I, <span class="em-text"><%= @buddy_mission.user.first_name %> <%= @buddy_mission.user.last_name %></span>, hereby promise to accomplish my mission
+          <p class="light-20">I, <span class="em-text"><%= @receiver_mission.user.first_name %> <%= @receiver_mission.user.last_name %></span>, hereby promise to accomplish my mission
           - milestone by milestone.
-          I also promise to help my buddy <%= @current_user.first_name %> <%= @current_user.last_name %>
+          I also promise to help my buddy <%= @asker_mission.user.first_name %> <%= @asker_mission.user.last_name %>
           to keep on track with their mission.</p>
         </div>
         <div class="contract-signed">
-          <span class="pink"><i class="fas fa-check"></i></span> <%= @buddy_mission.user.first_name %> has signed this contract</div>
+          <span class="pink"><i class="fas fa-check"></i></span> <%= @receiver_mission.user.first_name %> has signed this contract</div>
         </div>
       </div>
     </div>
