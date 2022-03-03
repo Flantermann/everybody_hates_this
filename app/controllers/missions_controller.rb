@@ -26,9 +26,6 @@ class MissionsController < ApplicationController
   end
 
   def show
-    # will den zur mission gehörigen contract
-    # will die zu contract gehörigen missions
-    # will die zum contract gehörigen user#
     if @mission.contract_id
       @contract = Contract.find_by(id: @mission.contract_id)
       @contract_asker = User.find_by(id: @contract.asker_id)
