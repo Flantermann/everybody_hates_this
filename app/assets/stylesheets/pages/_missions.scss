@@ -129,3 +129,44 @@
     grid-gap: 20px;
   }
 }
+
+.filter-options {
+  margin-top: 30px;
+  background-color: transparent;
+  // padding: 10px 5px 10px 20px;
+  // border-radius: 8px;
+  height: fit-content;
+}
+
+.filter-category {
+  background-color: $bg-shade-1;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.filter-timeframe {
+  background-color: $bg-shade-1;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 30px;
+}
+
+.categories {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.category-button {
+  border-radius: 8px;
+  background-color: $bg-shade-2;
+  padding: 15px 25px;
+  margin: 10px;
+  color: $white-1;
+  transition: color 0.3s ease;
+  &:hover {
+    text-decoration: none;
+    color: $white-1;
+    border: 1px solid $white-1;
+  }
+}
