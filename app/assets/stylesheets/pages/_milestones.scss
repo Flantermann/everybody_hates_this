@@ -1,0 +1,26 @@
+.milestone-box {
+  margin-top: 20px;
+  & a {
+    color: $white-1;
+    &:hover {
+      color: $white-1;
+      text-decoration: none;
+    }
+  }
+}
+
+.milestone {
+  line-height: 1;
+}
+.plus {
+  color: $pink-variant;
+}
+
+.milestone-contract {
+  margin-top: 10px;
+}
+
+.small-icon {
+  font-size: 16px;
+  margin-left: 3px;
+}

@@ -27,6 +27,22 @@
           </div>
           <h3 class="contract-heading-mission"> <%= @asker_mission.title %></h3>
           <p> <%= @asker_mission.description %> </p>
+          <div>
+            <% if @asker_mission.milestones.any? %>
+              <h5>Milestones</h5>
+              <% @asker_mission.milestones.each do |milestone|  %>
+                <div class="milestone-contract">
+                  <% if milestone.in_progress? %>
+                    <i class="far fa-square"></i>
+                  <% else %>
+                    <i class="far fa-check-square"></i>
+                  <% end %>
+                  <%= milestone.description %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="space-mt-20"></div>
         </div>
         <div class="contract-promise">
           <p class="light-20">I, <span class="em-text"><%= @asker_mission.user.first_name %> <%= @asker_mission.user.last_name %></span>, hereby promise to accomplish my mission
@@ -36,6 +52,7 @@
         </div>
         <div class="contract-signed">
           <span class="pink"><i class="fas fa-check"></i></span> <%= @asker_mission.user.first_name %> has signed this contract</div>
+          <div class="space-mt-20"></div>
         </div>
       <div class="buddy-contract">
          <div class="image-box">
@@ -51,6 +68,20 @@
           </div>
           <h3 class="contract-heading-mission"> <%= @receiver_mission.title %> </h3>
           <p> <%= @receiver_mission.description %> </p>
+           <% if @receiver_mission.milestones.any? %>
+              <h5>Milestones</h4>
+              <% @receiver_mission.milestones.each do |milestone|  %>
+                <div class="milestone-contract">
+                  <% if milestone.in_progress? %>
+                    <i class="far fa-square"></i>
+                  <% else %>
+                    <i class="far fa-check-square"></i>
+                  <% end %>
+                  <%= milestone.description %>
+                </div>
+              <% end %>
+            <% end %>
+          <div class="space-mt-20"></div>
         </div>
         <div class="contract-promise">
           <p class="light-20">I, <span class="em-text"><%= @receiver_mission.user.first_name %> <%= @receiver_mission.user.last_name %></span>, hereby promise to accomplish my mission
@@ -60,7 +91,9 @@
         </div>
         <div class="contract-signed">
           <span class="pink"><i class="fas fa-check"></i></span> <%= @receiver_mission.user.first_name %> has signed this contract</div>
+          <div class="space-mt-20"></div>
         </div>
+
       </div>
     </div>
   </div>
