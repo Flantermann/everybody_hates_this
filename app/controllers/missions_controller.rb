@@ -26,6 +26,7 @@ class MissionsController < ApplicationController
   end
 
   def show
+    @milestone = Milestone.new
     if @mission.contract_id
       @contract = Contract.find_by(id: @mission.contract_id)
       @contract_asker = User.find_by(id: @contract.asker_id)
@@ -37,8 +38,6 @@ class MissionsController < ApplicationController
   end
 
   def update
-    # when a contract is created, the contract_id of the mission
-    # where the contract was created should be updated to the id of said contract
     if @mission.update(mission_params)
       redirect_to @mission, notice: "Your mission was successfully updated"
     else

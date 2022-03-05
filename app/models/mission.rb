@@ -13,12 +13,4 @@ class Mission < ApplicationRecord
   validates :prefered_buddy_age_start, presence: true, numericality: { only_integer: true, greater_than: 11 }
   validates :prefered_buddy_age_end, presence: true, numericality: { only_integer: true, greater_than: :prefered_buddy_age_start }
 
-  # ICONS = {
-  #     body: "<i class='fa-light fa-spa'></i>",
-  #     relationship: "<i class='fa-light fa-heart'></i>",
-  #     admin: "<i class='fa-light fa-folder-open'></i>",
-  #     work: "<i class='fa-light fa-chair-office'></i>",
-  #     household: "<i class='fa-light fa-house-chimney-crack'></i>",
-  #     misc: "<i class='fa-light fa-shuffle'></i>"
-  #   }
 end

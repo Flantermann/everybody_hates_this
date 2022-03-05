@@ -8,6 +8,14 @@ class MilestonesController < ApplicationController
   end
 
   def create
+    @mission = Mission.find(params[:mission_id])
+    @milestone = Milestone.new(milestone_params)
+    @milestone.mission = @mission
+    if @milestone.save
+      redirect_to mission_path(@mission)
+    else
+      redirect_to root_path
+    end
   end
 
   def edit
