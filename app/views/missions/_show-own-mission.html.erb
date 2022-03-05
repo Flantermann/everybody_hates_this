@@ -35,7 +35,7 @@
                 <div class="milestone-box">
                   <p class="milestone">
                   <%= link_to milestone_path(milestone), method: :patch do %>
-                    <% if milestone.status == "in_progress"%>
+                    <% if milestone.in_progress?%>
                       <i class="far fa-square"></i>
                     <% else %>
                       <i class="far fa-check-square"></i>

@@ -27,18 +27,11 @@ class MissionsController < ApplicationController
 
   def show
     @milestone = Milestone.new
-    # update_milestone
     if @mission.contract_id
       @contract = Contract.find_by(id: @mission.contract_id)
       @contract_asker = User.find_by(id: @contract.asker_id)
       @contract_receiver = User.find_by(id: @contract.receiver_id)
     end
-  end
-
-  def update_milestone
-    @milestone = Milestone.find(params[:milestone])
-    @milestone.done!
-    @milestone.save
   end
 
   def edit
