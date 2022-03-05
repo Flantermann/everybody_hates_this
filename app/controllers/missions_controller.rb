@@ -1,7 +1,24 @@
 class MissionsController < ApplicationController
-  before_action :set_mission, only: [:show, :edit, :update, :destroy]
+before_action :set_mission, only: [:show, :edit, :update, :destroy]
+
   def index
     @missions = policy_scope(Mission)
+    if params
+      Mission.where({ category: params["categories"] })
+     # @filter = params["categories"]["category"].concat(params["categories"]).flatten.reject(&:blank?)
+      #raise
+      #@missions = Mission.all.mission_search("#{@filter}")
+    else
+      @missions = Mission.all
+    end
+    respond_to do |format|
+      format.html
+      format.js
+    end  
+    #make the category form in the view
+    #create filter functions for index in def index
+    #index in JS: Step 4 in tutorial
+    #pg_search gem in gemfile
   end
 
   def accomplished_missions
