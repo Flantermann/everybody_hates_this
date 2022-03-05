@@ -33,15 +33,18 @@
           <% if @mission.milestones.any? %>
             <% @mission.milestones.each do |milestone| %>
                 <div class="milestone-box">
-                  <p class="milestone">
-                  <%= link_to milestone_path(milestone), method: :patch do %>
-                    <% if milestone.in_progress?%>
-                      <i class="far fa-square"></i>
-                    <% else %>
-                      <i class="far fa-check-square"></i>
+                  <div class="milestone">
+                    <%= link_to milestone_path(milestone), method: :patch do %>
+                      <% if milestone.in_progress?%>
+                        <i class="far fa-square"></i>
+                      <% else %>
+                        <i class="far fa-check-square"></i>
+                      <% end %>
+                    <% end %> <%= milestone.description %>
+                    <%= link_to milestone_path(milestone), method: :delete, data: { confirm: "Do you really want to delete this milestone?" }  do %>
+                        <i class="far fa-trash-alt small-icon"></i>
                     <% end %>
-                  <% end %> <%= milestone.description %>
-                  </p>
+                  </div>
                 </div>
             <% end %>
             <%= render 'milestones/new', mission: @mission %>

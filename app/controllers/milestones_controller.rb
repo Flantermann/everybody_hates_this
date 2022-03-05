@@ -33,6 +33,9 @@ class MilestonesController < ApplicationController
   end
 
   def destroy
+    set_milestone
+    @milestone.destroy
+    redirect_to @milestone.mission
   end
 
   private
