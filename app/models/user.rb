@@ -11,6 +11,9 @@ class User < ApplicationRecord
   has_many :contracts_as_asker, class_name: "Contract", foreign_key: :asker_id
   has_many :contracts_as_receiver, class_name: "Contract", foreign_key: :receiver_id
 
+  has_many :chatrooms_as_sender_one, class_name: "Chatroom", foreign_key: :sender_one_id
+  has_many :chatrooms_as_sender_two, class_name: "Chatroom", foreign_key: :sender_two_id
+
   validates :first_name, :last_name, :address, presence: true
   validates :email, presence: true, uniqueness: true, format: {
     with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i

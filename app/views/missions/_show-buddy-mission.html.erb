@@ -85,15 +85,14 @@
         <div class="contact-buddy-box">
         <!--  Message -->
         <!--  Hier muss der richtige Path rein -->
-          <div>
-            <p class="light-20">Wanna chat with your buddy? <br>
-            <%= link_to "Start Chatting", chatroom_path(1) %></p>
-            <%# <%= link_to "Send Message", mission_path(@mission), method: :post %>
-          </div>
+
         <div class="space-mt-40"></div>
       </div>
      <% end %>
     <% end %>
-
+    <div>
+      <p class="light-20">Wanna chat with your buddy? <br>
+      <%= link_to "Start Chatting", chatroom_path, method: :post %></p>
+    </div>
 
   </div>

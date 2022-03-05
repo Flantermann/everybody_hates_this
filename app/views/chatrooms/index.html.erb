@@ -1,0 +1,9 @@
+<div class="container">
+  <h5> Hi <%= @current_user.nickname %> </h5>
+  <h4> Rooms </h4>
+
+  <% @rooms.each do | room | %>
+   <div> <%= link_to room.name, room %> </div>
+  <% end %>
+
+</div>
