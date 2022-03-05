@@ -92,7 +92,7 @@
     <% end %>
     <div>
       <p class="light-20">Wanna chat with your buddy? <br>
-      <%= link_to "Start Chatting", chatroom_path, method: :post %></p>
+      <%= link_to "Start Chatting", chatrooms_path(@chatroom, mission: @mission), method: :post %></p>
     </div>
 
   </div>

@@ -5,7 +5,7 @@ class ChatroomsController < ApplicationController
     @rooms = policy_scope(Chatroom)
     @current_user = current_user
     redirect_to '/signin' unless @current_user
-    @rooms = Chatroom.public_rooms
+    @rooms = Chatroom.public_rooms.where(sender_one: current_user).or(Chatroom.where(sender_two: current_user))
     # @users = User.all_except(@current_user)
   end
 
@@ -22,7 +22,7 @@ class ChatroomsController < ApplicationController
   def create
     # raise
     @current_user = current_user
-    @user = User.find_by(Mission.find_by(params[:id]).user_id)
+    @user = User.find(Mission.find(params[:mission]).user_id)
     @chatroom = Chatroom.new(name: "chatroom-#{@current_user.id}:#{@user.id}", sender_one: @current_user, sender_two: @user)
     @chatroom.save!
     redirect_to @chatroom
