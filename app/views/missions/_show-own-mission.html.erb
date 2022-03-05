@@ -32,16 +32,21 @@
         <h4>Milestones <span class="pink"><i class="far fa-gem"></i></span></h4>
           <% if @mission.milestones.any? %>
             <% @mission.milestones.each do |milestone| %>
-              <% if milestone.status == "in_progress" %>
-                <i class="far fa-square"></i> <%= milestone.description %>
-              <% else %>
-                <i class="far fa-check-square"></i><%= milestone.description %>
-              <% end %>
+                <div class="milestone-box">
+                  <p class="milestone">
+                  <%= link_to milestone_path(milestone), method: :patch do %>
+                    <% if milestone.status == "in_progress"%>
+                      <i class="far fa-square"></i>
+                    <% else %>
+                      <i class="far fa-check-square"></i>
+                    <% end %>
+                  <% end %> <%= milestone.description %>
+                  </p>
+                </div>
             <% end %>
             <%= render 'milestones/new', mission: @mission %>
           <% else %>
             <p>You haven't defined any milestones for your mission yet.</p>
-            <%= link_to " + Add Milestone", mission_path(@mission), class:"contract-link-large" %>
             <%= render 'milestones/new', mission: @mission %>
           <% end %>
       </div>

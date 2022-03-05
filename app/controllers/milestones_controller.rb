@@ -12,9 +12,9 @@ class MilestonesController < ApplicationController
     @milestone = Milestone.new(milestone_params)
     @milestone.mission = @mission
     if @milestone.save
-      redirect_to mission_path(@mission)
+      redirect_to mission_path(@mission), notice: "Yes! You have added a milestone to your mission!"
     else
-      redirect_to root_path
+      redirect_to mission_path(@mission), notice: "Sorry, something went wrong"
     end
   end
 
@@ -22,6 +22,14 @@ class MilestonesController < ApplicationController
   end
 
   def update
+    set_milestone
+    if @milestone.in_progress?
+      @milestone.done!
+    elsif @milestone.done?
+      @milestone.in_progress!
+    end
+    @milestone.save
+    redirect_to @milestone.mission
   end
 
   def destroy
@@ -34,6 +42,6 @@ class MilestonesController < ApplicationController
   end
 
   def milestone_params
-    params.require(:milestone).permit(:description)
+    params.require(:milestone).permit(:description, :status)
   end
 end
