@@ -1,6 +1,26 @@
 .alert {
   position: fixed;
-  bottom: 16px;
-  right: 16px;
+  bottom: 50%;
+  left: 40%;
   z-index: 1000;
+  padding: 50px;
+  border: 4px solid $pink;
+}
+
+.alert-warning {
+  color: $pink;
+  font-size: 18px;
+  background-color: $white-1;
+}
+
+.alert-info {
+  color: $pink;
+  font-size: 18px;
+  background-color: $bg-body;
+}
+
+.close {
+  color: $pink !important;
+  opacity: 1;
+  text-shadow: none;
 }
