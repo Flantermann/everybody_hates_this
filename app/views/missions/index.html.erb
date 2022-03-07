@@ -9,12 +9,12 @@
                       You can start looking for your match, exchange message with
                       potential buddys and then, when you are sure, you can take
                       the leap of faith and sign a contract together!</p>
+                      <p class="light-20">There are <span class="blue"> <%=@missions.length%> people </span>who match your buddy criteria. </p>
   </div>
 
   <div class="index-grid">
     <div>
       <% @missions.each do |mission| %>
-        <% unless mission.contract_id || mission.user == current_user %>
         <div class="mission-grid">
           <div class="mission-box">
             <div class="time-category">
@@ -67,7 +67,6 @@
           </div>
         </div>
        <% end %>
-      <% end %>
     </div>
     <div class="filter-options">
       <div class="filter-category">

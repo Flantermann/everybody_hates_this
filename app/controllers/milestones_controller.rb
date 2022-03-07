@@ -28,8 +28,12 @@ class MilestonesController < ApplicationController
     elsif @milestone.done?
       @milestone.in_progress!
     end
-    @milestone.save
-    redirect_to @milestone.mission
+    if @milestone.save
+      raise
+      redirect_to @milestone.mission
+    else
+      redirect_to root_path
+    end
   end
 
   def destroy

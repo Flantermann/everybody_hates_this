@@ -1,7 +1,7 @@
 class MissionsController < ApplicationController
   before_action :set_mission, only: [:show, :edit, :update, :destroy]
   def index
-    @missions = policy_scope(Mission)
+    @missions = policy_scope(Mission.where.not(user_id: current_user.id).where(contract_id: nil))
   end
 
   def accomplished_missions
