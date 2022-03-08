@@ -27,6 +27,7 @@ class MissionsController < ApplicationController
 
   def show
     @milestone = Milestone.new
+    @declined_contracts = Contract.all.where(status: "declined")
     if @mission.contract_id
       @contract = Contract.find_by(id: @mission.contract_id)
       @contract_asker = User.find_by(id: @contract.asker_id)

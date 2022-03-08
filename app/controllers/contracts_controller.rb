@@ -9,17 +9,11 @@ class ContractsController < ApplicationController
     @buddy_mission = Mission.find_by(id: params[:mission].to_i)
     @receiver = @buddy_mission.user
 
-    # this creates a new contract:
     @contract = Contract.new
     @contract.asker_id = @asker.id
     @contract.receiver_id = @receiver.id
 
-    # @buddy_mission = Mission.find_by(id: params[:mission].to_i)
-    # update contract_signed? in mission:
-    # @mission.contract_signed? = true
     if @contract.save
-      # puts @contract.id
-
       @asker_mission.contract_id = @contract.id
       @buddy_mission.contract_id = @contract.id
       @asker_mission.save
@@ -34,20 +28,20 @@ class ContractsController < ApplicationController
     set_contract
     @contract.asker.missions.last.update(contract_signed?: true)
     @contract.receiver.missions.last.update(contract_signed?: true)
-    # @contract.missions.map { |mission| mission.update(contract_signed?: true) }
     @contract.signed!
     @mission = Mission.find_by(id: params[:mission].to_i)
-    redirect_to contract_path, notice: "You have both signed the contract!"
+    redirect_to contract_path, notice: "Congratulations! You have both signed the contract!"
   end
 
   def decline
     set_contract
+    @contract.declined!
     @contract.asker.missions.last.update(contract_signed?: false)
     @contract.asker.missions.last.update(contract_id: nil)
     @contract.receiver.missions.last.update(contract_signed?: false)
     @contract.receiver.missions.last.update(contract_id: nil)
     @mission = Mission.find_by(id: params[:mission].to_i)
-    redirect_to mission_path(@mission), notice: "You have declined signing the contract!"
+    redirect_to mission_path(@mission), notice: "You have declined signing the contract! Start looking for another buddy."
   end
 
   def show
