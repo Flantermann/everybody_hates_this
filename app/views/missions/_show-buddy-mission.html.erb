@@ -8,31 +8,7 @@
     <!--  Mission Card -->
     <div class="mission-card">
       <div class="time-category">
-        <% if @mission.category == "body_and_mind" %>
-          <div>
-            <p class="category"> <i class="fas fa-spa"></i> Body & Mind </p>
-          </div>
-        <% elsif @mission.category == "miscellaneous" %>
-          <div>
-            <p class="category"> <i class="fas fa-random"></i> Miscellaneous </p>
-          </div>
-        <% elsif @mission.category == "administrative_tasks" %>
-          <div>
-            <p class="category"> <i class="far fa-folder-open"></i> Administrative Tasks </p>
-          </div>
-        <% elsif @mission.category == "relationships" %>
-          <div>
-            <p class="category"> <i class="far fa-heart"></i> Relationships </p>
-          </div>
-        <% elsif @mission.category == "work_life" %>
-          <div>
-            <p class="category"> <i class="fas fa-briefcase"></i> Work Life </p>
-          </div>
-        <% elsif @mission.category == "household" %>
-          <div>
-            <p class="category"> <i class="fas fa-house-damage"></i> Household </p>
-          </div>
-        <% end %>
+        <%= render "category", mission: @mission %>
         <div>
           <p class="timeframe"> <i class="far fa-clock"></i> <%= @mission.timeframe.humanize.capitalize %> </p>
         </div>
