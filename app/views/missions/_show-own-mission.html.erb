@@ -80,7 +80,7 @@
     </div>
   <% else %>
     <div class="contract-info-box">
-      <% if @mission.contract_id %>
+      <% if @mission.contract_id && @mission.finished? == false %>
         <% if @contract.signed? %>
           <p class="contract-sign">Contract signed </p>
         <% elsif current_user.id == @contract_asker.id %>
@@ -88,10 +88,12 @@
         <% else %>
           <p class="contract-request-received">Contract request </p>
         <% end %>
+      <% else %>
+        <p class="contract-sign">Mission finished </p>
       <% end %>
       <h4>Mission Status</h4>
       <% if @mission.contract_id %>
-        <% if @contract.signed? %>
+        <% if @contract.signed? && @mission.finished? == false %>
           <div>
             <p>You have done it! You have finally taken
               an important step to getting your things in order. This is truly amazing and
@@ -106,11 +108,11 @@
             <%= link_to "Show Contract", contract_path(@contract), class:"contract-link-large" %>
             <%= link_to "Finish Mission", finish_mission_path(@mission), method: :patch, class:"dashboard-contract-link" %></p>
           </div>
-        <% elsif current_user == @contract.asker %>
+        <% elsif current_user == @contract.asker && @mission.finished? == false %>
           <p>Well done! You have sent a contract request to <%= @contract_receiver.first_name %>
           for their mission <%= link_to @contract_receiver.missions.last.title, mission_path(id: @contract_receiver.missions.last.id), class:"contract-link" %>.
           Now you just have to wait patiently for them to reply. No worries, it will happen soon! </p>
-        <% else %>
+        <% elsif current_user == @contract.receiver && @mission.finished? == false %>
           <div>
             <p>Nice! You have a contract request from <%= @contract_asker.first_name %>
           for their mission <%= link_to @contract_asker.missions.last.title, mission_path(id: @contract_asker.missions.last.id), class:"contract-link" %>.
@@ -118,6 +120,10 @@
             <%= link_to "Accept", accept_contract_path(id: @contract, mission: @mission), method: :patch, class:"contract-link-large" %>
             <%= link_to "Decline", decline_contract_path(id: @contract, mission: @mission), method: :patch, class:"contract-link-large-yellow" %>
           </div>
+        <% else %>
+          <p>Congratulations! You have finished your mission! Wooo-hooooooo!</p>
+          <p>Time to start your next mission right away...</p>
+          <%= link_to "Start Mission", new_mission_path, class:"contract-link-large"  %>
         <% end %>
       <% else %>
         <p>You have not found a buddy for your mission yet.</p>

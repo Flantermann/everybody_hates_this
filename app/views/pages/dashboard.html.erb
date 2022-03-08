@@ -85,7 +85,7 @@
       <h3> Accomplished missions </h3>
       <% if @accomplished_missions.length > 0 %>
         <% @accomplished_missions.each do |mission| %>
-          <%= link_to mission.title, mission_path(mission) %>
+          <%= link_to mission.title, mission_path(mission), class:"contract-link-large"  %>
         <% end %>
       <% else %>
         <p class="light-20"> You have not finished any missions yet. As soon as you're done with your first mission, you will have access to it here. </p>
