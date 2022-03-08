@@ -80,6 +80,15 @@
     </div>
   <% else %>
     <div class="contract-info-box">
+      <% if @mission.contract_id %>
+        <% if @contract.signed? %>
+          <p class="contract-sign">Contract signed </p>
+        <% elsif current_user.id == @contract_asker.id %>
+          <p class="contract-request-sent">Contract request sent </p>
+        <% else %>
+          <p class="contract-request-received">Contract request </p>
+        <% end %>
+      <% end %>
       <h4>Mission Status</h4>
       <% if @mission.contract_id %>
         <% if @contract.signed? %>
