@@ -48,6 +48,8 @@
             <%= link_to "Show Contract", contract_path(@current_contract), class:"dashboard-contract-link" %>
           <% elsif @buddy_mission && @buddy_mission.finished? == false && @current_mission.finished? == true %>
             <p>You have finished but your buddy hasn't finished theirs yet. Help them!</p>
+          <% elsif @buddy_mission && @buddy_mission.finished? == true && @current_mission.finished? == false%>
+            <p>Your buddy has finished their mission but you have not. Why?</p>
           <% elsif @buddy_mission && @buddy_mission.finished? == true && @current_mission.finished? == true %>
             <p>You have both finished your missions!</p>
           <% elsif @current_contract %>
