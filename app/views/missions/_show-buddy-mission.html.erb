@@ -120,7 +120,7 @@
       <% else %>
         <div class="contact-buddy-box">
           <div>
-            <p class="contract-decline">Contract request</p>
+            <p class="contract-request-received">Contract request</p>
             <p class="light-20">You have a contract request from <%= @contract_asker.first_name %>.</p>
             <%= link_to "Accept", accept_contract_path(id: @contract.id, mission: @mission), method: :patch, class:"contract-link-large" %>
             <%= link_to "Decline", decline_contract_path(id: @contract.id, mission: @mission), method: :patch, class:"contract-link-large-yellow" %>
