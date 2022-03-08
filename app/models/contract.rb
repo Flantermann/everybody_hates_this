@@ -3,5 +3,5 @@ class Contract < ApplicationRecord
   belongs_to :asker, class_name: "User", optional: true # foreign_key: :asker_id
   belongs_to :receiver, class_name: "User", optional: true # foreign_key: :receiver_id
 
-  enum status: { pending: 0, signed: 1, fullfilled: 2 }
+  enum status: { pending: 0, signed: 1, declined: 2, fullfilled: 3 }
 end

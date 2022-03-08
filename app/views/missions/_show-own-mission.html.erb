@@ -30,9 +30,8 @@
       <!--  Milestones -->
       <div class="contract-info-box">
         <h4>Milestones <span class="pink"><i class="far fa-gem"></i></span></h4>
-        <p>The experince of our users has shown that the optimal number
+        <p>The experience of our users has shown that the optimal number
           of milestones is 4 – so we encourage you to follow that path.
-          When you're done with defining your milestones, please confirm by clicking "I'm done".</p>
           <% if @mission.milestones.any? %>
             <% @mission.milestones.each do |milestone| %>
                 <div class="milestone-box">
@@ -51,12 +50,9 @@
                 </div>
             <% end %>
             <%= render 'milestones/new', mission: @mission %>
-            <%= simple_form_for([@mission, @milestone]) do |f| %>
-              <%= f.button :submit, "I'm done"%>
-            <% end %>
           <% else %>
             <p>Milestones are an important part of your journey.
-            The experince of our users has shown that the optimal number
+            The experience of our users has shown that the optimal number
           of milestones is 4 – so we encourage you to follow that path.
           Once you have signed a contract with someone, your milestones will also
           be displayed there. Your contract is finished, once you
@@ -72,7 +68,18 @@
   <% if @mission.contract_id == nil %>
     <div class="contract-info-box-bordered">
       <h4>Mission Status</h4>
-      <p>You have not found a buddy for your mission yet.</p>
+        <% if Contract.last.declined? && current_user.id == Contract.last.receiver_id %>
+          <p>You have declined signing a contract with <%= Contract.last.asker.first_name %> for their mission
+          <%= link_to Contract.last.asker.missions.last.title, mission_path(id: Contract.last.asker.missions.last.id), class:"pink"%>.
+          </p>
+          <p>That just wasn't it for you? Then go take the initiative and start looking for a buddy yourself.</p>
+        <% elsif Contract.last.declined? && current_user.id == Contract.last.asker_id %>
+          <p><%= link_to Contract.last.receiver.first_name, mission_path(id: Contract.last.receiver.missions.last.id), class:"pink"%>
+          has declined signing the contract with you.</p>
+          <p>Don't be sad. Just keep looking! You'll find your perfect match, we promise.</p>
+        <% else %>
+          <p>You have not found a buddy for your mission yet.</p>
+        <% end %>
       <%= link_to "Find buddy", missions_path, class:"contract-link-large" %>
     </div>
   <% else %>
