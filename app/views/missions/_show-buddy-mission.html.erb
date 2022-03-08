@@ -68,9 +68,6 @@
     <!--  Box for Messaging and Contract -->
     <% if current_user.missions.last.contract_signed? == false && @mission.contract_id == nil %>
       <div class="contact-buddy-box">
-        <!--  Message -->
-        <!--  Hier muss der richtige Path rein -->
-        <!--  Contract Request -->
         <% if current_user.missions.last.contract_id == nil %>
           <div>
             <p class="light-20">You found your perfect buddy? Send a request to sign the contract together!<br>
