@@ -104,6 +104,7 @@
                 <% end %>
               </p>
             <%= link_to "Show Contract", contract_path(@contract), class:"contract-link-large" %>
+            <%= link_to "Finish Mission", finish_mission_path(@mission), method: :patch, class:"dashboard-contract-link" %></p>
           </div>
         <% elsif current_user == @contract.asker %>
           <p>Well done! You have sent a contract request to <%= @contract_receiver.first_name %>

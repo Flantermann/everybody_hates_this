@@ -8,6 +8,13 @@ Rails.application.routes.draw do
   resources :missions do
     resources :milestones, only: :create
   end
+
+  resources :missions do
+    member do
+      patch 'finish', to: "missions#finish"
+    end
+  end
+
   resources :milestones, only: [ :update, :destroy ]
   resources :contracts, only: [ :new, :create, :show ] do
     member do
