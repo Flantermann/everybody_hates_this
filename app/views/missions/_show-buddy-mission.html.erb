@@ -111,12 +111,20 @@
           </div>
         <div class="space-mt-40"></div>
       </div>
-      <% elsif current_user.missions.last.contract_id == @mission.contract_id %>
+      <% elsif current_user.missions.last.contract_id == @mission.contract_id && current_user.id == @contract_asker.id%>
         <div class="contact-buddy-box">
           <div>
             <p class="contract-decline">Contract request sent </p>
             <p class="light-20">You have sent <%= @mission.user.first_name %> a contract request.
             Now you just have to wait for their reply.
+          </div>
+        <div class="space-mt-40"></div>
+      <% else %>
+        <div class="contact-buddy-box">
+          <div>
+            <p class="contract-decline">Contract request</p>
+            <p class="light-20">You have a contract request from <%= @contract_asker.first_name %>.
+            <p class="light-20"><%= link_to "Accept", accept_contract_path(id: @contract.id, mission: @mission), method: :patch, class:"dashboard-contract-link" %> or <%= link_to "Decline", decline_contract_path(id: @contract.id, mission: @mission), method: :patch, class:"dashboard-contract-link" %></p>
           </div>
         <div class="space-mt-40"></div>
       <% end %>
