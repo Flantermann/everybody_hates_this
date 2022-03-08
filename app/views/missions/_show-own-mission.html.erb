@@ -27,41 +27,43 @@
         and can live anywhere in the world.</p>
       <% end %>
     </div>
-      <!--  Milestones -->
-      <div class="contract-info-box">
-        <h4>Milestones <span class="pink"><i class="far fa-gem"></i></span></h4>
-          <% if @mission.milestones.any? %>
-            <p>The experience of our users has shown that the optimal number
-          of milestones is 4 – so we encourage you to follow that path.
-            <% @mission.milestones.each do |milestone| %>
-                <div class="milestone-box">
-                  <div class="milestone">
-                    <%= link_to milestone_path(milestone), method: :patch do %>
-                      <% if milestone.in_progress?%>
-                        <i class="far fa-square"></i>
-                      <% else %>
-                        <i class="far fa-check-square"></i>
+    <% if @mission.finished? == false %>
+
+
+        <!--  Milestones -->
+        <div class="contract-info-box">
+          <h4>Milestones <span class="pink"><i class="far fa-gem"></i></span></h4>
+            <% if @mission.milestones.any? %>
+              <p>The experience of our users has shown that the optimal number
+            of milestones is 4 – so we encourage you to follow that path.
+              <% @mission.milestones.each do |milestone| %>
+                  <div class="milestone-box">
+                    <div class="milestone">
+                      <%= link_to milestone_path(milestone), method: :patch do %>
+                        <% if milestone.in_progress?%>
+                          <i class="far fa-square"></i>
+                        <% else %>
+                          <i class="far fa-check-square"></i>
+                        <% end %>
+                      <% end %> <%= milestone.description %>
+                      <%= link_to milestone_path(milestone), method: :delete, data: { confirm: "Do you really want to delete this milestone?" }  do %>
+                          <i class="far fa-trash-alt small-icon"></i>
                       <% end %>
-                    <% end %> <%= milestone.description %>
-                    <%= link_to milestone_path(milestone), method: :delete, data: { confirm: "Do you really want to delete this milestone?" }  do %>
-                        <i class="far fa-trash-alt small-icon"></i>
-                    <% end %>
+                    </div>
                   </div>
-                </div>
+              <% end %>
+              <%= render 'milestones/new', mission: @mission %>
+            <% else %>
+              <p>Milestones are an important part of your journey.
+              The experience of our users has shown that the optimal number
+            of milestones is 4 – so we encourage you to follow that path.
+            You haven't defined any milestones for your mission yet.</p>
+              <%= render 'milestones/new', mission: @mission %>
             <% end %>
-            <%= render 'milestones/new', mission: @mission %>
-          <% else %>
-            <p>Milestones are an important part of your journey.
-            The experience of our users has shown that the optimal number
-          of milestones is 4 – so we encourage you to follow that path.
-          You haven't defined any milestones for your mission yet.</p>
-            <%= render 'milestones/new', mission: @mission %>
-          <% end %>
-      </div>
-    <div>
-
-    </div>
-
+        </div>
+        <!--  Empty div for grid purposes -->
+      <div> </div>
+    <% end %>
   <% if @mission.contract_id == nil %>
     <div class="contract-info-box-bordered">
       <h4>Mission Status</h4>
@@ -95,8 +97,7 @@
       <% if @mission.contract_id %>
         <% if @contract.signed? && @mission.finished? == false %>
           <div>
-            <p>You have done it! You have finally taken
-              an important step to getting your things in order. This is truly amazing and
+            <p>You have done it! This is truly amazing and
               we are very proud of you.</p>
               <p> You have signed a contract for this mission with your buddy
                 <% if current_user.id == @contract_asker.id  %>
@@ -106,7 +107,11 @@
                 <% end %>
               </p>
             <%= link_to "Show Contract", contract_path(@contract), class:"contract-link-large" %>
-            <%= link_to "Finish Mission", finish_mission_path(@mission), method: :patch, class:"dashboard-contract-link" %></p>
+            <p></p>
+            <p>Have you finished your mission? Yes? Go ahead, click the button already.</p>
+            <div class="center">
+              <%= link_to "Mission Accomplished", finish_mission_path(@mission), method: :patch, class:"mission-accomplish" %></p>
+            </div>
           </div>
         <% elsif current_user == @contract.asker && @mission.finished? == false %>
           <p>Well done! You have sent a contract request to <%= @contract_receiver.first_name %>
