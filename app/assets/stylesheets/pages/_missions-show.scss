@@ -113,3 +113,11 @@
   margin-top: 100px;
   color: red;
 }
+
+.contract-decline{
+  border: 1px solid $yellow-variant;
+  border-radius: 8px;
+  padding: 2px 8px 2px 8px;
+  color: $yellow-variant;
+  width: fit-content;
+}

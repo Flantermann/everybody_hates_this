@@ -66,13 +66,32 @@
     <!--  End of User Card -->
 
     <!--  Box for Messaging and Contract -->
+
     <% if current_user.missions.last.contract_signed? == false && @mission.contract_id == nil %>
       <div class="contact-buddy-box">
-        <% if current_user.missions.last.contract_id == nil %>
-          <div>
-            <p class="light-20">You found your perfect buddy? Send a request to sign the contract together!<br>
-            <%= link_to "Send contract request", contracts_path(mission: @mission), method: :post %></p>
-          </div>
+        <% if current_user.contracts_as_asker %>
+          <% current_user.contracts_as_asker.each do |contract| %>
+            <% if contract.declined? && contract.receiver_id == @mission.user_id %>
+              <p class="contract-decline">Contract declined </p>
+              <p>We are sorry, but <%= @mission.user.first_name %> has declined to sign a contract with you.
+              Start looking for another buddy.</p>
+              <%= link_to "Find buddy", missions_path, class:"contract-link-large" %>
+            <% else %>
+              <% if current_user.missions.last.contract_id == nil %>
+                <div>
+                  <p class="light-20">You found your perfect buddy? Send a request to sign the contract together!<br>
+                  <%= link_to "Send contract request", contracts_path(mission: @mission), method: :post %></p>
+                </div>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% else %>
+          <% if current_user.missions.last.contract_id == nil %>
+            <div>
+              <p class="light-20">You found your perfect buddy? Send a request to sign the contract together!<br>
+              <%= link_to "Send contract request", contracts_path(mission: @mission), method: :post %></p>
+            </div>
+          <% end %>
         <% end %>
       </div>
      <% end %>
