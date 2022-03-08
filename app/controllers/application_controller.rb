@@ -17,8 +17,14 @@ class ApplicationController < ActionController::Base
   private
 
   def skip_pundit?
-    devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/ || params[:controller] == "contracts"
+    devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/ || params[:controller] == "contracts" || params[:controller] == "milestones"
     # devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/ || params[:controller] = "bookings" || params[:controller] == "dashboards"
+  end
+
+  protected
+
+  def after_sign_in_path_for(resource)
+    dashboard_path
   end
 
 end

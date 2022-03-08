@@ -31,10 +31,31 @@
       <div class="contract-info-box">
         <h4>Milestones <span class="pink"><i class="far fa-gem"></i></span></h4>
           <% if @mission.milestones.any? %>
-          <p>You have set milestones for this mission!</p>
+            <p>The experience of our users has shown that the optimal number
+          of milestones is 4 – so we encourage you to follow that path.
+            <% @mission.milestones.each do |milestone| %>
+                <div class="milestone-box">
+                  <div class="milestone">
+                    <%= link_to milestone_path(milestone), method: :patch do %>
+                      <% if milestone.in_progress?%>
+                        <i class="far fa-square"></i>
+                      <% else %>
+                        <i class="far fa-check-square"></i>
+                      <% end %>
+                    <% end %> <%= milestone.description %>
+                    <%= link_to milestone_path(milestone), method: :delete, data: { confirm: "Do you really want to delete this milestone?" }  do %>
+                        <i class="far fa-trash-alt small-icon"></i>
+                    <% end %>
+                  </div>
+                </div>
+            <% end %>
+            <%= render 'milestones/new', mission: @mission %>
           <% else %>
-            <p>You haven't defined any milestones for your mission yet.</p>
-            <%= link_to " + Add Milestone", "root_path", class:"contract-link-large" %>
+            <p>Milestones are an important part of your journey.
+            The experience of our users has shown that the optimal number
+          of milestones is 4 – so we encourage you to follow that path.
+          You haven't defined any milestones for your mission yet.</p>
+            <%= render 'milestones/new', mission: @mission %>
           <% end %>
       </div>
     <div>
@@ -44,11 +65,30 @@
   <% if @mission.contract_id == nil %>
     <div class="contract-info-box-bordered">
       <h4>Mission Status</h4>
+        <% @declined_contracts.each do |contract| %>
+          <% if contract.asker_id == current_user.id %>
+            <p><%= link_to contract.receiver.first_name, mission_path(id: contract.receiver.missions.last.id), class:"pink"%>
+            has declined signing the contract with you.</p>
+          <% elsif contract.receiver_id == current_user.id %>
+            <p>You have declined signing a contract with <%= contract.asker.first_name %> for their mission
+            <%= link_to contract.asker.missions.last.title, mission_path(id: contract.asker.missions.last.id), class:"pink"%>.
+            </p>
+          <% end %>
+        <% end %>
       <p>You have not found a buddy for your mission yet.</p>
       <%= link_to "Find buddy", missions_path, class:"contract-link-large" %>
     </div>
   <% else %>
     <div class="contract-info-box">
+      <% if @mission.contract_id %>
+        <% if @contract.signed? %>
+          <p class="contract-sign">Contract signed </p>
+        <% elsif current_user.id == @contract_asker.id %>
+          <p class="contract-request-sent">Contract request sent </p>
+        <% else %>
+          <p class="contract-request-received">Contract request </p>
+        <% end %>
+      <% end %>
       <h4>Mission Status</h4>
       <% if @mission.contract_id %>
         <% if @contract.signed? %>

@@ -66,25 +66,42 @@
     <!--  End of User Card -->
 
     <!--  Box for Messaging and Contract -->
+
     <% if current_user.missions.last.contract_signed? == false && @mission.contract_id == nil %>
-      <div class="contact-buddy-box">
-        <!--  Message -->
-        <!--  Hier muss der richtige Path rein -->
-        <!--  Contract Request -->
-        <% if current_user.missions.last.contract_id == nil %>
-          <div>
-            <p class="light-20">You found your perfect buddy? Send a request to sign the contract together!<br>
-            <%= link_to "Send contract request", contracts_path(mission: @mission), method: :post %></p>
+        <% if current_user.contracts_as_asker.length > 0 %>
+            <% current_user.contracts_as_asker.each do |contract| %>
+              <% if contract.declined? && contract.receiver_id == @mission.user_id %>
+                <div class="contact-buddy-box">
+                  <p class="contract-decline">Contract declined </p>
+                  <p>We are sorry, but <%= @mission.user.first_name %> has declined to sign a contract with you.
+                  Start looking for another buddy.</p>
+                  <%= link_to "Find buddy", missions_path, class:"contract-link-large" %>
+                </div>
+              <% else %>
+                <% if current_user.missions.last.contract_id == nil %>
+                  <div class="contact-buddy-box">
+                    <div>
+                      <p class="light-20">You found your perfect buddy? Send a request to sign the contract together!<br>
+                      <%= link_to "Send contract request", contracts_path(mission: @mission), method: :post %></p>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+            <% end %>
+        <% elsif current_user.missions.last.contract_id == nil %>
+          <div class="contact-buddy-box">
+            <div>
+              <p class="light-20">You found your perfect buddy? Send a request to sign the contract together!<br>
+              <%= link_to "Send contract request", contracts_path(mission: @mission), method: :post %></p>
+            </div>
           </div>
         <% end %>
       </div>
-     <% end %>
+    <% end %>
     <!--  End of Box for Messaging and Contract -->
     <% if @mission.contract_id %>
       <% if current_user.missions.last.contract_id == @mission.contract_id && current_user.missions.last.contract_signed? %>
         <div class="contact-buddy-box">
-        <!--  Message -->
-        <!--  Hier muss der richtige Path rein -->
           <div>
             <p class="light-20">Wanna chat with your buddy? <br>
             <%= link_to "Start Chatting", chatroom_path(1) %></p>
@@ -92,7 +109,25 @@
           </div>
         <div class="space-mt-40"></div>
       </div>
-     <% end %>
+      <% elsif current_user.missions.last.contract_id == @mission.contract_id && current_user.id == @contract_asker.id%>
+        <div class="contact-buddy-box">
+          <div>
+            <p class="contract-decline">Contract request sent </p>
+            <p class="light-20">You have sent <%= @mission.user.first_name %> a contract request.
+            Now you just have to wait for their reply.
+          </div>
+        <div class="space-mt-40"></div>
+      <% else %>
+        <div class="contact-buddy-box">
+          <div>
+            <p class="contract-request-received">Contract request</p>
+            <p class="light-20">You have a contract request from <%= @contract_asker.first_name %>.</p>
+            <%= link_to "Accept", accept_contract_path(id: @contract.id, mission: @mission), method: :patch, class:"contract-link-large" %>
+            <%= link_to "Decline", decline_contract_path(id: @contract.id, mission: @mission), method: :patch, class:"contract-link-large-yellow" %>
+          </div>
+        <div class="space-mt-40"></div>
+      <% end %>
+      </div>
     <% end %>
 
 

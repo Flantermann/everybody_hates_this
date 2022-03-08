@@ -2,6 +2,7 @@ class MissionsController < ApplicationController
 before_action :set_mission, only: [:show, :edit, :update, :destroy]
 
   def index
+<<<<<<< HEAD
     @missions = policy_scope(Mission)
     @missions = nil
     if params[:category].present?
@@ -19,6 +20,9 @@ before_action :set_mission, only: [:show, :edit, :update, :destroy]
     #create filter functions for index in def index
     #index in JS: Step 4 in tutorial
     #pg_search gem in gemfile
+=======
+    @missions = policy_scope(Mission.where.not(user_id: current_user.id).where(contract_id: nil))
+>>>>>>> master
   end
 
   def accomplished_missions
@@ -43,6 +47,8 @@ before_action :set_mission, only: [:show, :edit, :update, :destroy]
   end
 
   def show
+    @milestone = Milestone.new
+    @declined_contracts = Contract.all.where(status: "declined")
     if @mission.contract_id
       @contract = Contract.find_by(id: @mission.contract_id)
       @contract_asker = User.find_by(id: @contract.asker_id)
@@ -54,8 +60,6 @@ before_action :set_mission, only: [:show, :edit, :update, :destroy]
   end
 
   def update
-    # when a contract is created, the contract_id of the mission
-    # where the contract was created should be updated to the id of said contract
     if @mission.update(mission_params)
       redirect_to @mission, notice: "Your mission was successfully updated"
     else
