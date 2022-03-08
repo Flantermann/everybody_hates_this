@@ -25,7 +25,7 @@
   <!-- Mission Card -->
     <div class="dashboard-mission-card">
       <% if @current_mission %>
-        <% if @current_contract %>
+        <% if @current_contract && @current_mission.finished? == false%>
           <% if @current_contract.signed? %>
             <p class="contract-sign">Contract signed </p>
           <% elsif current_user.id == @contract_asker.id %>
@@ -34,8 +34,11 @@
             <p class="contract-request-received">Contract request </p>
           <% end %>
         <% end %>
+        <% if @current_mission.finished? == true%>
+          <p class="contract-sign">Mission accomplished </p>
+        <% end %>
         <h3> Your current mission: <%=  @current_mission.title %> </h3>
-          <% if @buddy_mission %>
+          <% if @buddy_mission && @buddy_mission.finished? == false && @current_mission.finished? == false %>
             <p class="light-20">
             You have done it - you found your buddy and you are getting your shit done! This is truly amazing and we are very proud of you.</p>
             <p class="light-20"> Your buddy for this mission is <%= @buddy_mission.user.first_name %>. Have you checked in on them today?<br>
@@ -43,6 +46,10 @@
             <%= link_to "View Mission", mission_path(@current_mission), class:"dashboard-mission-link" %> <br>
             <%= link_to "View Buddy Mission", mission_path(@buddy_mission), class:"dashboard-buddy-mission-link" %> <br>
             <%= link_to "Show Contract", contract_path(@current_contract), class:"dashboard-contract-link" %>
+          <% elsif @buddy_mission && @buddy_mission.finished? == false && @current_mission.finished? == true %>
+            <p>You have finished but your buddy hasn't finished theirs yet. Help them!</p>
+          <% elsif @buddy_mission && @buddy_mission.finished? == true && @current_mission.finished? == true %>
+            <p>You have both finished your missions!</p>
           <% elsif @current_contract %>
             <% if current_user.id == @current_contract.asker.id %>
               <p class="light-20">Well done! You have sent a contract request
