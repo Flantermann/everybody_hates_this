@@ -68,7 +68,7 @@
     <!--  Box for Messaging and Contract -->
 
     <% if current_user.missions.last.contract_signed? == false && @mission.contract_id == nil %>
-        <% if current_user.contracts_as_asker %>
+        <% if current_user.contracts_as_asker.length > 0 %>
             <% current_user.contracts_as_asker.each do |contract| %>
               <% if contract.declined? && contract.receiver_id == @mission.user_id %>
                 <div class="contact-buddy-box">
@@ -88,9 +88,7 @@
                 <% end %>
               <% end %>
             <% end %>
-        <% end %>
-
-        <% if current_user.missions.last.contract_id == nil %>
+        <% elsif current_user.missions.last.contract_id == nil %>
           <div class="contact-buddy-box">
             <div>
               <p class="light-20">You found your perfect buddy? Send a request to sign the contract together!<br>
