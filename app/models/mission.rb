@@ -1,10 +1,6 @@
 class Mission < ApplicationRecord
-  include PgSearch::Model 
-  pg_search_scope :mission_search,
-  against: [:category, :timeframe ],
-  using: {
-    tsearch: {any_word: true}
-  }
+  scope :filter_by_category, -> (category) { where category: category}
+  scope :filter_by_timeframe, -> (timeframe) { where timeframe: timeframe}
 
   belongs_to :user
   # das auskommentiert, weil jetzt contract to user belongs

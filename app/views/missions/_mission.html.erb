@@ -74,7 +74,7 @@
         <h4>Filter by category</h1>
         <div class="categories">
           <%= simple_form_for :search, url: missions_path, method: "GET", remote: true, html: {id: "category-form"} do |f| %>
-          <%= f.input :categories, label: "Category",  collection: Mission.categories.keys, as: :check_boxes, onClick: "test"%>
+          <%= f.input :categories, label: "Category",  collection: Mission.categories.keys, as: :check_boxes %>
           <%= link_to "Reset", missions_path %>
           <% end %>
           <%# <input type="checkbox" value=2 class="category-button"><i class="far fa-folder-open"></i> Administrative Tasks</a>

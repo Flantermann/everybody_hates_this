@@ -3,17 +3,17 @@ before_action :set_mission, only: [:show, :edit, :update, :destroy]
 
   def index
     @missions = policy_scope(Mission)
-    if params
-      Mission.where({ category: params["categories"] })
-     # @filter = params["categories"]["category"].concat(params["categories"]).flatten.reject(&:blank?)
-      #raise
-      #@missions = Mission.all.mission_search("#{@filter}")
+    @missions = nil
+    if params[:category].present?
+      @missions = Mission.all.filter_by_category(params[:category])
+    elsif params[:timeframe].present?
+      @missions = Mission.all.filter_by_timeframe(params[:timeframe])
     else
       @missions = Mission.all
     end
     respond_to do |format|
       format.html
-      format.js
+      format.json
     end  
     #make the category form in the view
     #create filter functions for index in def index
