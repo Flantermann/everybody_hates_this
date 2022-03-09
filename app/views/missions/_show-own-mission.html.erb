@@ -98,8 +98,7 @@
         <% if @contract.signed? && @mission.finished? == false %>
           <div>
             <p>You have done it! This is truly amazing and
-              we are very proud of you.</p>
-            <p> You have signed a contract for this mission with your buddy
+              we are very proud of you. You have signed a contract for this mission with your buddy
               <% if current_user.id == @contract_asker.id  %>
                 <%= @contract.receiver.first_name %>.
               <% else %>
@@ -109,7 +108,7 @@
             <%= link_to "Show Contract", contract_path(@contract), class:"contract-link-large" %>
             <p></p>
             <p>Have you finished your mission? Yes? Go ahead, click the button already.</p>
-            <div class="center">
+            <div class="center-mt-30">
               <%= link_to "Mission Accomplished", finish_mission_path(@mission), method: :patch, class:"mission-accomplish" %></p>
             </div>
           </div>
@@ -136,7 +135,7 @@
     <% end %>
     </div>
   <% end %>
-
+<div class="space-mt-40"></div>
 
 
 
