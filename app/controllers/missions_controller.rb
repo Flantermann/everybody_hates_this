@@ -1,5 +1,5 @@
 class MissionsController < ApplicationController
-  before_action :set_mission, only: [:show, :edit, :update, :destroy]
+  before_action :set_mission, only: [:show, :edit, :update, :destroy, :finish]
   def index
     @missions = policy_scope(Mission.where.not(user_id: current_user.id).where(contract_id: nil))
   end
@@ -33,6 +33,12 @@ class MissionsController < ApplicationController
       @contract_asker = User.find_by(id: @contract.asker_id)
       @contract_receiver = User.find_by(id: @contract.receiver_id)
     end
+  end
+
+  def finish
+    @mission.update(finished?: true)
+    @mission.save
+    redirect_to mission_path(@mission), notice: "Congratulations! You have finished your mission!"
   end
 
   def edit

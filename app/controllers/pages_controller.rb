@@ -11,6 +11,7 @@ class PagesController < ApplicationController
     @my_missions = @user.missions
     @current_mission = @my_missions.last
     @accomplished_missions = @my_missions.where(finished?: true)
+    @declined_contracts = Contract.all.where(status: "declined")
     if @current_mission
       if @current_mission.contract_id
         @current_contract = Contract.find_by(id: @current_mission.contract_id)
@@ -23,12 +24,5 @@ class PagesController < ApplicationController
       end
     end
   end
-end
 
-  def show
-    if @mission.contract_id
-      @contract = Contract.find_by(id: @mission.contract_id)
-      @contract_asker = User.find_by(id: @contract.asker_id)
-      @contract_receiver = User.find_by(id: @contract.receiver_id)
-    end
-  end
+end
