@@ -1,8 +1,4 @@
 .footer {
-   position: fixed;
-   left: 0;
-   bottom: 0;
-   width: 100%;
    background-color: $bg-shade-1;
    color: $pink-variant;
    & .container {
@@ -17,4 +13,10 @@
 .footer-title {
   font-family: "VT323", monospace;
   font-size: 25px;
+}
+
+.page-container {
+display: grid;
+grid-template-rows: auto 1fr auto;
+min-height: 100vh;
 }
