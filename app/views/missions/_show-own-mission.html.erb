@@ -132,7 +132,8 @@
             <%= link_to "Decline", decline_contract_path(id: @contract, mission: @mission), method: :patch, class:"contract-link-large-yellow" %>
           </div>
         <% else %>
-          <p>Congratulations! You have finished your mission! Wooo-hooooooo!</p>
+          <p>Congratulations! You have finished your mission! Wooo-hooooooo! <br>
+          <%= link_to "Show Contract", contract_path(@contract), class:"pink" %> </p>
           <p>Time to start your next mission right away...</p>
           <%= link_to "Start Mission", new_mission_path, class:"contract-link-large"  %>
         <% end %>
