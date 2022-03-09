@@ -69,6 +69,11 @@
             <% end %>
           </div>
           <div class="space-mt-20"></div>
+          <% if @asker_mission.finished? == true %>
+            <div>
+              <p><span class="pink"><i class="fas fa-check"></i></span> <%= @asker_mission.user.first_name %> has finished their mission</p>
+            </div>
+          <% end %>
         </div>
         <div class="contract-promise">
           <p class="light-20">I, <span class="em-text"><%= @asker_mission.user.first_name %> <%= @asker_mission.user.last_name %></span>, hereby promise to accomplish my mission
@@ -108,6 +113,11 @@
               <% end %>
             <% end %>
           <div class="space-mt-20"></div>
+          <% if @receiver_mission.finished? == true %>
+            <div>
+              <p><span class="pink"><i class="fas fa-check"></i></span> <%= @receiver_mission.user.first_name %> has finished their mission</p>
+            </div>
+          <% end %>
         </div>
         <div class="contract-promise">
           <p class="light-20">I, <span class="em-text"><%= @receiver_mission.user.first_name %> <%= @receiver_mission.user.last_name %></span>, hereby promise to accomplish my mission
