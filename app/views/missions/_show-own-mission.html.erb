@@ -105,6 +105,13 @@
                 <%= @contract.asker.first_name %>.
               <% end %>
             </p>
+            <% if current_user.id == @contract_asker.id && @contract_receiver.missions.last.finished? == true %>
+              <p>Beware: <%= @contract_receiver.first_name %> has finished their mission, yay to them! What about you?
+            What is stopping you? Don't hesitate to ask your buddy for help or advice.</p>
+            <% elsif current_user.id == @contract_receiver.id && @contract_asker.missions.last.finished? == true %>
+               <p>Beware: <%= @contract_asker.first_name %> has finished their mission, yay to them! What about you?
+            What is stopping you? Don't hesitate to ask your buddy for help or advice.</p>
+            <% end %>
             <%= link_to "Show Contract", contract_path(@contract), class:"contract-link-large" %>
             <p></p>
             <p>Have you finished your mission? Yes? Go ahead, click the button already.</p>
