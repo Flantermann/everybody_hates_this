@@ -99,13 +99,13 @@
           <div>
             <p>You have done it! This is truly amazing and
               we are very proud of you.</p>
-              <p> You have signed a contract for this mission with your buddy
-                <% if current_user.id == @contract_asker.id  %>
-                  <%= @contract.receiver.first_name %>.
-                <% else %>
-                  <%= @contract.asker.first_name %>.
-                <% end %>
-              </p>
+            <p> You have signed a contract for this mission with your buddy
+              <% if current_user.id == @contract_asker.id  %>
+                <%= @contract.receiver.first_name %>.
+              <% else %>
+                <%= @contract.asker.first_name %>.
+              <% end %>
+            </p>
             <%= link_to "Show Contract", contract_path(@contract), class:"contract-link-large" %>
             <p></p>
             <p>Have you finished your mission? Yes? Go ahead, click the button already.</p>
