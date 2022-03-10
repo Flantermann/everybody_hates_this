@@ -1,6 +1,6 @@
 // Container for title, subline and button
 .banner {
-  height: 60vh;
+  height: 55vh;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -31,17 +31,20 @@
 .home-teaser-box {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 20px;
+  grid-gap: 30px;
   margin-top: 30px;
   margin-bottom: 100px;
 }
 
 // teaser card
 .home-teaser-card {
-  padding: 10px 60px 10px 60px;
+  padding: 10px 20px 10px 20px;
   text-align: center;
   background-color: $bg-shade-1;
   border-radius: 8px;
+  & h4 {
+    font-size: 22px;
+  }
 }
 
 .home-teaser-skull {
@@ -56,7 +59,8 @@
 
 .home-teaser-text {
   font-weight: lighter;
-  font-size: 20px;
+  line-height: 1.5;
+  word-spacing: 4px;
 }
 
 // Homepage responsive with 2 media queries
