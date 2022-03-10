@@ -4,66 +4,65 @@
 <h1 class="heading-40-pink-variant">Your Mission</h1>
 <div class="space-mt-20"></div>
 
-
-  <% if policy(@mission).edit? %>
-    <%= link_to "update", edit_mission_path(@mission) %>
-  <% end %>
-  <% if policy(@mission).destroy? %>
-    <%= link_to "delete", mission_path(@mission), method: :delete, data: { confirm: "Are you sure?" } %>
-  <% end %>
-
-
-  <div class="mission-grid-container">
-    <!--  Mission Card -->
-    <div class="mission-card">
-      <h2> <%= @mission.title %> </h2>
-      <p> <%= @mission.description %> </p>
-      <h5> Buddy preferences </h5>
-      <p>  My buddy should be between
-          <%= @mission.prefered_buddy_age_start %> and <%= @mission.prefered_buddy_age_end %> years old
-      <% if @mission.prefered_buddy_location.humanize.capitalize == "in_my_area"%>
-         and should live in my area.</p>
-      <% else %>
-        and can live anywhere in the world.</p>
+<div class="mission-grid-container">
+  <!--  Mission Card -->
+  <div class="mission-card">
+    <h2> <%= @mission.title %> </h2>
+    <p> <%= @mission.description %> </p>
+    <h5> Buddy preferences </h5>
+    <p>  My buddy should be between
+        <%= @mission.prefered_buddy_age_start %> and <%= @mission.prefered_buddy_age_end %> years old
+    <% if @mission.prefered_buddy_location.humanize.capitalize == "in_my_area"%>
+        and should live in my area.</p>
+    <% else %>
+      and can live anywhere in the world.</p>
+    <% end %>
+    <div>
+      <% if policy(@mission).edit? %>
+        <%= link_to "update", edit_mission_path(@mission), class:"update-mission-link" %>
+      <% end %>
+      <% if policy(@mission).destroy? %>
+        <%= link_to "delete", mission_path(@mission), class:"delete-mission-link", method: :delete, data: { confirm: "Are you sure?" } %>
       <% end %>
     </div>
-    <% if @mission.finished? == false %>
+  </div>
 
+  <% if @mission.finished? == false %>
+    <!--  Milestones -->
+    <div class="contract-info-box">
+      <h4>Milestones <span class="pink"><i class="far fa-gem"></i></span></h4>
+        <% if @mission.milestones.any? %>
+          <p>The experience of our users has shown that the optimal number
+        of milestones is 4 – so we encourage you to follow that path.
+          <% @mission.milestones.each do |milestone| %>
+              <div class="milestone-box">
+                <div class="milestone">
+                  <%= link_to milestone_path(milestone), method: :patch do %>
+                    <% if milestone.in_progress?%>
+                      <i class="far fa-square"></i>
+                    <% else %>
+                      <i class="far fa-check-square"></i>
+                    <% end %>
+                  <% end %> <%= milestone.description %>
+                  <%= link_to milestone_path(milestone), method: :delete, data: { confirm: "Do you really want to delete this milestone?" }  do %>
+                      <i class="far fa-trash-alt small-icon"></i>
+                  <% end %>
+                </div>
+              </div>
+          <% end %>
+          <%= render 'milestones/new', mission: @mission %>
+        <% else %>
+          <p>Milestones are an important part of your journey.
+          The experience of our users has shown that the optimal number
+        of milestones is 4 – so we encourage you to follow that path.
+        You haven't defined any milestones for your mission yet.</p>
+          <%= render 'milestones/new', mission: @mission %>
+        <% end %>
+    </div>
+    <!--  Empty div for grid purposes -->
+    <div> </div>
+  <% end %>
 
-        <!--  Milestones -->
-        <div class="contract-info-box">
-          <h4>Milestones <span class="pink"><i class="far fa-gem"></i></span></h4>
-            <% if @mission.milestones.any? %>
-              <p>The experience of our users has shown that the optimal number
-            of milestones is 4 – so we encourage you to follow that path.
-              <% @mission.milestones.each do |milestone| %>
-                  <div class="milestone-box">
-                    <div class="milestone">
-                      <%= link_to milestone_path(milestone), method: :patch do %>
-                        <% if milestone.in_progress?%>
-                          <i class="far fa-square"></i>
-                        <% else %>
-                          <i class="far fa-check-square"></i>
-                        <% end %>
-                      <% end %> <%= milestone.description %>
-                      <%= link_to milestone_path(milestone), method: :delete, data: { confirm: "Do you really want to delete this milestone?" }  do %>
-                          <i class="far fa-trash-alt small-icon"></i>
-                      <% end %>
-                    </div>
-                  </div>
-              <% end %>
-              <%= render 'milestones/new', mission: @mission %>
-            <% else %>
-              <p>Milestones are an important part of your journey.
-              The experience of our users has shown that the optimal number
-            of milestones is 4 – so we encourage you to follow that path.
-            You haven't defined any milestones for your mission yet.</p>
-              <%= render 'milestones/new', mission: @mission %>
-            <% end %>
-        </div>
-        <!--  Empty div for grid purposes -->
-      <div> </div>
-    <% end %>
   <% if @mission.contract_id == nil %>
     <div class="contract-info-box-bordered">
       <h4>Mission Status</h4>
@@ -145,8 +144,4 @@
   <% end %>
 <div class="space-mt-40"></div>
 
-
-
-
-
-  </div>
+</div>
