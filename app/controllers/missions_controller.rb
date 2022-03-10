@@ -1,7 +1,7 @@
 class MissionsController < ApplicationController
-  before_action :set_mission, only: [:show, :edit, :update, :destroy]
+  before_action :set_mission, only: [:show, :edit, :update, :destroy, :finish]
   def index
-    @missions = policy_scope(Mission)
+    @missions = policy_scope(Mission.where.not(user_id: current_user.id).where(contract_id: nil))
   end
 
   def accomplished_missions
@@ -26,6 +26,8 @@ class MissionsController < ApplicationController
   end
 
   def show
+    @milestone = Milestone.new
+    @declined_contracts = Contract.all.where(status: "declined")
     if @mission.contract_id
       @contract = Contract.find_by(id: @mission.contract_id)
       @contract_asker = User.find_by(id: @contract.asker_id)
@@ -34,12 +36,16 @@ class MissionsController < ApplicationController
     @chatroom = Chatroom.new
   end
 
+  def finish
+    @mission.update(finished?: true)
+    @mission.save
+    redirect_to mission_path(@mission), notice: "Congratulations! You have finished your mission!"
+  end
+
   def edit
   end
 
   def update
-    # when a contract is created, the contract_id of the mission
-    # where the contract was created should be updated to the id of said contract
     if @mission.update(mission_params)
       redirect_to @mission, notice: "Your mission was successfully updated"
     else

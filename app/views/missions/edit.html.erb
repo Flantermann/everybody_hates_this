@@ -1,7 +1,11 @@
 <div class="container mt-5">
-  <div>
-    <h1>Edit your Mission</h1>
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-6">
+      <%= link_to 'Back', 'javascript:history.back()', class:"back-link" %>
+      <div class="space-mt-20"></div>
+      <h1 class="heading-40-pink-variant">Edit your mission</h1>
+      <div class="space-mt-40"></div>
+      <%= render "form" %>
+    </div>
   </div>
-
-  <%= render "form" %>
 </div>

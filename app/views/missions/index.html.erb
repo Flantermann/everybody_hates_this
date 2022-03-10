@@ -9,12 +9,12 @@
                       You can start looking for your match, exchange message with
                       potential buddys and then, when you are sure, you can take
                       the leap of faith and sign a contract together!</p>
+                      <p class="light-20">There are <span class="blue"> <%=@missions.length%> people </span>who match your buddy criteria. </p>
   </div>
 
   <div class="index-grid">
     <div>
       <% @missions.each do |mission| %>
-        <% unless mission.contract_id || mission.user == current_user %>
         <div class="mission-grid">
           <div class="mission-box">
             <div class="time-category">
@@ -67,7 +67,29 @@
           </div>
         </div>
        <% end %>
-      <% end %>
+    </div>
+    <div class="filter-options">
+      <div class="filter-category">
+        <h4>Filter by category</h1>
+        <div class="categories">
+          <a href="", class="category-button"><i class="far fa-folder-open"></i> Administrative Tasks</a>
+          <a href="", class="category-button"><i class="fas fa-spa"></i> Body & Mind</a>
+          <a href="", class="category-button"><i class="fas fa-house-damage"></i> Household</a>
+          <a href="", class="category-button"><i class="far fa-heart"></i> Relationships</a>
+          <a href="", class="category-button"><i class="fas fa-briefcase"></i> Work Life</a>
+          <a href="", class="category-button"><i class="fas fa-random"></i> Miscellaneous</a>
+        </div>
+      </div>
+      <div class="filter-timeframe">
+        <h4>Filter by timeframe</h1>
+        <div class="categories">
+          <a href="", class="category-button"><i class="far fa-clock"></i> 3 to 7 days</a>
+          <a href="", class="category-button"><i class="far fa-clock"></i> 1 to 2 weeks</a>
+          <a href="", class="category-button"><i class="far fa-clock"></i> 2 to 4 weeks</a>
+          <a href="", class="category-button"><i class="far fa-clock"></i> 4 to six weeks</a>
+          <a href="", class="category-button"><i class="far fa-clock"></i> More than 6 weeks</a>
+        </div>
+      </div>
     </div>
   </div>
   <div class="space-mt-80"></div>

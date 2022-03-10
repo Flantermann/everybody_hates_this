@@ -81,8 +81,17 @@
   }
 }
 
+.blue {
+  color: $lightblue-variant;
+}
+
 .center {
   text-align: center;
+}
+
+.center-mt-30 {
+  text-align: center;
+  margin-top: 30px;
 }
 
 .back-link {

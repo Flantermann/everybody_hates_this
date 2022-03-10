@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => { sessions: 'users/sessions' }
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :chatrooms, only: [ :index, :show, :create] do
@@ -8,6 +8,13 @@ Rails.application.routes.draw do
   resources :missions do
     resources :milestones, only: :create
   end
+
+  resources :missions do
+    member do
+      patch 'finish', to: "missions#finish"
+    end
+  end
+
   resources :milestones, only: [ :update, :destroy ]
   resources :contracts, only: [ :new, :create, :show ] do
     member do
@@ -17,4 +24,6 @@ Rails.application.routes.draw do
   end
 
   get '/dashboard', to: 'pages#dashboard'
+  get '/about', to: 'pages#about'
+  get '/blog', to: 'pages#blog'
 end

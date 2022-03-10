@@ -2,6 +2,32 @@
   <div class="space-mt-20">   <p>   </p> </div>
   <%= link_to 'Back', 'javascript:history.back()', class:"back-link" %>
   <div class="space-mt-40"></div>
+  <% if @asker_mission.finished? == true && @receiver_mission.finished? == true %>
+    <%= image_tag "fireworks.png", class:"contract-icon" %>
+    <%= image_tag "party.png", class:"contract-icon" %>
+    <%= image_tag "fireworks.png", class:"contract-icon" %>
+    <%= image_tag "party.png", class:"contract-icon" %>
+    <%= image_tag "fireworks.png", class:"contract-icon" %>
+    <%= image_tag "party.png", class:"contract-icon" %>
+    <%= image_tag "fireworks.png", class:"contract-icon" %>
+    <%= image_tag "party.png", class:"contract-icon" %>
+    <%= image_tag "fireworks.png", class:"contract-icon" %>
+    <%= image_tag "party.png", class:"contract-icon" %>
+    <p class="light-20">Wooooo-hooooooooooooo! Congratulations, you two super humans! You have both fullfilled
+    your contract and finished your missions. We are super proud of you. We hope you enjoyed the process and will
+    start many more missions to finally get your shit together for good.</p>
+    <%= image_tag "fireworks.png", class:"contract-icon" %>
+    <%= image_tag "party.png", class:"contract-icon" %>
+    <%= image_tag "fireworks.png", class:"contract-icon" %>
+    <%= image_tag "party.png", class:"contract-icon" %>
+    <%= image_tag "fireworks.png", class:"contract-icon" %>
+    <%= image_tag "party.png", class:"contract-icon" %>
+    <%= image_tag "fireworks.png", class:"contract-icon" %>
+    <%= image_tag "party.png", class:"contract-icon" %>
+    <%= image_tag "fireworks.png", class:"contract-icon" %>
+    <%= image_tag "party.png", class:"contract-icon" %>
+  <% end %>
+
   <%# <h1 class="heading-40-pink-variant">This could be the start of something wonderful...</h1>
   <p class="light-20">
     Studies have shown that making something “official” is the best way to actually get through with it.
@@ -27,6 +53,27 @@
           </div>
           <h3 class="contract-heading-mission"> <%= @asker_mission.title %></h3>
           <p> <%= @asker_mission.description %> </p>
+          <div>
+            <% if @asker_mission.milestones.any? %>
+              <h5>Milestones</h5>
+              <% @asker_mission.milestones.each do |milestone|  %>
+                <div class="milestone-contract">
+                  <% if milestone.in_progress? %>
+                    <i class="far fa-square"></i>
+                  <% else %>
+                    <i class="far fa-check-square"></i>
+                  <% end %>
+                  <%= milestone.description %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="space-mt-20"></div>
+          <% if @asker_mission.finished? == true %>
+            <div>
+              <p><span class="pink"><i class="fas fa-check"></i></span> <%= @asker_mission.user.first_name %> has finished their mission</p>
+            </div>
+          <% end %>
         </div>
         <div class="contract-promise">
           <p class="light-20">I, <span class="em-text"><%= @asker_mission.user.first_name %> <%= @asker_mission.user.last_name %></span>, hereby promise to accomplish my mission
@@ -36,6 +83,7 @@
         </div>
         <div class="contract-signed">
           <span class="pink"><i class="fas fa-check"></i></span> <%= @asker_mission.user.first_name %> has signed this contract</div>
+          <div class="space-mt-20"></div>
         </div>
       <div class="buddy-contract">
          <div class="image-box">
@@ -51,6 +99,25 @@
           </div>
           <h3 class="contract-heading-mission"> <%= @receiver_mission.title %> </h3>
           <p> <%= @receiver_mission.description %> </p>
+           <% if @receiver_mission.milestones.any? %>
+              <h5>Milestones</h4>
+              <% @receiver_mission.milestones.each do |milestone|  %>
+                <div class="milestone-contract">
+                  <% if milestone.in_progress? %>
+                    <i class="far fa-square"></i>
+                  <% else %>
+                    <i class="far fa-check-square"></i>
+                  <% end %>
+                  <%= milestone.description %>
+                </div>
+              <% end %>
+            <% end %>
+          <div class="space-mt-20"></div>
+          <% if @receiver_mission.finished? == true %>
+            <div>
+              <p><span class="pink"><i class="fas fa-check"></i></span> <%= @receiver_mission.user.first_name %> has finished their mission</p>
+            </div>
+          <% end %>
         </div>
         <div class="contract-promise">
           <p class="light-20">I, <span class="em-text"><%= @receiver_mission.user.first_name %> <%= @receiver_mission.user.last_name %></span>, hereby promise to accomplish my mission
@@ -60,7 +127,9 @@
         </div>
         <div class="contract-signed">
           <span class="pink"><i class="fas fa-check"></i></span> <%= @receiver_mission.user.first_name %> has signed this contract</div>
+          <div class="space-mt-20"></div>
         </div>
+
       </div>
     </div>
   </div>
