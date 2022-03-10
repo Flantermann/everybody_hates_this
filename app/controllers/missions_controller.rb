@@ -4,15 +4,21 @@ class MissionsController < ApplicationController
     @missions = policy_scope(Mission)
     @missions = nil
     if params[:category].present?
-      @missions = Mission.all.filter_by_category(params[:category])
+      @missions = Mission.where(category: params[:category])
+      if params[:timeframe].present?
+        @missions = Mission.where(timeframe: params[:timeframe])
+      end
     elsif params[:timeframe].present?
-      @missions = Mission.all.filter_by_timeframe(params[:timeframe])
+      @missions = Mission.where(timeframe: params[:timeframe])
+      if  params[:category].present?
+        @missions = Mission.where(category: params[:category])
+      end
     else
       @missions = Mission.all
     end
     respond_to do |format|
       format.html
-      format.json
+      format.text { render partial: 'missions/mission', locals: { missions: @missions }, formats: [:html] }
     end  
     #make the category form in the view
     #create filter functions for index in def index

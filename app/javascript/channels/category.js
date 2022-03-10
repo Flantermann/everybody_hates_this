@@ -18,5 +18,3 @@ const initCategoryForm = () => {
     });
     }
 }
-
-export { initCategoryForm }
