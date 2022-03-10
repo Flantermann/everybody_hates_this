@@ -25,7 +25,7 @@
   <!-- Mission Card -->
     <div class="dashboard-mission-card">
       <% if @current_mission %>
-        <% if @current_contract %>
+        <% if @current_contract && @current_mission.finished? == false%>
           <% if @current_contract.signed? %>
             <p class="contract-sign">Contract signed </p>
           <% elsif current_user.id == @contract_asker.id %>
@@ -34,8 +34,13 @@
             <p class="contract-request-received">Contract request </p>
           <% end %>
         <% end %>
-        <h3> Your current mission: <%=  @current_mission.title %> </h3>
-          <% if @buddy_mission %>
+        <% if @current_mission.finished? == true%>
+          <p class="contract-sign">Mission accomplished </p>
+        <% end %>
+        <% if @current_mission.finished? == false%>
+          <h3> Your current mission: <%=  @current_mission.title %> </h3>
+        <% end %>
+          <% if @buddy_mission && @buddy_mission.finished? == false && @current_mission.finished? == false %>
             <p class="light-20">
             You have done it - you found your buddy and you are getting your shit done! This is truly amazing and we are very proud of you.</p>
             <p class="light-20"> Your buddy for this mission is <%= @buddy_mission.user.first_name %>. Have you checked in on them today?<br>
@@ -43,6 +48,20 @@
             <%= link_to "View Mission", mission_path(@current_mission), class:"dashboard-mission-link" %> <br>
             <%= link_to "View Buddy Mission", mission_path(@buddy_mission), class:"dashboard-buddy-mission-link" %> <br>
             <%= link_to "Show Contract", contract_path(@current_contract), class:"dashboard-contract-link" %>
+          <% elsif @buddy_mission && @buddy_mission.finished? == false && @current_mission.finished? == true %>
+            <p class="light-20">Congratulations, <%=current_user.first_name %>! You have finished your mission. What a great accomplishment.
+             But your buddy <%=@buddy_mission.user.first_name %> hasn't finished their mission yet. Help them keep on track, please!
+             Only when you both finish your missions, your contract will be fullfilled!</p>
+             <%= link_to "View Buddy Mission", mission_path(@buddy_mission), class:"dashboard-buddy-mission-link" %>
+          <% elsif @buddy_mission && @buddy_mission.finished? == true && @current_mission.finished? == false%>
+            <p class="light-20">Your buddy <%=@buddy_mission.user.first_name%> has finished their mission, yay to them! What about you?
+            What is stopping you? Don't hesitate to ask your buddy for help or advice. Or if nothing helps anymore,
+            don't be shy, book a session with a professional coach.</p>
+            <%= link_to "View Mission", mission_path(@current_mission), class:"dashboard-mission-link" %>
+          <% elsif @buddy_mission && @buddy_mission.finished? == true && @current_mission.finished? == true %>
+            <p class="light-20">Congratulations, you super human! You and your buddy have both finished your missions. What a time to be alive...</p>
+            <p class="light-20">If there's anything else that you always wanted to do but never did: now is the time. Just start another mission!</p>
+            <%= link_to "Start mission", new_mission_path, class:"dashboard-mission-link" %>
           <% elsif @current_contract %>
             <% if current_user.id == @current_contract.asker.id %>
               <p class="light-20">Well done! You have sent a contract request
@@ -60,7 +79,17 @@
               <%= link_to "View my mission", mission_path(@current_mission), class:"dashboard-mission-link" %> <br>
             <% end %>
           <% elsif @current_mission.contract_id == nil %>
-            <p class="light-20">You have not found a buddy for this mission yet. Start Looking! </p>
+            <% @declined_contracts.each do |contract| %>
+              <% if contract.asker_id == current_user.id %>
+                <p class="light-20">So sorry! <%= link_to contract.receiver.first_name, mission_path(id: contract.receiver.missions.last.id), class:"pink"%>
+                has declined signing the contract with you.</p>
+              <% elsif contract.receiver_id == current_user.id %>
+                <p class="light-20">You have declined signing a contract with <%= contract.asker.first_name %> for their mission
+                <%= link_to contract.asker.missions.last.title, mission_path(id: contract.asker.missions.last.id), class:"pink"%>.
+              </p>
+              <% end %>
+            <% end %>
+            <p class="light-20">You have not found a buddy for this mission yet.</p>
             <%= link_to "Find buddy", missions_path, class:"dashboard-buddy-mission-link" %> <br>
             <%= link_to "View Mission", mission_path(@current_mission), class:"dashboard-mission-link" %> <br>
           <% end %>
@@ -85,7 +114,7 @@
       <h3> Accomplished missions </h3>
       <% if @accomplished_missions.length > 0 %>
         <% @accomplished_missions.each do |mission| %>
-          <%= link_to mission.title, mission_path(mission) %>
+          <%= link_to mission.title, mission_path(mission), class:"contract-link-large"  %>
         <% end %>
       <% else %>
         <p class="light-20"> You have not finished any missions yet. As soon as you're done with your first mission, you will have access to it here. </p>

@@ -74,3 +74,16 @@
   right: 20px;
   bottom: 5px;
 }
+
+.mission-accomplish{
+  margin-top: 20px;
+  color: $yellow-variant;
+  font-size: 16px;
+  border: 1px solid $yellow-variant;
+  border-radius: 8px;
+  padding: 5px 10px 5px 10px;
+  &:hover {
+    color: $yellow;
+    text-decoration: none;
+  }
+}

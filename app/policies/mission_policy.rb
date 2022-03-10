@@ -9,6 +9,10 @@ class MissionPolicy < ApplicationPolicy
     return true
   end
 
+  def finish?
+    record.user == user
+  end
+
   def show?
     return true
   end
