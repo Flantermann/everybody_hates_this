@@ -25,6 +25,7 @@ class PagesController < ApplicationController
     end
   end
 
-  def about
-  end
+  def about; end
+
+  def blog; end
 end
