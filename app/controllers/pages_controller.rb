@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home ]
+  skip_before_action :authenticate_user!, only: [ :home, :about, :blog ]
 
   def home
     general = Chatroom.find_by(name: "general")
