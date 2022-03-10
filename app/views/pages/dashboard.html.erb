@@ -37,7 +37,9 @@
         <% if @current_mission.finished? == true%>
           <p class="contract-sign">Mission accomplished </p>
         <% end %>
-        <h3> Your current mission: <%=  @current_mission.title %> </h3>
+        <% if @current_mission.finished? == false%>
+          <h3> Your current mission: <%=  @current_mission.title %> </h3>
+        <% end %>
           <% if @buddy_mission && @buddy_mission.finished? == false && @current_mission.finished? == false %>
             <p class="light-20">
             You have done it - you found your buddy and you are getting your shit done! This is truly amazing and we are very proud of you.</p>
