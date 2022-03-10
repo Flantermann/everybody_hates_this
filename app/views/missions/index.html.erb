@@ -1,96 +1,38 @@
-<div class="container">
-  <div class="space-mt-40"></div>
-  <%= link_to 'Back', 'javascript:history.back()', class:"back-link" %>
-  <div class="space-mt-20"></div>
-  <h1 class="heading-40-lightblue">Find your buddy</h1>
-  <div class="buddy-intro">
-    <p class="light-20">This is it. The final step.
-                      All these people want to get their shit together - together!
-                      You can start looking for your match, exchange message with
-                      potential buddys and then, when you are sure, you can take
-                      the leap of faith and sign a contract together!</p>
-                      <p class="light-20">There are <span class="blue"> <%=@missions.length%> people </span>who match your buddy criteria. </p>
-  </div>
+ <div id="missions">
+    <div class="container">
+    <div class="space-mt-40"></div>
+    <%= link_to 'Back', 'javascript:history.back()', class:"back-link" %>
+    <div class="space-mt-20"></div>
+    <h1 class="heading-40-lightblue">Find your buddy</h1>
+    <div class="buddy-intro">
+      <p class="light-20">This is it. The final step.
+                        All these people want to get their shit together - together!
+                        You can start looking for your match, exchange message with
+                        potential buddys and then, when you are sure, you can take
+                        the leap of faith and sign a contract together!</p>
+    </div>
 
-  <div class="index-grid">
-    <div>
-      <% @missions.each do |mission| %>
-        <div class="mission-grid">
-          <div class="mission-box">
-            <div class="time-category">
-              <% if mission.category == "body_and_mind" %>
-                <div>
-                  <p class="category"> <i class="fas fa-spa"></i> Body & Mind </p>
-                </div>
-              <% elsif mission.category == "miscellaneous" %>
-                <div>
-                  <p class="category"> <i class="fas fa-random"></i> Miscellaneous </p>
-                </div>
-              <% elsif mission.category == "administrative_tasks" %>
-                <div>
-                  <p class="category"> <i class="far fa-folder-open"></i> Administrative Tasks </p>
-                </div>
-              <% elsif mission.category == "relationships" %>
-                <div>
-                  <p class="category"> <i class="far fa-heart"></i> Relationships </p>
-                </div>
-              <% elsif mission.category == "work_life" %>
-                <div>
-                  <p class="category"> <i class="fas fa-briefcase"></i> Work Life </p>
-                </div>
-              <% elsif mission.category == "household" %>
-                <div>
-                  <p class="category"> <i class="fas fa-house-damage"></i> Household </p>
-                </div>
-              <% end %>
-
-              <div>
-                <p class="timeframe"> <i class="far fa-clock"></i> <%= mission.timeframe.humanize.capitalize %> </p>
-              </div>
+    <div class="index-grid" data-controller="filtering">
+    <%= render "mission", missions: @missions %>
+      <div class="filter-options">
+        <div class="filter-category">
+          <h4>Filter by category</h1>
+          <div class="categories">
+            <%= simple_form_for :search, url: missions_path, method: "GET", remote: true, html: {id: "category-form", data: {filtering_target: "form"}} do |f| %>
+            <%= f.input :categories, label: "Category",  collection: Mission.categories.keys, as: :check_boxes, input_html: {data: {filtering_target: "input", action: "change->filtering#update"}} %>
+            <%= link_to "Reset", missions_path %>
             </div>
-
-            <div>
-              <h2 class="heading-24-spaced"> <%= link_to mission.title, mission_path(mission), class:"link" %> </h2>
-            </div>
-            <div>
-              <p class="light"> <%= mission.description %> </p>
-            </div>
-          </div>
-          <div class="user-box">
-            <% if mission.user.photo.attached? %>
-                <%= cl_image_tag mission.user.photo.key, class:"avatar-large" %>
-            <% else %>
-              <%= image_tag "user_3.png", class:"avatar-large" %>
+        </div>
+        <div class="filter-timeframe">
+          <h4>Filter by timeframe</h1>
+          <div class="categories">
+            <%= f.input :timeframes, label: "Timeframe",  collection: Mission.timeframes.keys, as: :check_boxes, input_html: {data: {filtering_target: "input", action: "change->filtering#update"}} %>
+            <%= link_to "Reset", missions_path %>
             <% end %>
-            <h4 class="user-mission-card-title center"> <%= mission.user.first_name %> (<%= mission.user.age %>)</h4>
-            <p class="center user-address"> <%= mission.user.address%> </p>
-          </div>
-        </div>
-       <% end %>
-    </div>
-    <div class="filter-options">
-      <div class="filter-category">
-        <h4>Filter by category</h1>
-        <div class="categories">
-          <a href="", class="category-button"><i class="far fa-folder-open"></i> Administrative Tasks</a>
-          <a href="", class="category-button"><i class="fas fa-spa"></i> Body & Mind</a>
-          <a href="", class="category-button"><i class="fas fa-house-damage"></i> Household</a>
-          <a href="", class="category-button"><i class="far fa-heart"></i> Relationships</a>
-          <a href="", class="category-button"><i class="fas fa-briefcase"></i> Work Life</a>
-          <a href="", class="category-button"><i class="fas fa-random"></i> Miscellaneous</a>
-        </div>
-      </div>
-      <div class="filter-timeframe">
-        <h4>Filter by timeframe</h1>
-        <div class="categories">
-          <a href="", class="category-button"><i class="far fa-clock"></i> 3 to 7 days</a>
-          <a href="", class="category-button"><i class="far fa-clock"></i> 1 to 2 weeks</a>
-          <a href="", class="category-button"><i class="far fa-clock"></i> 2 to 4 weeks</a>
-          <a href="", class="category-button"><i class="far fa-clock"></i> 4 to six weeks</a>
-          <a href="", class="category-button"><i class="far fa-clock"></i> More than 6 weeks</a>
+            </div>
         </div>
       </div>
     </div>
+    <div class="space-mt-80"></div>
   </div>
-  <div class="space-mt-80"></div>
 </div>
