@@ -155,7 +155,10 @@
   background-color: transparent;
   // padding: 10px 5px 10px 20px;
   // border-radius: 8px;
-  height: fit-content;
+  // height: fit-content;
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .filter-category {
