@@ -1,4 +1,4 @@
-      <div data-filtering-target="list">
+
         <% @missions.each do |mission| %>
           <% unless mission.contract_id || mission.user == current_user %>
           <div class="mission-grid">
@@ -52,6 +52,6 @@
               <p class="center user-address"> <%= mission.user.address%> </p>
             </div>
           </div>
+          <div></div>
         <% end %>
         <% end %>
-      </div>
