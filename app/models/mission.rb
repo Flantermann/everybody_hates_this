@@ -20,12 +20,12 @@ class Mission < ApplicationRecord
   pg_search_scope :search_by_category, against: [ :category ]
   pg_search_scope :search_by_timeframe, against: [ :timeframe]
 
-  after_create :create_chatroom
+  # after_create :create_chatroom
 
-  private
+  # private
 
-  def create_chatroom
-    Chatroom.create(name: "chat-#{id}", mission: self) # <= same as self.id, we assoicate a chatroom with a mission
-    # Chatroom.create(name: "chat-#{id}", mission: self) # <= same as self.id, we assoicate a chatroom with a mission
-  end
+  # def create_chatroom
+  #   Chatroom.create(name: "chat-#{id}", mission: self) # <= same as self.id, we assoicate a chatroom with a mission
+  #   # Chatroom.create(name: "chat-#{id}", mission: self) # <= same as self.id, we assoicate a chatroom with a mission
+  # end
 end
