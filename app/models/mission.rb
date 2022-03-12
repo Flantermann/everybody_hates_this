@@ -1,4 +1,7 @@
 class Mission < ApplicationRecord
+  scope :filter_by_category, -> (category) { where category: category}
+  scope :filter_by_timeframe, -> (timeframe) { where timeframe: timeframe}
+
   belongs_to :user
   # das auskommentiert, weil jetzt contract to user belongs
   # belongs_to :contract, optional: true
