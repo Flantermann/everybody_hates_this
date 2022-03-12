@@ -15,7 +15,7 @@ class Mission < ApplicationRecord
   validates :title, :category, :timeframe, :prefered_buddy_location, presence: true
   validates :prefered_buddy_age_start, presence: true, numericality: { only_integer: true, greater_than: 11 }
   validates :prefered_buddy_age_end, presence: true, numericality: { only_integer: true, greater_than: :prefered_buddy_age_start }
-  include PgSearch::Model
-  pg_search_scope :search_by_category, against: [ :category ]
-  pg_search_scope :search_by_timeframe, against: [ :timeframe]
+  # include PgSearch::Model
+  # pg_search_scope :search_by_category, against: [ :category ]
+  # pg_search_scope :search_by_timeframe, against: [ :timeframe]
 end
