@@ -1,3 +1,5 @@
+
+
 <!-- app/views/chatrooms/show.html.erb -->
 <div class="container">
   <div class="row justify-content-center">
@@ -31,6 +33,7 @@
       </div>
       <div class="space-mt-30"></div>
       <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
+        <%= token_tag %>
         <%= f.input :content, label: false, placeholder: "Message", input_html: { class: 'input-line' } %>
       <% end %>
     </div>

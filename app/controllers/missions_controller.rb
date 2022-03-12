@@ -19,7 +19,7 @@ class MissionsController < ApplicationController
     respond_to do |format|
       format.html
       format.text { render partial: 'missions/mission', locals: { missions: @missions }, formats: [:html] }
-    end  
+    end
     #make the category form in the view
     #create filter functions for index in def index
     #index in JS: Step 4 in tutorial
@@ -56,7 +56,7 @@ class MissionsController < ApplicationController
       @contract_asker = User.find_by(id: @contract.asker_id)
       @contract_receiver = User.find_by(id: @contract.receiver_id)
     end
-    @chatroom = Chatroom.new
+    @chatroom = @mission.chatroom
   end
 
   def finish

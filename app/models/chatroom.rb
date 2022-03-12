@@ -1,5 +1,6 @@
 class Chatroom < ApplicationRecord
   has_many :messages
+  has_one :mission
   belongs_to :sender_one, class_name: :User, optional: true
   belongs_to :sender_two, class_name: :User, optional: true
   belongs_to :mission
