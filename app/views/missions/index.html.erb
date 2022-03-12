@@ -1,38 +1,25 @@
- <div id="missions">
-    <div class="container">
-    <div class="space-mt-40"></div>
-    <%= link_to 'Back', 'javascript:history.back()', class:"back-link" %>
-    <div class="space-mt-20"></div>
-    <h1 class="heading-40-lightblue">Find your buddy</h1>
-    <div class="buddy-intro">
-      <p class="light-20">This is it. The final step.
-                        All these people want to get their shit together - together!
-                        You can start looking for your match, exchange message with
-                        potential buddys and then, when you are sure, you can take
-                        the leap of faith and sign a contract together!</p>
-    </div>
-
-    <div class="index-grid" data-controller="filtering">
-    <%= render "mission", missions: @missions %>
-      <div class="filter-options">
-        <div class="filter-category">
-          <h4>Filter by category</h1>
-          <div class="categories">
-            <%= simple_form_for :search, url: missions_path, method: "GET", remote: true, html: {id: "category-form", data: {filtering_target: "form"}} do |f| %>
-            <%= f.input :categories, label: "Category",  collection: Mission.categories.keys, as: :check_boxes, input_html: {data: {filtering_target: "input", action: "change->filtering#update"}} %>
-            <%= link_to "Reset", missions_path %>
-            </div>
-        </div>
-        <div class="filter-timeframe">
-          <h4>Filter by timeframe</h1>
-          <div class="categories">
-            <%= f.input :timeframes, label: "Timeframe",  collection: Mission.timeframes.keys, as: :check_boxes, input_html: {data: {filtering_target: "input", action: "change->filtering#update"}} %>
-            <%= link_to "Reset", missions_path %>
-            <% end %>
-            </div>
-        </div>
-      </div>
-    </div>
-    <div class="space-mt-80"></div>
+<div class="container">
+  <div class="space-mt-40"></div>
+  <%= link_to 'Back', 'javascript:history.back()', class:"back-link" %>
+  <div class="space-mt-20"></div>
+  <h1 class="heading-40-lightblue">Find your buddy</h1>
+  <div class="buddy-intro">
+    <p class="light-20">This is it. The final step.
+                    All these people want to get their shit together - together!
+                    You can start looking for your match, exchange message with
+                    potential buddys and then, when you are sure, you can take
+                    the leap of faith and sign a contract together!</p>
   </div>
+  <div class="search-form">
+     <%= form_with url: missions_path, method: :get do |form| %>
+      <%= form.select :category, [["Choose a category", ""],["Miscellaneous", 0], ["Body & Mind", 1], ["Administrative Tasks", 2], ["Relationships", 3], ["Work Life", 4], ["Household", 5]], selected: params[:category]%>
+      <%= form.select :timeframe, [["Choose a timeframe", ""],["Three to seven days", 0], ["1 to 2 weeks", 1], ["2 to 4 weeks", 2], ["4 to 6 weeks", 3], ["more than 6 weeks", 4]], selected: params[:timeframe] %>
+      <%= form.submit "Filter" %>
+    <% end %>
+  </div>
+
+  <div class="index-grid">
+    <%= render "mission", missions: @missions %>
+  </div>
+  <div class="space-mt-80"></div>
 </div>

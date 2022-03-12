@@ -1,19 +1,28 @@
 .index-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-gap: 30px;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 40px;
+  margin-top: 30px;
 }
 
 .mission-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
+  // display: grid;
+  // grid-template-columns: 2fr 1fr;
   background-color: #181726;
-  grid-gap: 30px;
-  margin-top: 30px;
-  // border: 1px solid $lightblue;
+  // grid-gap: 30px;
+  // margin-top: 30px;
   border-radius: 8px;
-  padding: 10px 5px 10px 20px;
+  // padding: 10px 5px 10px 20px;
   position: relative;
+}
+
+.mission-complete {
+  background-color: #181726;
+  border-radius: 8px;
+  padding: 10px 20px 0px 20px;
+  & h2 {
+    font-size: 24px;
+  }
 }
 
 .mission-grid-dashboard {
@@ -22,7 +31,6 @@
   background-color: #181726;
   grid-gap: 30px;
   margin-top: 30px;
-  // border: 1px solid $lightblue;
   border-radius: 8px;
   padding: 10px 5px 10px 20px;
   min-height: 290px;
@@ -39,7 +47,8 @@
   border-radius: 8px;
   padding: 2px 8px 2px 8px;
   color: $yellow-variant;
-  margin-left: 20px;
+  margin-left: 16px;
+  font-size: 12px;
 }
 
 .category {
@@ -47,22 +56,40 @@
   border-radius: 8px;
   padding: 2px 8px 2px 8px;
   color: $pink-variant;
+  font-size: 12px;
 }
 
 .mission-box {
-  border-right: 1px solid $bg-shade-3;
-  padding-right: 20px;
+  border-bottom: 1px solid $bg-shade-3;
+  // padding-right: 20px;
+  min-height: 170px;
 }
 
 .user-box {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  // justify-content: center;
   align-items: center;
-  padding-right: 16px;
+  // padding-right: 16px;
+  margin-bottom: 10px;
+  margin-top: 10px;
   h4 {
-    margin-top: 20px;
+    font-size: 20px;
+    margin: 0px;
+    padding: 0px;
   }
+  p {
+    margin: 0px;
+    padding: 0px;
+  }
+}
+
+.user-info {
+  padding-left: 15px;
+}
+
+.user-address {
+  font-size: 14px;
 }
 
 .buddy-intro {
@@ -112,13 +139,6 @@
   .user-address {
     font-size: 12px;
   }
-
-  // .time-category {
-  //   display: flex;
-  //   flex-direction: column;
-  //   align-items: flex-start;
-  //   margin-top: 10px;
-  // }
 }
 
 
@@ -135,7 +155,10 @@
   background-color: transparent;
   // padding: 10px 5px 10px 20px;
   // border-radius: 8px;
-  height: fit-content;
+  // height: fit-content;
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .filter-category {

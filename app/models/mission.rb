@@ -1,6 +1,6 @@
 class Mission < ApplicationRecord
-  scope :filter_by_category, -> (category) { where category: category}
-  scope :filter_by_timeframe, -> (timeframe) { where timeframe: timeframe}
+  # scope :filter_by_category, -> (category) { where category: category}
+  # scope :filter_by_timeframe, -> (timeframe) { where timeframe: timeframe}
 
   belongs_to :user
   # das auskommentiert, weil jetzt contract to user belongs
@@ -16,6 +16,7 @@ class Mission < ApplicationRecord
   validates :title, :category, :timeframe, :prefered_buddy_location, presence: true
   validates :prefered_buddy_age_start, presence: true, numericality: { only_integer: true, greater_than: 11 }
   validates :prefered_buddy_age_end, presence: true, numericality: { only_integer: true, greater_than: :prefered_buddy_age_start }
+<<<<<<< HEAD
 
   after_create :create_chatroom
 
@@ -25,4 +26,9 @@ class Mission < ApplicationRecord
     Chatroom.create(name: "chat-#{id}", mission: self) # <= same as self.id, we assoicate a chatroom with a mission
     # Chatroom.create(name: "chat-#{id}", mission: self) # <= same as self.id, we assoicate a chatroom with a mission
   end
+=======
+  include PgSearch::Model
+  pg_search_scope :search_by_category, against: [ :category ]
+  pg_search_scope :search_by_timeframe, against: [ :timeframe]
+>>>>>>> master
 end
