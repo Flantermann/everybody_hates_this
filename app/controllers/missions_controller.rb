@@ -1,30 +1,21 @@
 class MissionsController < ApplicationController
   before_action :set_mission, only: [:show, :edit, :update, :destroy, :finish]
   def index
-    @missions = policy_scope(Mission)
+    @missions = policy_scope(Mission.where.not(user_id: current_user.id).where(contract_id: nil))
     @missions = nil
-    if params[:category].present?
-      @missions = Mission.where(category: params[:category])
-      if params[:timeframe].present?
-        @missions = Mission.where(timeframe: params[:timeframe])
-      end
+    if params[:category].present? && params[:timeframe].present?
+      @missions = Mission.where(category: params[:category], timeframe: params[:timeframe])
     elsif params[:timeframe].present?
       @missions = Mission.where(timeframe: params[:timeframe])
-      if  params[:category].present?
-        @missions = Mission.where(category: params[:category])
-      end
+    elsif params[:category].present?
+      @missions = Mission.where(category: params[:category])
     else
       @missions = Mission.all
     end
     respond_to do |format|
       format.html
       format.text { render partial: 'missions/mission', locals: { missions: @missions }, formats: [:html] }
-    end  
-    #make the category form in the view
-    #create filter functions for index in def index
-    #index in JS: Step 4 in tutorial
-    #pg_search gem in gemfile
-    @missions = policy_scope(Mission.where.not(user_id: current_user.id).where(contract_id: nil))
+    end
   end
 
   def accomplished_missions
