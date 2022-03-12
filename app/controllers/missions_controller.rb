@@ -16,11 +16,6 @@ class MissionsController < ApplicationController
       format.html
       format.text { render partial: 'missions/mission', locals: { missions: @missions }, formats: [:html] }
     end
-    #make the category form in the view
-    #create filter functions for index in def index
-    #index in JS: Step 4 in tutorial
-    #pg_search gem in gemfile
-    @missions = policy_scope(Mission.where.not(user_id: current_user.id).where(contract_id: nil))
   end
 
   def accomplished_missions
