@@ -129,7 +129,10 @@
           <span class="pink"><i class="fas fa-check"></i></span> <%= @receiver_mission.user.first_name %> has signed this contract</div>
           <div class="space-mt-20"></div>
         </div>
-
+        <div>
+          <p class="light-20">Wanna chat with your buddy? <br>
+          <%= link_to "Start Chatting", chatroom_path(@chatroom) %></p>
+        </div>
       </div>
     </div>
   </div>
