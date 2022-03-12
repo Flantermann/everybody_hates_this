@@ -49,7 +49,7 @@ class ContractsController < ApplicationController
     @asker_mission = @contract.asker.missions.where(contract_id: @contract.id).first
     @receiver_mission = @contract.receiver.missions.where(contract_id: @contract.id).first
 
-    @chatroom = @contract.chatroom
+    # @chatroom = @contract.chatroom
   end
 
   def destroy

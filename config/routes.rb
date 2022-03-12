@@ -28,6 +28,6 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'pages#dashboard'
   get '/about', to: 'pages#about'
   get '/blog', to: 'pages#blog'
-  match "/404", to: "errors#not_found", via: :all
-  match "/500", to: "errors#internal_server_error", via: :all
+  # match "/404", to: "errors#not_found", via: :all
+  # match "/500", to: "errors#internal_server_error", via: :all
 end
