@@ -7,6 +7,13 @@ class Mission < ApplicationRecord
   # belongs_to :contract, optional: true
   has_many :milestones
 
+  # Since the other user is identified by their mission
+  has_one :chatroom, dependent: :destroy
+
+  after_create :create_chatroom
+
+  # validate :not_equal
+
   enum category: { miscellaneous: 0, body_and_mind: 1, administrative_tasks: 2, relationships: 3, work_life: 4, household: 5 }
   enum timeframe: { Three_to_seven_days: 0, one_to_two_weeks: 1, two_to_four_weeks: 2, four_to_six_weeks: 3, more_than_six_weeks: 4 }
   enum prefered_buddy_location: { in_my_area: 0, can_be_anywhere: 1 }
@@ -15,5 +22,17 @@ class Mission < ApplicationRecord
   validates :title, :category, :timeframe, :prefered_buddy_location, presence: true
   validates :prefered_buddy_age_start, presence: true, numericality: { only_integer: true, greater_than: 11 }
   validates :prefered_buddy_age_end, presence: true, numericality: { only_integer: true, greater_than: :prefered_buddy_age_start }
+
+  private
+
+  # def not_equal
+  #   if mission == current_user
+  #     errors.add(:user_id, "You can't be the same person, that's not what you came for...")
+  #   end
+  # end
+
+  def create_chatroom
+    Chatroom.create(name: "Chat-#{id}", mission: self) # <= same as self.id, we assoicate a chatroom with a mission
+  end
 
 end

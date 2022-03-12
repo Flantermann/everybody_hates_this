@@ -33,6 +33,10 @@
       <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
         <%= f.input :content, label: false, placeholder: "Message", input_html: { class: 'input-line' } %>
       <% end %>
+    <script>
+      // make the conversation shift to focous on input
+      document.getElementById('messages').scrollIntoView({ behavior: 'smooth', block: 'end' })
+    </script>
     </div>
 
   </div>
