@@ -10,7 +10,7 @@ class Contract < ApplicationRecord
   private
 
   def create_chatroom
-    Chatroom.create(name: "chat-#{asker.first_name}", contract: self) # <= same as self.id, we assoicate a chatroom with a contract
+    Chatroom.create(name: "Chat: #{asker.nickname} & #{receiver.nickname}", contract: self) # <= same as self.id, we assoicate a chatroom with a contract
     # Chatroom.create(name: "chat-#{id}", mission: self) # <= same as self.id, we assoicate a chatroom with a mission
   end
 end

@@ -45,10 +45,15 @@ ActiveRecord::Schema.define(version: 2022_03_12_113033) do
 
   create_table "chatrooms", force: :cascade do |t|
     t.string "name"
+    t.boolean "is_private", default: false
+    t.bigint "sender_one_id"
+    t.bigint "sender_two_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "contract_id"
     t.index ["contract_id"], name: "index_chatrooms_on_contract_id"
+    t.index ["sender_one_id"], name: "index_chatrooms_on_sender_one_id"
+    t.index ["sender_two_id"], name: "index_chatrooms_on_sender_two_id"
   end
 
   create_table "contracts", force: :cascade do |t|
@@ -128,6 +133,8 @@ ActiveRecord::Schema.define(version: 2022_03_12_113033) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "chatrooms", "contracts"
+  add_foreign_key "chatrooms", "users", column: "sender_one_id"
+  add_foreign_key "chatrooms", "users", column: "sender_two_id"
   add_foreign_key "contracts", "users", column: "asker_id"
   add_foreign_key "contracts", "users", column: "receiver_id"
   add_foreign_key "messages", "chatrooms"
