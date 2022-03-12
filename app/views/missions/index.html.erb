@@ -11,9 +11,10 @@
                     the leap of faith and sign a contract together!</p>
   </div>
   <div class="search-form">
-    <%= form_with url: missions_path, method: :get do |form| %>
-      <%= form.select :query, [["Chose a category", ""],["Miscellaneous", 0], ["Body & Mind", 1], ["Administrative Tasks", 2], ["Relationships", 3], ["Work Life", 4], ["Household", 5]], selected: '""'%>
-      <%= form.submit "Filter by category" %>
+     <%= form_with url: missions_path, method: :get do |form| %>
+      <%= form.select :category, [["Choose a category", ""],["Miscellaneous", 0], ["Body & Mind", 1], ["Administrative Tasks", 2], ["Relationships", 3], ["Work Life", 4], ["Household", 5]], selected: params[:category]%>
+      <%= form.select :timeframe, [["Choose a timeframe", ""],["Three to seven days", 0], ["1 to 2 weeks", 1], ["2 to 4 weeks", 2], ["4 to 6 weeks", 3], ["more than 6 weeks", 4]], selected: params[:timeframe] %>
+      <%= form.submit "Filter" %>
     <% end %>
   </div>
 
