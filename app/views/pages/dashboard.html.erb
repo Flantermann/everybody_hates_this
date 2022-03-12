@@ -52,6 +52,7 @@
             <%= link_to "Go to Mission", mission_path(@current_mission), class:"dashboard-mission-link" %> <br>
             <%= link_to "Go to Buddy Mission", mission_path(@buddy_mission), class:"dashboard-buddy-mission-link" %> <br>
             <%= link_to "Show Contract", contract_path(@current_contract), class:"dashboard-contract-link" %>
+            <%= link_to "Chat", chatroom_path(id: @current_contract.chatroom.id) %>
           <% elsif @buddy_mission && @buddy_mission.finished? == false && @current_mission.finished? == true %>
             <p class="light-20">Congratulations, <%=current_user.first_name %>! You have finished your mission. What a great accomplishment.
              But your buddy <%=@buddy_mission.user.first_name %> hasn't finished their mission yet. Help them keep on track, please!
