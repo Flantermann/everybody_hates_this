@@ -1,11 +1,12 @@
 class MessagesController < ApplicationController
-skip_before_action :verify_authenticity_token
-skip_after_action :verify_authorized
+# skip_before_action :verify_authenticity_token
+# skip_after_action :verify_authorized
 
 
   def create
     @chatroom = Chatroom.find(params[:chatroom_id])
     @message = Message.new(message_params)
+    authorize @message
     @message.chatroom = @chatroom
     @message.user = current_user
     if @message.save
@@ -17,6 +18,8 @@ skip_after_action :verify_authorized
       render "chatrooms/show"
     end
   end
+
+
 
   private
 

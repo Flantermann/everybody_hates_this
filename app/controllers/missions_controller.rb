@@ -47,6 +47,7 @@ class MissionsController < ApplicationController
       @contract_asker = User.find_by(id: @contract.asker_id)
       @contract_receiver = User.find_by(id: @contract.receiver_id)
     end
+    # @chatroom = @mission.chatroom
   end
 
   def finish

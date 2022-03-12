@@ -55,7 +55,7 @@
 
 # # rails db:seed
 
-# 10 credible seeds are here:
+# (IN)credible seeds are here:
 
 require 'csv'
 

@@ -80,7 +80,8 @@
         <div class="contact-buddy-box">
           <div>
             <p class="light-20">Wanna chat with your buddy? <br>
-            <%= link_to "Start Chatting", chatroom_path(1) %></p>
+            <%# <% raise %> %>
+            <%= link_to "Start Chatting", chatroom_path(@mission.chatroom) %></p>
             <%# <%= link_to "Send Message", mission_path(@mission), method: :post %>
           </div>
         <div class="space-mt-40"></div>
@@ -105,6 +106,9 @@
       <% end %>
       </div>
     <% end %>
-
+    <%# <div> %>
+      <%# <p class="light-20">Wanna chat with your buddy? <br> %>
+      <%# <%= link_to "Start Chatting", chatroom_path(@chatroom) %>
+    <%# </div> %>
 
   </div>
