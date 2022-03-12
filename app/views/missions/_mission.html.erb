@@ -1,3 +1,37 @@
+<<<<<<< HEAD
+=======
+
+        <% @missions.each do |mission| %>
+          <% unless mission.contract_id || mission.user == current_user %>
+          <div class="mission-grid">
+            <div class="mission-box">
+              <div class="time-category">
+                <% if mission.category == "body_and_mind" %>
+                  <div>
+                    <p class="category"> <i class="fas fa-spa"></i> Body & Mind </p>
+                  </div>
+                <% elsif mission.category == "miscellaneous" %>
+                  <div>
+                    <p class="category"> <i class="fas fa-random"></i> Miscellaneous </p>
+                  </div>
+                <% elsif mission.category == "administrative_tasks" %>
+                  <div>
+                    <p class="category"> <i class="far fa-folder-open"></i> Administrative Tasks </p>
+                  </div>
+                <% elsif mission.category == "relationships" %>
+                  <div>
+                    <p class="category"> <i class="far fa-heart"></i> Relationships </p>
+                  </div>
+                <% elsif mission.category == "work_life" %>
+                  <div>
+                    <p class="category"> <i class="fas fa-briefcase"></i> Work Life </p>
+                  </div>
+                <% elsif mission.category == "household" %>
+                  <div>
+                    <p class="category"> <i class="fas fa-house-damage"></i> Household </p>
+                  </div>
+                <% end %>
+>>>>>>> master
 
   <% @missions.each do |mission| %>
     <% unless mission.contract_id || mission.user == current_user %>
@@ -41,6 +75,7 @@
           <div>
             <p class="light"> <%= mission.description %> </p>
           </div>
+<<<<<<< HEAD
         </div>
         <div class="user-box">
           <% if mission.user.photo.attached? %>
@@ -58,3 +93,8 @@
 
     <% end %>
   <% end %>
+=======
+          <div></div>
+        <% end %>
+        <% end %>
+>>>>>>> master
