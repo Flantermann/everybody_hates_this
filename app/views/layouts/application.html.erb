@@ -1,6 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title><%= meta_title %></title>
+    <meta name="Everybody hates this" content="<%= meta_description %>">
+
+    <!-- Facebook Open Graph data -->
+    <meta property="Everybody hates this" content="<%= meta_title %>" />
+    <meta property="Everybody hates this - Home" content="website" />
+    <meta property="Everybody hates this" content="<%= request.original_url %>" />
+    <meta property="Everybody hates this - Logo" content="<%= 'skull.png' %>" />
+    <meta property="Get your shit together. Together." content="<%= meta_description %>" />
+    <meta property="Everybody hates this" content="<%= meta_title %>" />
+
+    <!-- Twitter Card data -->
+    <meta name="Everybody hates this - Logo" content='skull.png'>
+    <meta name="Everybody hates this" content="<%= DEFAULT_META["twitter_account"] %>">
+    <meta name="Everybody hates this" content="<%= meta_title %>">
+    <meta name="Get your shit together. Together." content="<%= meta_description %>">
+    <meta name="Everybody_hates_this" content="<%= DEFAULT_META["twitter_account"] %>">
+    <meta name="Everybody hates this - Logo" content="<%= 'skull.png' %>">
+    
     <title>Everybody Hates This</title>
     <%= favicon_link_tag asset_path('skull.png') %>
     <meta name="viewport" content="width=device-width,initial-scale=1">
