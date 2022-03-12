@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_05_104933) do
+ActiveRecord::Schema.define(version: 2022_03_12_113033) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,8 @@ ActiveRecord::Schema.define(version: 2022_03_05_104933) do
     t.bigint "sender_two_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "mission_id"
+    t.index ["mission_id"], name: "index_chatrooms_on_mission_id"
     t.index ["sender_one_id"], name: "index_chatrooms_on_sender_one_id"
     t.index ["sender_two_id"], name: "index_chatrooms_on_sender_two_id"
   end
@@ -130,6 +132,7 @@ ActiveRecord::Schema.define(version: 2022_03_05_104933) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "chatrooms", "missions"
   add_foreign_key "chatrooms", "users", column: "sender_one_id"
   add_foreign_key "chatrooms", "users", column: "sender_two_id"
   add_foreign_key "contracts", "users", column: "asker_id"
