@@ -1,5 +1,6 @@
 <div class="space-mt-20"></div>
 <h6>Add milestone <span class="plus">+</span></h6>
 <%= simple_form_for([ @mission, @milestone ], remote: true) do |f| %>
-  <%= f.input :description, label: false, input_html: { class: 'input-line' } %>
+  <%= f.input :description, label: false, input_html: { class: 'input-line' },
+  hint: "Attention: must be at least 10 characters"%>
 <% end %>
