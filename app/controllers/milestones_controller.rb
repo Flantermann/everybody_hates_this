@@ -31,7 +31,7 @@ class MilestonesController < ApplicationController
     if @milestone.save
       redirect_to @milestone.mission
     else
-      redirect_to root_path
+      redirect_to @milestone.mission, notice: "Sorry, something went wrong"
     end
   end
 
