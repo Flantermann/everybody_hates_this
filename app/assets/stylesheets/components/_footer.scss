@@ -1,16 +1,28 @@
 .footer {
    background-color: $bg-shade-1;
-   color: $pink-variant;
    margin-top: 40px;
    & .container {
      margin-top: 30px;
      margin-bottom: 20px;
-     display: grid;
-     grid-template-columns: 1fr 1fr 1fr 1fr;
-     grid-gap: 40px;
    }
 }
 
+.footer-content{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-links {
+  font-size: 16px;
+  padding-right: 30px;
+  color: $lightblue;
+  transition: color 0.5s ease;
+  &:hover {
+    color: $lightblue-variant;
+    text-decoration: none;
+  }
+}
 .footer-title {
   font-family: "VT323", monospace;
   font-size: 25px;
@@ -20,4 +32,18 @@
 display: grid;
 grid-template-rows: auto 1fr auto;
 min-height: 100vh;
+}
+
+.social-links {
+  & a {
+    color: $pink-variant;
+    font-size: 16px;
+    padding-right: 20px;
+    transition: color 0.5s ease;
+    &:hover {
+      color: $pink;
+      text-decoration: none;
+    }
+  }
+
 }
