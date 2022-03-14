@@ -83,7 +83,9 @@
             <% end %>
           <% elsif @buddy_mission && @buddy_mission.finished? == true && @current_mission.finished? == true %>
             <p class="light-20">Congratulations, you super human! You and your buddy have both finished your missions. What a time to be alive...</p>
-            <p class="light-20">If there's anything else that you always wanted to do but never did: now is the time. Just start another mission!</p>
+            <%= link_to "Chat with #{@buddy_mission.user.first_name}", chatroom_path(id: @current_contract.chatroom.id), class:"btn-chat-dashboard" %>
+            <div class="space-mt-20"></div>
+            <p class="light-20">If there's anything else that you always wanted to do but never did: just do it now and start another mission!</p>
             <%= link_to "Start mission", new_mission_path, class:"dashboard-mission-link" %>
           <% elsif @current_contract %>
             <% if current_user.id == @current_contract.asker.id %>
