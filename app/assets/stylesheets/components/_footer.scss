@@ -1,9 +1,11 @@
 .footer {
    background-color: $bg-shade-1;
    margin-top: 40px;
-   & .container {
+   & .footer-container {
      margin-top: 20px;
      margin-bottom: 20px;
+     padding-left: 25px;
+     padding-right: 15px;
    }
 }
 
@@ -14,12 +16,12 @@
 }
 
 .footer-links {
-  font-size: 16px;
+  font-size: 14px;
   padding-right: 30px;
-  color: $lightblue;
+  color: $white-1;
   transition: color 0.5s ease;
   &:hover {
-    color: $lightblue-variant;
+    color:white;
     text-decoration: none;
   }
 }
@@ -37,7 +39,7 @@ min-height: 100vh;
 .social-links {
   & a {
     color: $pink-variant;
-    font-size: 16px;
+    font-size: 20px;
     padding-right: 20px;
     transition: color 0.5s ease;
     &:hover {
