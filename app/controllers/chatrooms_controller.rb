@@ -1,8 +1,8 @@
 class ChatroomsController < ApplicationController
 
   def show
-    skip_authorization
     @chatroom = Chatroom.find(params[:id])
+    authorize @chatroom
     @message = Message.new
   end
 

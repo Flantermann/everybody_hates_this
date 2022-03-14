@@ -10,7 +10,6 @@ class ChatroomPolicy < ApplicationPolicy
   end
 
   def show?
-    return true
+    record.contract.asker.id == user.id || record.contract.receiver.id == user.id
   end
-
 end

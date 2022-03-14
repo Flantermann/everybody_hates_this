@@ -5,7 +5,6 @@ class MessagePolicy < ApplicationPolicy
     end
   end
 
-
   def create?
     true
   end
