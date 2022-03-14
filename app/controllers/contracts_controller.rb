@@ -1,4 +1,5 @@
 class ContractsController < ApplicationController
+  before_action :set_contract, only: [:accept, :decline, :show, :destroy]
   def new
     @contract = Contract.new
   end
@@ -25,7 +26,6 @@ class ContractsController < ApplicationController
   end
 
   def accept
-    set_contract
     @contract.asker.missions.last.update(contract_signed?: true)
     @contract.receiver.missions.last.update(contract_signed?: true)
     @contract.signed!
@@ -34,7 +34,6 @@ class ContractsController < ApplicationController
   end
 
   def decline
-    set_contract
     @contract.declined!
     @contract.asker.missions.last.update(contract_signed?: false)
     @contract.asker.missions.last.update(contract_id: nil)
@@ -45,13 +44,11 @@ class ContractsController < ApplicationController
   end
 
   def show
-    set_contract
     @asker_mission = @contract.asker.missions.where(contract_id: @contract.id).first
     @receiver_mission = @contract.receiver.missions.where(contract_id: @contract.id).first
   end
 
-  def destroy
-  end
+  def destroy; end
 
   private
 
