@@ -2,10 +2,12 @@
 
 <!-- app/views/chatrooms/show.html.erb -->
 <div class="container">
+<div class="space-mt-40"></div>
   <div class="row justify-content-center">
-    <div class="col-12 col-md-6">
+    <div class="col-12 col-md-6 chatroom-box">
+      <div class="space-mt-20"></div>
+      <h1 class="center"><%= @chatroom.name %></h1>
       <div class="space-mt-40"></div>
-      <h1><%= @chatroom.name %></h1>
       <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
         <% @chatroom.messages.each do |message| %>
           <% if message.user == current_user %>

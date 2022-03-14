@@ -3,6 +3,8 @@
   padding: 10px 20px 5px 20px;
   margin-bottom: 20px;
   border-radius: 20px 10px 1px 15px; /* top left, top right, bottom right, bottom left */
+  max-width: 80%;
+  overflow-wrap: break-word;
 }
 
 .buddy-message {
@@ -10,6 +12,8 @@
   padding: 10px 20px 5px 20px;
   margin-bottom: 20px;
   border-radius: 20px 10px 15px 5px; /* top left, top right, bottom right, bottom left */
+  max-width: 80%;
+  overflow-wrap: break-word;
 }
 
 .left {
@@ -19,4 +23,10 @@
 .right {
   display: flex;
   flex-direction: row-reverse;
+}
+
+.chatroom-box {
+  border: 1px solid $pink;
+  border-radius: 8px;
+  padding: 10px 30px 20px 30px;
 }
