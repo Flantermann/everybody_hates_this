@@ -7,6 +7,14 @@ class ApplicationController < ActionController::Base
   after_action :verify_authorized, except: :index, unless: :skip_pundit?
   after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
 
+  def default_url_options
+    { host: ENV["www.everybody-hates-this.xyz"] || "localhost:3000" }
+  end
+
+  # heroku config:set DOMAIN=www.my_product.com (not necessary if set)
+  # check if it works by typing: heroku config:get DOMAIN
+
+
   private
 
   def configure_permitted_parameters
