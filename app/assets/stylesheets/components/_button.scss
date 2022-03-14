@@ -87,3 +87,32 @@
     text-decoration: none;
   }
 }
+
+.btn-chat-dashboard {
+  font-size: 20px;
+  background-color: transparent;
+  color: $lightblue !important;
+  border-radius: 8px;
+  border: 1px solid $lightblue !important;
+  padding: 5px 15px 5px 15px !important;
+  text-align: center;
+  transition: color 0.3s ease;
+   &:hover {
+    color: $lightblue-variant !important;
+    text-decoration: none;
+    border: 1px solid $lightblue-variant !important;
+  }
+}
+
+.btn-chat-own-mission {
+  margin-top: 20px;
+  color: $lightblue;
+  font-size: 16px;
+  border: 1px solid $lightblue;
+  border-radius: 8px;
+  padding: 5px 10px 5px 10px;
+  &:hover {
+    color: $lightblue-variant;
+    text-decoration: none;
+  }
+}
