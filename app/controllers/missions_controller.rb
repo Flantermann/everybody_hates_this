@@ -1,16 +1,16 @@
 class MissionsController < ApplicationController
   before_action :set_mission, only: [:show, :edit, :update, :destroy, :finish]
   def index
-    @missions = policy_scope(Mission.where.not(user_id: current_user.id).where(contract_id: nil))
-    @missions = nil
+    @missions = policy_scope(Mission.where.not(user_id: current_user.id).where(finished?: false).where(contract_id: nil))
+    # @missions = nil
     if params[:category].present? && params[:timeframe].present?
-      @missions = Mission.where(category: params[:category], timeframe: params[:timeframe])
+      @missions = @missions.where(category: params[:category], timeframe: params[:timeframe])
     elsif params[:timeframe].present?
-      @missions = Mission.where(timeframe: params[:timeframe])
+      @missions = @missions.where(timeframe: params[:timeframe])
     elsif params[:category].present?
-      @missions = Mission.where(category: params[:category])
+      @missions = @missions.where(category: params[:category])
     else
-      @missions = Mission.all
+      @missions
     end
     respond_to do |format|
       format.html
