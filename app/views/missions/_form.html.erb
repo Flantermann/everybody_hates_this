@@ -1,30 +1,48 @@
 <%= simple_form_for(@mission) do |f| %>
   <div class="form-inputs">
-    <%= f.input :category,
-                :label => "Please choose the category that best describes your mission. If it doesn't fit any, there's always the miscellaneous section",
-                input_html: { class: 'input-line' } %>
-    <%= f.input :timeframe,
-                :label => "How long will it probably take you to finish your mission?",
-                input_html: { class: 'input-line' } %>
+    <%= f.input :category, as: :radio_buttons,
+                :label => "1. Please choose the category that best describes your mission. If it doesn't fit any, there's always the miscellaneous section.",
+                label_html: { class: 'category-label' },
+                input_html: { class: 'category-selector' },
+                item_wrapper_class: 'category-item' %>
+    <div class="space-mt-40"></div>
+    <%= f.input :timeframe, as: :radio_buttons,
+                :label => "2. How long will it probably take you to finish your mission?",
+                label_html: { class: 'timeframe-label' },
+                input_html: { class: 'timeframe-selector' },
+                item_wrapper_class: 'timeframe-item' %>
+    <div class="space-mt-40"></div>
     <%= f.input :title,
-                :label => "Now find a nice descriptive title for your mission",
+                :label => "3. Now find a nice descriptive title for your mission",
+                label_html: { class: 'generic-label' },
                 placeholder: 'e.g. Finally cleaning my smelly fridge',
                 input_html: { class: 'input-line' } %>
+    <div class="space-mt-40"></div>
     <%= f.input :description,
-                placeholder: 'Describe your mission',
-                input_html: { :rows => 10, class: 'input-line' } %>
+                :label => "4. Please describe your mission",
+                label_html: { class: 'generic-label' },
+                placeholder: 'I really need to get started...',
+                input_html: { :rows => 10, class: 'input-line' },
+                hint: "100 characters minimum" %>
+    <div class="space-mt-40"></div>
     <%= f.input :prefered_buddy_age_start,
-                :label => "How old should your buddy be at least?",
+                :label => "5. How old should your buddy be at least?",
+                label_html: { class: 'generic-label' },
                 placeholder: '12',
                 :collection => 12..70,
+                selected: 12,
                 input_html: { class: 'input-line' } %>
     <%= f.input :prefered_buddy_age_end,
-                :label => "And what is the maximum age they should have?",
+                :label => "6. And what is the maximum age they should have?",
+                label_html: { class: 'generic-label' },
                 placeholder: '102',
                 :collection => 18..102,
+                selected: 102,
                 input_html: { class: 'input-line' } %>
+    <div class="space-mt-40"></div>
     <%= f.input :prefered_buddy_location,
-                :label => "Your buddy should live...",
+                :label => "7. Your buddy should live...",
+                label_html: { class: 'generic-label' },
                 input_html: { class: 'input-line' } %>
     <% if f.object.new_record? %>
       <div class="button-center space-mt-30">
