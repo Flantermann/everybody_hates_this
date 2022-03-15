@@ -12,7 +12,7 @@ class MilestonesController < ApplicationController
     @milestone = Milestone.new(milestone_params)
     @milestone.mission = @mission
     if @milestone.save
-      redirect_to mission_path(@mission), notice: "Yes! You have added a milestone to your mission!"
+      redirect_to mission_path(@mission)
     else
       redirect_to mission_path(@mission), notice: "Sorry, something went wrong"
     end

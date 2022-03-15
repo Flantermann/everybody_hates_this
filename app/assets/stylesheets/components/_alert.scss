@@ -3,24 +3,25 @@
   bottom: 50%;
   left: 40%;
   z-index: 1000;
-  padding: 50px;
-  border: 4px solid $pink;
+  padding: 30px;
 }
 
 .alert-warning {
   color: $pink;
+  border: 4px solid $pink;
   font-size: 18px;
   background-color: $white-1;
 }
 
 .alert-info {
-  color: $pink;
+  color: $white-1;
+  border: 3px solid $pink-variant;
   font-size: 18px;
-  background-color: $bg-body;
+  background-color: $bg-shade-1;
 }
 
 .close {
-  color: $pink !important;
+  color: $pink-variant !important;
   opacity: 1;
   text-shadow: none;
 }
