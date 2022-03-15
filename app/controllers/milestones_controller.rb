@@ -37,8 +37,9 @@ class MilestonesController < ApplicationController
 
   def destroy
     set_milestone
+    @mission = Mission.find(params[:mission_id])
     @milestone.destroy
-    redirect_to @milestone.mission
+    redirect_to mission_path(@mission)
   end
 
   private
