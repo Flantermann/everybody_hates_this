@@ -61,7 +61,7 @@ class MissionsController < ApplicationController
 
   def update
     if @mission.update(mission_params)
-      redirect_to @mission, notice: "Your mission was successfully updated"
+      redirect_to mission_path(@mission), notice: "Your mission was successfully updated"
     else
       render :edit
     end
