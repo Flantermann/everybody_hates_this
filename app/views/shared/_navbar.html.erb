@@ -11,19 +11,19 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <%= link_to "About Us", about_path, class: "nav-link link-white active" %>
+      <li class="nav-item <%= is_active?(about_path)%>">
+        <%= link_to "About Us", about_path, class: "nav-link link-white" %>
       </li>
       <li class="nav-item">
         <%= link_to "Inspiration", root_path, class: "nav-link link-white" %>
       </li>
-      <li class="nav-item">
+      <li class="nav-item <%= is_active?(blog_path)%>">
         <%= link_to "Blog", blog_path, class: "nav-link link-white" %>
       </li>
       <% if user_signed_in? %>
         <%# <% if current_user.missions.last.finished? == true %>
         <!-- This needs to be commented in once everything works as wanted -->
-          <li class="nav-item">
+          <li class="nav-item <%= is_active?(new_mission_path)%>">
             <%= link_to "Start Mission", new_mission_path, class: "nav-link link-pink" %>
           </li>
         <%# <% end %>
