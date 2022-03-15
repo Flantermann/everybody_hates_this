@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'errors/not_found'
   get 'errors/internal_server_error'
-  devise_for :users, :controllers => { sessions: 'users/sessions' }
+  devise_for :users, :controllers => { sessions: 'users/sessions', registrations:'users/registrations' }
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :chatrooms, only: [ :index, :show, :create] do
