@@ -28,7 +28,7 @@
         <%= link_to "update", edit_mission_path(@mission), class:"update-mission-link" %>
       <% end %>
       <% if policy(@mission).destroy? %>
-        <%= link_to "delete", mission_path(@mission), class:"delete-mission-link", method: :delete, data: { confirm: "Are you sure?" } %>
+        <%= link_to "delete", mission_path(@mission), class:"update-mission-link", method: :delete, data: { confirm: "Are you sure?" } %>
       <% end %>
     </div>
   </div>
