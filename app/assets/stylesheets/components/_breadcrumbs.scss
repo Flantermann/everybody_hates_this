@@ -1,0 +1,17 @@
+.crumb {
+
+}
+
+.breadcrumbs-box {
+  color: $lightblue;
+  a {
+    color: $lightblue;
+    &:hover {
+      color: $lightblue-variant;
+      text-decoration: none;
+    }
+  }
+  span {
+    color: $white-1 !important;
+  }
+}

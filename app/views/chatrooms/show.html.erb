@@ -4,6 +4,15 @@
 <!-- app/views/chatrooms/show.html.erb -->
 <div class="container">
 <div class="space-mt-40"></div>
+<div class="breadcrumbs-box">
+  <%= link_to root_path, class:"crumb" do %>
+    <i class="fas fa-home"></i>
+  <% end %>
+  &nbsp;/&nbsp; <%= link_to "Dashboard", dashboard_path, class:"crumb" %>
+  &nbsp;/&nbsp; <%= link_to "My Mission", mission_path(id: current_user.missions.last.id), class:"crumb" %>
+  <span>&nbsp;/&nbsp; Chat</span>
+</div>
+<div class="space-mt-40"></div>
   <div class="row justify-content-center">
     <div class="col-12 col-md-6 chatroom-box">
       <div class="space-mt-20"></div>

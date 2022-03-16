@@ -1,7 +1,12 @@
 <% content_for :meta_title, "EHT | Dashboard" %>
 <div class="container">
   <div class="space-mt-40"></div>
-  <%= link_to 'Back', 'javascript:history.back()', class:"back-link" %>
+  <div class="breadcrumbs-box">
+    <%= link_to root_path, class:"crumb" do %>
+      <i class="fas fa-home"></i>
+    <% end %>
+    <span>&nbsp;/&nbsp; Dashboard</span>
+  </div>
   <div class="space-mt-20"></div>
   <h1 class="heading-40-lightblue">Hello <%= current_user.first_name %>! This is your Dashboard </h1>
   <div class="space-mt-30"></div>

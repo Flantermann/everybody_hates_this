@@ -1,5 +1,11 @@
 <div class="space-mt-40"></div>
-<%= link_to 'Back', 'javascript:history.back()', class:"back-link" %>
+<div class="breadcrumbs-box">
+    <%= link_to root_path, class:"crumb" do %>
+      <i class="fas fa-home"></i>
+    <% end %>
+    &nbsp;/&nbsp; <%= link_to "Dashboard", dashboard_path, class:"crumb" %>
+    <span>&nbsp;/&nbsp; My Mission</span>
+</div>
 <div class="space-mt-20"></div>
 <h1 class="heading-40-pink-variant">Your Mission</h1>
 <div class="space-mt-20"></div>
@@ -111,6 +117,7 @@
                <p>Beware: <%= @contract_asker.first_name %> has finished their mission, yay to them! What about you?
             What is stopping you? Don't hesitate to ask your buddy for help or advice.</p>
             <% end %>
+            <%= link_to "Start chatting", chatroom_path(id: @contract.chatroom.id), class:"dashboard-buddy-mission-link" %> <br>
             <%= link_to "Show Contract", contract_path(@contract), class:"contract-link-large" %>
             <p></p>
             <p>Have you finished your mission? Yes? Go ahead, click the button already.</p>
@@ -132,6 +139,7 @@
           </div>
         <% else %>
           <p>Congratulations! You have finished your mission! Wooo-hooooooo! <br>
+          <%= link_to "Start chatting", chatroom_path(id: @contract.chatroom.id), class:"dashboard-buddy-mission-link" %> <br>
           <%= link_to "Show Contract", contract_path(@contract), class:"pink" %> </p>
           <p>Time to start your next mission right away...</p>
           <%= link_to "Start Mission", new_mission_path, class:"contract-link-large"  %>
