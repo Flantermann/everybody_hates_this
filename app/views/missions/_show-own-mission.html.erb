@@ -28,7 +28,7 @@
         <%= link_to "update", edit_mission_path(@mission), class:"update-mission-link" %>
       <% end %>
       <% if policy(@mission).destroy? %>
-        <%= link_to "delete", mission_path(@mission), class:"delete-mission-link", method: :delete, data: { confirm: "Are you sure?" } %>
+        <%= link_to "delete", mission_path(@mission), class:"update-mission-link", method: :delete, data: { confirm: "Are you sure?" } %>
       <% end %>
     </div>
   </div>
@@ -140,7 +140,7 @@
         <% else %>
           <p>Congratulations! You have finished your mission! Wooo-hooooooo! <br>
           <%= link_to "Start chatting", chatroom_path(id: @contract.chatroom.id), class:"dashboard-buddy-mission-link" %> <br>
-          <%= link_to "Show Contract", contract_path(@contract), class:"pink" %> </p>
+          <%= link_to "Show Contract", contract_path(@contract), class:"dashboard-mission-link" %> </p>
           <p>Time to start your next mission right away...</p>
           <%= link_to "Start Mission", new_mission_path, class:"contract-link-large"  %>
         <% end %>
