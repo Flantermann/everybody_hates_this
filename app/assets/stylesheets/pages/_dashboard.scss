@@ -63,6 +63,7 @@
   color: $pink-variant;
   font-size: 20px;
   text-align: center;
+  font-weight: lighter;
   &:hover {
     color: $pink;
     text-decoration: none;
@@ -72,6 +73,7 @@
 .dashboard-contract-link {
   color: $yellow-variant;
   font-size: 20px;
+  font-weight: lighter;
   &:hover {
     color: $yellow;
     text-decoration: none;
@@ -81,6 +83,7 @@
 .dashboard-buddy-mission-link {
   color: $lightblue-variant;
   font-size: 20px;
+  font-weight: lighter;
   text-align: center;
   &:hover {
     color: $lightblue;
