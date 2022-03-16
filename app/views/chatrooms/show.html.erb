@@ -36,7 +36,7 @@
       <div class="space-mt-30"></div>
       <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
         <%= token_tag %>
-        <%= f.input :content, label: false, placeholder: "Message", input_html: { class: 'input-line' } %>
+        <%= f.input :content, autofocus: true, label: false, placeholder: "Message", input_html: { class: 'input-line' } %>
       <% end %>
     </div>
   </div>
