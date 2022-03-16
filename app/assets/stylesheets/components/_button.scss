@@ -88,6 +88,19 @@
   }
 }
 
+.mission-accomplish-new{
+  margin-top: 20px;
+  color: $pink-variant;
+  font-size: 16px;
+  border: 1px solid $pink-variant;
+  border-radius: 8px;
+  padding: 5px 10px 5px 10px;
+  &:hover {
+    color: $pink;
+    text-decoration: none;
+  }
+}
+
 .btn-chat-dashboard {
   font-size: 20px;
   font-weight: lighter;
