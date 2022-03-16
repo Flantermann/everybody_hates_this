@@ -1,5 +1,17 @@
 <div class="space-mt-40"></div>
-<%= link_to 'Back', 'javascript:history.back()', class:"back-link" %>
+<div class="breadcrumbs-box">
+  <%= link_to root_path, class:"crumb" do %>
+    <i class="fas fa-home"></i>
+  <% end %>
+  &nbsp;/&nbsp;
+  <% if current_user.missions.last.contract_id == @mission.contract_id && current_user.missions.last.contract_signed? %>
+    <%= link_to "Dashboard", dashboard_path, class:"crumb" %>
+    <span>&nbsp;/&nbsp; Buddy Mission</span>
+  <% else %>
+    <%= link_to "Find Buddy", missions_path, class:"crumb" %>
+   <span>&nbsp;/&nbsp; Mission <%=@mission.id%> </span>
+  <% end %>
+</div>
 <div class="space-mt-20"></div>
 <h1 class="heading-40-pink-variant"> The mission of <%= @mission.user.first_name %></h1>
 <div class="space-mt-20"></div>

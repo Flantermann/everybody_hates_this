@@ -1,6 +1,11 @@
 <div class="container">
   <div class="space-mt-40"></div>
-  <%= link_to 'Back', 'javascript:history.back()', class:"back-link" %>
+  <div class="breadcrumbs-box">
+    <%= link_to root_path, class:"crumb" do %>
+      <i class="fas fa-home"></i>
+    <% end %>
+    <span>&nbsp;/&nbsp; About</span>
+  </div>
   <div class="space-mt-20"></div>
   <h1>About Us</h1>
   <p class="intro-text">
