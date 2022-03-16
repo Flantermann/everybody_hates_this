@@ -1,0 +1,10 @@
+.breadcrumbs-box {
+  color: $white-1;
+  a {
+    color: $white-1;
+    &:hover {
+      color: white;
+      text-decoration: none;
+    }
+  }
+}

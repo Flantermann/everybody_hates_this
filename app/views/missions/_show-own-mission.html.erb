@@ -1,5 +1,11 @@
 <div class="space-mt-40"></div>
-<%= link_to 'Back', 'javascript:history.back()', class:"back-link" %>
+<div class="breadcrumbs-box">
+    <%= link_to root_path, class:"crumb" do %>
+      <i class="fas fa-home"></i>
+    <% end %>
+    &nbsp;/&nbsp; <%= link_to "Dashboard", dashboard_path, class:"crumb" %>
+    <span>&nbsp;/&nbsp; My Mission</span>
+</div>
 <div class="space-mt-20"></div>
 <h1 class="heading-40-pink-variant">Your Mission</h1>
 <div class="space-mt-20"></div>
