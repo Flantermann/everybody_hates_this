@@ -6,4 +6,9 @@ module ApplicationHelper
       ""
     end
   end
+
+  def page_title(title)
+    title += " | " if title.present?
+    title += "Mix & Go"
+  end
 end
