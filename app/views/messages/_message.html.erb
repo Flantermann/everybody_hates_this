@@ -2,7 +2,7 @@
   <div class="buddy-message" id="message-<%= message.id %>">
     <i class="author">
       <span><%= message.user.nickname %></span>
-      <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+      <small><p class="time"><%= time_ago_in_words(message.created_at) %> ago</p></small>
     </i>
     <p><%= message.content %></p>
   </div>
