@@ -5,7 +5,7 @@ class Mission < ApplicationRecord
   belongs_to :user
   # das auskommentiert, weil jetzt contract to user belongs
   # belongs_to :contract, optional: true
-  has_many :milestones
+  has_many :milestones, dependent: :destroy
 
   enum category: { miscellaneous: 0, body_and_mind: 1, administrative_tasks: 2, relationships: 3, work_life: 4, household: 5 }
   enum timeframe: { Three_to_seven_days: 0, one_to_two_weeks: 1, two_to_four_weeks: 2, four_to_six_weeks: 3, more_than_six_weeks: 4 }

@@ -1,0 +1,118 @@
+<div class="space-mt-40"></div>
+<div class="breadcrumbs-box">
+  <%= link_to root_path, class:"crumb" do %>
+    <i class="fas fa-home"></i>
+  <% end %>
+  &nbsp;/&nbsp;
+  <% if current_user.missions.last.contract_id == @mission.contract_id && current_user.missions.last.contract_signed? %>
+    <%= link_to "Dashboard", dashboard_path, class:"crumb" %>
+    <span>&nbsp;/&nbsp; Buddy Mission</span>
+  <% else %>
+    <%= link_to "Find Buddy", missions_path, class:"crumb" %>
+   <span>&nbsp;/&nbsp; Mission of <%=@mission.user.first_name%> </span>
+  <% end %>
+</div>
+<div class="space-mt-20"></div>
+<h1 class="heading-40-pink-variant"> The mission of <%= @mission.user.first_name %></h1>
+<div class="space-mt-20"></div>
+
+  <div class="mission-grid-container">
+    <!--  Mission Card -->
+    <div class="mission-card">
+      <div class="time-category">
+        <%= render "category", mission: @mission %>
+        <div>
+          <p class="timeframe"> <i class="far fa-clock"></i> <%= @mission.timeframe.humanize.capitalize %> </p>
+        </div>
+      </div>
+      <h2> <%= @mission.title %> </h2>
+      <p> <%= @mission.description %> </p>
+      <h5> Buddy preferences </h5>
+      <p>  My buddy should be between
+          <%= @mission.prefered_buddy_age_start %> and <%= @mission.prefered_buddy_age_end %> years old
+      <% if @mission.prefered_buddy_location.humanize.capitalize == "in_my_area"%>
+         and should live in my area.</p>
+      <% else %>
+        and can live anywhere in the world.</p>
+      <% end %>
+    </div>
+    <!--  End of Mission Card -->
+
+    <!--  User Card -->
+    <div class="mission-user-box">
+      <div class="mission-user-info">
+        <% if @mission.user.photo.attached? %>
+          <%= cl_image_tag @mission.user.photo.key, class:"avatar-huge" %>
+        <% else %>
+          <%= image_tag "user_3.png", class:"avatar-huge" %>
+        <% end %>
+        <h4> <%= @mission.user.first_name%>, <%= @mission.user.age%> </h4>
+        <p class="center"> <%= @mission.user.address %> </p>
+      </div>
+      <p class="mission-user-about"><%= @mission.user.about_me%></p>
+    </div>
+    <!--  End of User Card -->
+
+    <!--  Box for Messaging and Contract -->
+
+    <% if current_user.missions.last.contract_signed? == false && @mission.contract_id == nil %>
+        <!-- This part is for the decline logic -->
+        <% if current_user.contracts_as_asker.length > 0 %>
+            <% current_user.contracts_as_asker.each do |contract| %>
+              <% if contract.declined? && contract.receiver_id == @mission.user_id %>
+                <div class="contact-buddy-box">
+                  <p class="contract-decline">Contract declined </p>
+                  <p>We are sorry, but <%= @mission.user.first_name %> has declined to sign a contract with you.
+                  Start looking for another buddy.</p>
+                  <%= link_to "Find buddy", missions_path, class:"contract-link-large" %>
+                </div>
+              <% else %>
+                <% if current_user.missions.last.contract_id == nil %>
+                  <div class="contact-buddy-box">
+                    <div>
+                      <p class="light-20">You found your perfect buddy? Send a request to sign the contract together!<br>
+                      <%= link_to "Send contract request", contracts_path(mission: @mission), method: :post %></p>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+            <% end %>
+        <% elsif current_user.missions.last.contract_id == nil %>
+          <div class="contact-buddy-box">
+            <div>
+              <p class="light-20">You found your perfect buddy? Send a request to sign the contract together!<br>
+              <%= link_to "Send contract request", contracts_path(mission: @mission), method: :post %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+    <!--  End of Box for Messaging and Contract -->
+    <% if @mission.contract_id %>
+      <% if current_user.missions.last.contract_id == @mission.contract_id && current_user.missions.last.contract_signed? %>
+        <div class="contact-buddy-box">
+          <div class="space-mt-20"></div>
+          <%= link_to "Start chatting", chatroom_path(id: @contract.chatroom.id), class:"btn-chat-dashboard" %>
+          <div class="space-mt-20"></div>
+        </div>
+      <% elsif current_user.missions.last.contract_id == @mission.contract_id && current_user.id == @contract_asker.id%>
+        <div class="contact-buddy-box">
+          <div>
+            <p class="contract-decline">Contract request sent </p>
+            <p class="light-20">You have sent a contract request to <%=@mission.user.first_name%>.
+            Now you just have to wait for their reply.
+          </div>
+        <div class="space-mt-20"></div>
+      <% else %>
+        <div class="contact-buddy-box">
+          <div>
+            <p class="contract-request-received">Contract request</p>
+            <p class="light-20">You have a contract request from <%=@contract_asker.first_name%>.</p>
+            <%= link_to "Accept", accept_contract_path(id: @contract.id, mission: @mission), method: :patch, class:"contract-link-large" %>
+            <%= link_to "Decline", decline_contract_path(id: @contract.id, mission: @mission), method: :patch, class:"contract-link-large-yellow" %>
+          </div>
+        <div class="space-mt-20"></div>
+      <% end %>
+      </div>
+    <% end %>
+  </div>
