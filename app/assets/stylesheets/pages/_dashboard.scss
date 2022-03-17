@@ -95,3 +95,13 @@
 .link-box {
   margin-top: 20px;
 }
+
+.acc-missions-link {
+  font-size: 20px;
+  font-weight: lighter;
+  color: $yellow-variant !important;
+  &:hover {
+    color: $yellow !important;
+    text-decoration: none;
+  }
+}
