@@ -33,7 +33,7 @@
     </div>
   </div>
 
-  <% if @mission.finished? == false %>
+
     <!--  Milestones -->
     <div class="contract-info-box">
       <h4>Milestones <span class="pink"><i class="far fa-gem"></i></span></h4>
@@ -65,9 +65,9 @@
           <%= render 'milestones/new', mission: @mission %>
         <% end %>
     </div>
-    <!--  Empty div for grid purposes -->
-    <div> </div>
-  <% end %>
+    <!--  End of Milestones -->
+
+    <div> </div> <!--  Empty div for grid purposes -->
 
   <% if @mission.contract_id == nil %>
     <div class="contract-info-box-bordered">
@@ -85,8 +85,9 @@
       <p>You have not found a buddy for your mission yet.</p>
       <%= link_to "Find buddy", missions_path, class:"contract-link-large" %>
     </div>
-  <% else %>
+  <% else %> <!-- if mission has contract_id -->
     <div class="contract-info-box">
+      <!-- labels for contract nad mission status -->
       <% if @mission.contract_id && @mission.finished? == false %>
         <% if @contract.signed? %>
           <p class="contract-sign">Contract signed </p>
@@ -98,6 +99,7 @@
       <% else %>
         <p class="contract-sign">Mission accomplished </p>
       <% end %>
+      <!-- end of labels for contract status -->
       <h4>Mission Status</h4>
       <% if @mission.contract_id %>
         <% if @contract.signed? && @mission.finished? == false %>
