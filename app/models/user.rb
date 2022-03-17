@@ -8,11 +8,11 @@ class User < ApplicationRecord
   # a contract now stores two user_ids. so a user has many contracts in different roles
 
   # this doesn't work, I don't know why
-  has_many :contracts_as_asker, class_name: "Contract", foreign_key: :asker_id
-  has_many :contracts_as_receiver, class_name: "Contract", foreign_key: :receiver_id
+  has_many :contracts_as_asker, class_name: "Contract", foreign_key: :asker_id, dependent: :destroy
+  has_many :contracts_as_receiver, class_name: "Contract", foreign_key: :receiver_id, dependent: :destroy
 
-  has_many :chatrooms_as_sender_one, class_name: "Chatroom", foreign_key: :sender_one_id
-  has_many :chatrooms_as_sender_two, class_name: "Chatroom", foreign_key: :sender_two_id
+  has_many :chatrooms_as_sender_one, class_name: "Chatroom", foreign_key: :sender_one_id, dependent: :destroy
+  has_many :chatrooms_as_sender_two, class_name: "Chatroom", foreign_key: :sender_two_id, dependent: :destroy
 
   validates :first_name, :last_name, :address, presence: true
   validates :email, presence: true, uniqueness: true, format: {
