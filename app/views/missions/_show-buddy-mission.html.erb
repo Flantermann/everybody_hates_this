@@ -9,7 +9,7 @@
     <span>&nbsp;/&nbsp; Buddy Mission</span>
   <% else %>
     <%= link_to "Find Buddy", missions_path, class:"crumb" %>
-   <span>&nbsp;/&nbsp; Mission <%=@mission.id%> </span>
+   <span>&nbsp;/&nbsp; Mission of <%=@mission.user.first_name%> </span>
   <% end %>
 </div>
 <div class="space-mt-20"></div>
