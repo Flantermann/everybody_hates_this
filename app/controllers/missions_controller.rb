@@ -1,7 +1,7 @@
 class MissionsController < ApplicationController
   before_action :set_mission, only: [:show, :edit, :update, :destroy, :finish]
   def index
-    @missions = policy_scope(Mission.where.not(user_id: current_user.id).where(finished?: false).where(contract_id: nil))
+    @missions = policy_scope(Mission.where.not(user_id: current_user.id).where(finished?: false).where(contract_id: nil).order(:id))
     # @missions = nil
     if params[:category].present? && params[:timeframe].present?
       @missions = @missions.where(category: params[:category], timeframe: params[:timeframe])
