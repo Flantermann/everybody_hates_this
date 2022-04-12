@@ -105,3 +105,32 @@
     text-decoration: none;
   }
 }
+
+// Dashboard responsive with 2 media queries
+
+@media(max-width: 768px) {
+  .dashboard-grid-container {
+    grid-template-columns: 1fr;
+  }
+
+  .heading-40 {
+    font-size: 30px;
+  }
+
+  h3 {
+    font-size: 24x;
+  }
+
+  .dashboard-update-link {
+    font-size: 16px;
+  }
+
+  .mission-user-info > p {
+    font-size: 12px;
+  }
+}
+
+
+@media(min-width: 769px) and (max-width: 992px) {
+
+}
