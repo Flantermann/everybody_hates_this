@@ -118,7 +118,7 @@
   }
 
   h3 {
-    font-size: 24x;
+    font-size: 24px;
   }
 
   .dashboard-update-link {
@@ -128,9 +128,79 @@
   .mission-user-info > p {
     font-size: 12px;
   }
+
+  .light-20 {
+    font-size: 16px;
+  }
+
+  .dashboard-mission-link {
+    font-size: 16px;
+  }
+
+  .dashboard-contract-link {
+    font-size: 16px;
+  }
+
+  .dashboard-buddy-mission-link {
+    font-size: 16px;
+  }
+
+  .acc-missions-link {
+    font-size: 16px;
+  }
+
+  .btn-chat-dashboard {
+    font-size: 16px;
+  }
 }
 
 
 @media(min-width: 769px) and (max-width: 992px) {
+  .dashboard-user-card {
+    width: 50%;
+  }
 
+  .dashboard-grid-container {
+    grid-template-columns: 1fr;
+  }
+
+  .heading-40 {
+    font-size: 30px;
+  }
+
+  h3 {
+    font-size: 24px;
+  }
+
+  .dashboard-update-link {
+    font-size: 16px;
+  }
+
+  .mission-user-info > p {
+    font-size: 12px;
+  }
+
+  .light-20 {
+    font-size: 16px;
+  }
+
+  .dashboard-mission-link {
+    font-size: 16px;
+  }
+
+  .dashboard-contract-link {
+    font-size: 16px;
+  }
+
+  .dashboard-buddy-mission-link {
+    font-size: 16px;
+  }
+
+  .acc-missions-link {
+    font-size: 16px;
+  }
+
+  .btn-chat-dashboard {
+    font-size: 16px;
+  }
 }
