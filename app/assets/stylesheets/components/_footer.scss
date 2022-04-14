@@ -43,5 +43,17 @@ min-height: 100vh;
       text-decoration: none;
     }
   }
+}
 
+@media(max-width: 768px) {
+  .footer-content{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 10px;
+  }
+
+  .footer-links {
+    font-size: 14px;
+    padding-right: 20px;
+  }
 }
