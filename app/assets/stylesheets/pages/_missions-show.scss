@@ -163,3 +163,64 @@
     text-decoration: none;
   }
 }
+
+@media(max-width: 768px) {
+  .mission-grid-container {
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+  }
+
+  .mission-card > h2 {
+    font-size: 20px;
+  }
+
+   .mission-card > p {
+    font-size: 14px;
+  }
+
+  .heading-40-pink-variant {
+    font-size: 24px;
+  }
+
+  .contract-info-box > h4 {
+    font-size: 20px;
+  }
+
+  .contract-info-box > p {
+    font-size: 14px;
+  }
+  .milestone {
+    font-size: 14px;
+  }
+
+  .contract-info-box-bordered > h4 {
+    font-size: 20px;
+  }
+
+   .contract-info-box > h4 {
+    font-size: 20px;
+  }
+
+   .contract-info-box-bordered > p {
+    font-size: 14px;
+  }
+
+   .contract-info-box > p {
+    font-size: 14px;
+  }
+
+  .contract-link-large {
+    font-size: 14px;
+  }
+
+  .dashboard-buddy-mission-link {
+    font-size: 14px;
+  }
+}
+
+@media(min-width: 769px) and (max-width: 992px) {
+  .mission-grid-container {
+    grid-template-columns: 1fr;
+    grid-gap: 30px;
+  }
+}
