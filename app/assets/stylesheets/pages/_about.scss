@@ -26,3 +26,18 @@
 .method-box {
   margin-top: 30px;
 }
+
+@media(max-width: 768px) {
+  .founder-box {
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+  }
+
+}
+
+@media(min-width: 769px) and (max-width: 992px) {
+  .founder-box {
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+  }
+}
