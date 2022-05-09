@@ -94,12 +94,13 @@
 
 @media(max-width: 768px) {
   .contract-box {
-    margin: 15px;
+    margin: 10px;
     border: 2px solid $pink-variant;
   }
 
   .contract-heading {
     font-size: 24px;
+    padding: 0 12px;
   }
 
   .contract-brand-name {
@@ -111,12 +112,12 @@
   }
 
   .user-contract {
-    margin: 0px 10px 0 10px;
+    margin: 0px 14px 0 14px;
     padding: 14px 24px 14px 24px;
   }
 
   .buddy-contract {
-    margin: 0px 10px 0 10px;
+    margin: 0px 14px 0 14px;
     padding: 14px 24px 14px 24px;
   }
 
