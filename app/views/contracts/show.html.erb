@@ -35,7 +35,7 @@
             <p class="contract-timeframe"> <i class="far fa-clock"></i> <%= @asker_mission.timeframe.humanize.capitalize %> </p>
           </div>
           <h3 class="contract-heading-mission"> <%= @asker_mission.title %></h3>
-          <p> <%= @asker_mission.description %> </p>
+          <p class="contract-mission-description"> <%= @asker_mission.description %> </p>
           <div>
             <% if @asker_mission.milestones.any? %>
               <h5>Milestones</h5>
@@ -81,7 +81,7 @@
             <p class="contract-timeframe"> <i class="far fa-clock"></i> <%= @receiver_mission.timeframe.humanize.capitalize %> </p>
           </div>
           <h3 class="contract-heading-mission"> <%= @receiver_mission.title %> </h3>
-          <p> <%= @receiver_mission.description %> </p>
+          <p class="contract-mission-description"> <%= @receiver_mission.description %> </p>
            <% if @receiver_mission.milestones.any? %>
               <h5>Milestones</h4>
               <% @receiver_mission.milestones.each do |milestone|  %>
