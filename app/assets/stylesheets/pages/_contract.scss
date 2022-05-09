@@ -91,3 +91,44 @@
 .contract-icon {
   height: 40px;
 }
+
+@media(max-width: 768px) {
+  .contract-box {
+    margin: 15px;
+    border: 2px solid $pink-variant;
+  }
+
+  .contract-heading {
+    font-size: 24px;
+  }
+
+  .contract-brand-name {
+    font-size: 24px;
+  }
+
+  .contract-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .user-contract {
+    margin: 0px 10px 0 10px;
+    padding: 14px 24px 14px 24px;
+  }
+
+  .buddy-contract {
+    margin: 0px 10px 0 10px;
+    padding: 14px 24px 14px 24px;
+  }
+
+  .contract-timeframe {
+    font-size: 12px;
+  }
+
+  .contract-mission-description {
+    font-size: 14px;
+  }
+}
+
+@media(min-width: 769px) and (max-width: 992px) {
+
+}
