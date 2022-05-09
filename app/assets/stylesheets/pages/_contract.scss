@@ -131,5 +131,22 @@
 }
 
 @media(min-width: 769px) and (max-width: 992px) {
+  .contract-box {
+    margin: 10px 16px;
+    border: 3px solid $pink-variant;
+  }
 
+  .contract-grid {
+    grid-gap: 20px;
+  }
+
+  .user-contract {
+    margin: 0px 0px 0 14px;
+    padding: 14px 18px 14px 18px;
+  }
+
+  .buddy-contract {
+    margin: 0px 14px 0 0px;
+    padding: 14px 18px 14px 18px;
+  }
 }
