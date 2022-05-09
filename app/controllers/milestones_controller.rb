@@ -29,9 +29,9 @@ class MilestonesController < ApplicationController
       @milestone.in_progress!
     end
     if @milestone.save
-      redirect_to @milestone.mission
+      redirect_to mission_path(@milestone.mission)
     else
-      redirect_to @milestone.mission, notice: "Sorry, something went wrong"
+      redirect_to mission_path(@milestone.mission), notice: "Sorry, something went wrong"
     end
   end
 
